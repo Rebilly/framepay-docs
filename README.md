@@ -1,1 +1,1 @@
-# framepay-docs
+# FramePay

@@ -1,0 +1,17 @@
+{
+  "name": "framepay-docs",
+  "version": "1.0.0",
+  "description": "Official documentation for Rebilly FramePay",
+  "scripts": {
+    "docs:dev": "vuepress dev",
+    "docs:build": "vuepress build"
+  },
+  "main": "index.js",
+  "repository": "https://github.com/Rebilly/framepay-docs.git",
+  "author": "andrei.moldoveanu@rebilly.com",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "vuepress": "^0.11.0"
+  }
+}
