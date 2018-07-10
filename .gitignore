@@ -1,0 +1,6 @@
+.idea
+/node_modules
+yarn-error.log
+/dist/
+/test/reports/
+/test/e2e/screenshots/*.png
