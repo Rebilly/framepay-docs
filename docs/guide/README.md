@@ -8,6 +8,7 @@ To create a checkout flow using FramePay you will have to complete these steps:
 1. [Set up FramePay](#set-up-framepay)
 2. [Set up your form](#set-up-your-form)
 3. [Collect customer information and create a token](#collect-customer-information-and-create-a-token)
+4. [Finish the checkout flow](#finish-the-checkout-flow)
 
 ## Set up FramePay
 FramePay is part of Rebilly.js. Simply include the line below into your checkout page to enable it.
@@ -24,7 +25,7 @@ Backward-compatible updates will be made available automatically without the nee
 
 ### Adding default element styles
 
-By default FramePay does not inject CSS styles the elements that are being generated into your form. However Rebilly provides a CSS file you can use to give elements a default look. The [example above](#getting-started) shows how a payment card field would look when using this CSS.
+By default FramePay does not inject CSS styles for the elements that are being generated into your form. However we provide a CSS file you can use to give elements a default look.
 
 ```html
 <link href="https://cdn.rebilly.com/framepay/v1/rebilly.css" rel="stylesheet">
@@ -109,9 +110,9 @@ Alternatively you can exclude the `data-rebilly="token"` field and add the payme
 
 ## Finish the checkout flow
 
-Once the payment token has been added to the form and submitted to your server you can use one of the Rebilly backend SDKs to finish the checkout flow.
+Once the payment token has been added to the form and submitted to your server you can use one of Rebilly's backend SDKs to finish the checkout flow.
 
-Create a new customer, a payment instrument for the customer from the payment token and finally a transaction using the new payment instrument.
+Create a new customer, a payment instrument and finally a transaction.
 
 #### Rebilly Backend SDKs
 

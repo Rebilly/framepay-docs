@@ -14,11 +14,11 @@ Backward-compatible updates will be made available automatically without the nee
 
 ### Adding default element styles
 
-By default FramePay does not inject CSS styles the elements that are being generated into your form. However Rebilly provides a CSS file you can use to give elements a default look.
+By default FramePay does not inject CSS styles for the elements that are being generated into your form. However we provide a CSS file you can use to give elements a default look.
 
 ```html
 <link href="https://cdn.rebilly.com/framepay/v1/rebilly.css" rel="stylesheet">
 ```
 
-This is how a payment card field will look with the default style present:
+Here is an example of a payment card element being styled by `rebilly.css`.
 <iframe border="0" frameborder="0" scrolling="no" src="/examples/example1.html"></iframe>
