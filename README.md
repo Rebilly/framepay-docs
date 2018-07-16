@@ -2,6 +2,8 @@
 
 FramePay allows you to build your checkout flow by offloading strict PCI Compliance requirements directly to Rebilly while maintaining the same look and feel your customers are used to. Once the required payment card or bank account information is collected, FramePay generates a payment token you can use to complete the checkout process.
 
+> See the full FramePay documentation online at https://rebilly.github.io/framepay-docs/
+
 ## Set up FramePay
 FramePay is part of Rebilly.js. Simply include the line below into your checkout page to enable it.
 
