@@ -60,7 +60,7 @@ Rebilly.card.mount('#payment-card');
 ```
 
 ::: warning Use your own publishable key
-You must replace the key `pk_sandbox_1234567890` with your own. We recommend starting with a sandbox key. To create a publishable key, [visit Rebilly]((https://app.rebilly.com/api-keys/add)).
+You must replace the key `pk_sandbox_1234567890` with your own. We recommend starting with a sandbox key. To create a publishable key, [visit Rebilly](https://app.rebilly.com/api-keys/add).
 :::
 
 By default a card element will generate a combined field that lets the customers enter their payment card number, expiry and CVV in a single input. However, you can chose to separate them by mounting into three separate locations. See the library reference for a list of supported field types.
@@ -80,11 +80,11 @@ Wrap your code with a `try/catch` block to detect any thrown errors that would p
 
 ## Collect customer information and create a token
 
-To collect the customer's information and the payment card data, define an event handler for the form `submit` event. Any `input` fields with a `data-rebilly` attribute will be parsed automatically and sent alongside the elements data.
+To collect the customer's information and the payment card data, define an event handler for the form `submit` event. Any `input` fields with a `data-rebilly` attribute will be parsed automatically and sent alongside the elements' data.
 
 See the [list of all `data-rebilly` properties](#) that can be automatically saved by FramePay for more details.
 
-Trigger `Rebilly.createToken` to generate and inject the payment token into your form. The method returns a `Promise` with a single argument representing the result of the operation. Validation or network errors can be caught using a `catch()` handler and displayed to the customer.
+Trigger `Rebilly.createToken` to generate and inject the payment token into your form. The method returns a `Promise` with a single argument representing the API result of the operation. Validation or network errors can be caught using a `catch()` handler and displayed to the customer.
 
 ```js
 var form = document.querySelector('form');

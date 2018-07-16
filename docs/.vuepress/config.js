@@ -16,6 +16,8 @@ module.exports = {
             '/guide/': genSidebarConfig('Guide'),
             '/reference/': genSidebarConfig('Reference', [
                 ['rebilly', 'Rebilly Namespace'],
+                ['card', 'Card Namespace'],
+                ['bank-account', 'Bank Account Namespace'],
             ]),
             '/examples/': genSidebarConfig('Examples', []),
         },

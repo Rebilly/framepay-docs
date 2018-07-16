@@ -8,7 +8,7 @@ FramePay is part of Rebilly.js. Simply include the line below into your checkout
 
 The library is then exposed in the global scope as `Rebilly`.
 
-::: tip Automatic Updates
+::: tip Automatic updates
 Backward-compatible updates will be made available automatically without the need to change this URL.
 :::
 

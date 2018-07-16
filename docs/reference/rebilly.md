@@ -15,6 +15,12 @@ Rebilly.initialize(configuration);
 Rebilly.initialize({publishableKey: 'pk_sandbox_1234567890'});
 ```
 
+::: warning Use your own publishable key
+You must replace the key `pk_sandbox_1234567890` with your own. We recommend starting with a sandbox key. To create a publishable key, [visit Rebilly](https://app.rebilly.com/api-keys/add).
+:::
+
+<br>
+
 The `configuration` must contain at a `publishableKey` otherwise an error will be thrown. It can optionally define CSS styles and class names to overwrite the style of FramePay.
 
 <table>
@@ -168,4 +174,103 @@ The `configuration` must contain at a `publishableKey` otherwise an error will b
 
 ## Rebilly.createToken
 
+Use this method to create a token from the contents of a form. FramePay will automatically look for all elements that were mounted and any `input` fields with a `data-rebilly` attribute will be parsed automatically and sent alongside the elements' data.
+
+Alternatively you can provide an `extraData` object containing properties supported by the Rebilly API instead of including additional field in your form.
+```js
+// create a token from the fields within a form
+Rebilly.createToken(form);
+
+// optionally include extra data that is not found in the form
+Rebilly.createToken(form, extraData);
+```
+
+This method returns a `Promise` with a single argument representing the API result of the operation. Validation or network errors can be caught using a `catch()` handler and displayed to the customer.
+
+```js
+var form = document.querySelector('form');
+form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    Rebilly.createToken(form)
+        .then(function (token) {
+            // if we have a token field in the form
+            // we can submit directly
+            form.submit();
+        })
+        .catch(function (error) {
+            // see error.code and error.message
+        });
+});
+```
+
+If a `data-rebilly="token"` hidden input field is detected in your form the payment token will be automatically injected. However, the payment token ID is available as `token.id` if you prefer manual handling.
+
+::: tip Mount FramePay fields
+In order for the token creation to work you must mount fields before triggering `createToken`.
+:::
+
+### Extra Data
+
+The `extraData` argument is optional and allows you to define specific values to include in your payment token request. These values match the properties supported by `data-rebilly` input fields and can be provided as either form fields or as this object literal.
+
+These options can be defined within:
+
+<table>
+    <thead>
+        <tr>
+            <th>Option</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="vertical-align:top">
+                <strong>billingAddress</strong><br>
+                <code>object</code><sub>optional</sub>
+            </td>
+            <td>
+                <p>This object defines the billing address of the customer.</p>
+                These keys can be provided:
+                <ul>
+                    <li><code>firstName</code></li>
+                    <li><code>lastName</code></li>
+                    <li><code>organization</code></li>
+                    <li><code>address</code></li>
+                    <li><code>address2</code></li>
+                    <li><code>city</code></li>
+                    <li><code>region</code></li>
+                    <li><code>country</code></li>
+                    <li><code>postalCode</code></li>
+                    <li><code>phoneNumbers</code>, an array of objects representing phone numbers. Each item must include a <code>label</code> and <code>value</code></li>
+                    <li><code>emails</code>, an array of objects representing email addresses. Each item must include a <code>label</code> and <code>value</code></li>
+                </ul>
+                <h4>Required Values</h4>
+                <p>Please note that the <code>firstName</code> and <code>lastName</code> values are required to create a payment token. If they are not
+                present within your form's fields you must define them as <code>extraData</code>.</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+For example, if your form gathered the customer's name at a previous step and doesn't include the fields in the form used to create the token, then you would define it as extra data:
+```js
+// within the event listener for submit
+var extraData = {
+    billingAddress: {
+        firstName: 'John',
+        lastName: 'Doe'
+    }
+};
+// define extra data as the second argument
+Rebilly.createToken(form, extraData)
+        .then(function (token) {
+            // if we have a token field in the form
+            // we can submit directly
+            form.submit();
+        })
+        .catch(function (error) {
+            // see error.code and error.message
+        });
+});
+```
 
