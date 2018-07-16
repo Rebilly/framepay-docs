@@ -1,5 +1,6 @@
 module.exports = {
     port: 8088, // for local dev
+    base: '/framepay-docs/', // defines github.io location under /Rebilly
     title: 'Rebilly FramePay',
     description: 'Pre-built components for your checkout flow',
     markdown: {
