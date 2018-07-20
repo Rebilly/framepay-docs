@@ -21,4 +21,4 @@ By default FramePay does not inject CSS styles for the elements that are being g
 ```
 
 Here is an example of a payment card element being styled by `rebilly.css`.
-<iframe border="0" frameborder="0" scrolling="no" src="/examples/example1.html"></iframe>
+<iframe border="0" frameborder="0" scrolling="no" src="/framepay-docs/examples/example1.html"></iframe>
