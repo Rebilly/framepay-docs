@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Example 1</title>
+    <link href="https://cdn.rebilly.com/framepay/v1/rebilly.css" rel="stylesheet">
+    <script src="https://cdn.rebilly.com/framepay/v1/rebilly.js"></script>
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            background-color: #846add;
+            height: 100%;
+            margin: 0;
+        }
+
+        .container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .example-3 {
+            width: 100%;
+            max-width: 500px;
+            font-family: Verdana, sans-serif;
+            padding: 20px;
+            box-sizing: border-box;
+            border-radius: 8px;
+        }
+
+        .example-3 * {
+            font-family: Verdana, sans-serif;
+        }
+
+        .example-3 fieldset {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            margin: 0 0 20px 0;
+            padding: 8px 20px;
+            border-radius: 4px;
+            -webkit-box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.2), 0 4px 8px 0 rgba(0,0,0,0.08);
+            box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.2), 0 4px 8px 0 rgba(0,0,0,0.08);
+        }
+
+        .example-3 .field + .field {
+            margin-top: 0px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .example-3 .field {
+            display: flex;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .example-3 label {
+            display: block;
+            margin-right: 4px;
+            min-width: 60px;
+            color: #ffffff;
+        }
+
+        .example-3 input,
+        .example-3 button {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            outline: none;
+            border-style: none;
+        }
+
+        .example-3 input {
+            background: transparent;
+            border: none;
+            border-radius: 4px;
+            font-size: 15px;
+            margin: 0;
+            outline: 0;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            color:#8a97a0;
+        }
+
+        .example-3 input:focus {
+            background: none;
+            color: #FFFFFF;
+        }
+
+        .example-3 input:-webkit-autofill {
+            -webkit-text-fill-color: #FFFFFF;
+            transition: background-color 100000000s;
+            -webkit-animation: 1ms void-animation-out;
+        }
+
+
+        .example-3 input::-webkit-input-placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .example-3 input::-moz-placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .example-3 input:-ms-input-placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .example-3 button {
+            position: relative;
+            display: block;
+            padding: 16px 40px;
+            color: #846add;
+            margin: 0 auto;
+            background: #ffffff;
+            font-size: 16px;
+            text-align: center;
+            line-height: 20px;
+            font-style: normal;
+            width: 100%;
+            border-radius: 6px;
+            -webkit-box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.2), 0 4px 8px 0 rgba(0,0,0,0.08);
+            box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.2), 0 4px 8px 0 rgba(0,0,0,0.08);
+        }
+
+        .example-3 button:hover {
+            cursor: pointer;
+        }
+
+        #payment-card {
+            flex: 1 0 auto;
+        }
+
+        .example-3 .rebilly-framepay {
+            background: transparent;
+            height: 38px;
+            border: none;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+        }
+
+        .example-3 .rebilly-framepay.rebilly-framepay-focus {
+            background: transparent;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="example-3">
+        <form>
+            <fieldset>
+                <div class="field">
+                    <label>Name</label>
+                    <input type="text" name="field1" placeholder="John Ruppert">
+                </div>
+                <div class="field">
+                    <label>Email</label>
+                    <input type="text" name="field2" placeholder="jruppert@email.com">
+                </div>
+                <div class="field">
+                    <label>Phone</label>
+                    <input type="text" name="field3" placeholder="(123) 456-7890">
+                </div>
+            </fieldset>
+            <fieldset>
+                <div class="field">
+                    <div id="payment-card"></div>
+                </div>
+            </fieldset>
+            <br>
+            <button>Make Payment</button>
+        </form>
+    </div>
+</div>
+<script>
+    (function(){
+        Rebilly.initialize({publishableKey: 'pk_sandbox_1234567890'});
+        const card = Rebilly.card.mount('#payment-card');
+    })();
+</script>
+</body>
+</html>

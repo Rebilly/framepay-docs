@@ -3,28 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Example 1</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css" rel="stylesheet">
     <link href="https://cdn.rebilly.com/framepay/v1/rebilly.css" rel="stylesheet">
     <script src="https://cdn.rebilly.com/framepay/v1/rebilly.js"></script>
     <style>
         body {
             background-color: #EDF3FE;
-            padding-top:2em;
+            padding: 2em 2em;
+            font-family: Roboto;
+        }
+
+        label {
+            font-size: 14px;
+            line-height: 20px;
+            margin-bottom: 6px;
+            display: block;
         }
     </style>
 </head>
 <body>
 <div>
-    <div class="ui two column centered grid">
-        <div class="column">
-            <form class="ui form">
-                <div class="field">
-                    <label>Payment Card</label>
-                    <div id="payment-card"></div>
-                </div>
-            </form>
+    <form>
+        <div class="field">
+            <label>Payment Card</label>
+            <div id="payment-card"></div>
         </div>
-    </div>
+    </form>
 </div>
 <script>
     (function(){

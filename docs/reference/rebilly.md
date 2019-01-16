@@ -68,11 +68,27 @@ The `configuration` must contain at a `publishableKey` otherwise an error will b
                             </td>
                         </tr>
                         <tr>
+                            <td><code>valid</code></td>
+                            <td>
+                                The class applied when an element becomes valid through validation.
+                                <br><br>
+                                Default value: <code>rebilly-framepay-valid</code>
+                            </td>
+                        </tr>
+                        <tr>
                             <td><code>invalid</code></td>
                             <td>
                                 The class applied when an element becomes invalid through validation.
                                 <br><br>
                                 Default value: <code>rebilly-framepay-invalid</code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><code>webkitAutofill</code></td>
+                            <td>
+                                The class applied when an element value is autofill by the browser (Only on Chrome and Safari).
+                                <br><br>
+                                Default value: <code>rebilly-framepay-webikit-autofill</code>
                             </td>
                         </tr>
                         <tr>
@@ -102,6 +118,9 @@ The `configuration` must contain at a `publishableKey` otherwise an error will b
                         <code>focus</code>, focus state applied when the user has focused on an element by clicking or tabbing through fields
                     </li>
                     <li>
+                        <code>valid</code>, validation state applied when the data within is correct or complete, and after user interaction
+                    </li>
+                    <li>
                         <code>invalid</code>, validation state applied when the data within is incorrect or incomplete, and after user interaction
                     </li>
                 </ul>
@@ -111,8 +130,9 @@ The `configuration` must contain at a `publishableKey` otherwise an error will b
                         <code>buttons</code>, another set of <code>base</code>, <code>focus</code> and <code>active</code> states to define the look of the buttons
                     </li>
                 </ul>
+                <br>
                 <h4>Common States</h4>
-                The <code>base</code>, <code>focus</code> and <code>invalid</code> states can define these CSS properties:
+                The <code>base</code>, <code>focus</code>, <code>valid</code> and <code>invalid</code> states can define these CSS properties:
                 <ul>
                     <li><code>color</code></li>
                     <li><code>fontFamily</code></li>
@@ -131,17 +151,18 @@ The `configuration` must contain at a `publishableKey` otherwise an error will b
                     <li><code>textTransform</code></li>
                     <li><code>textAlign</code></li>
                     <li><code>textRendering</code></li>
-                    <li><code>borderColor</code></li>
-                    <li><code>borderWidth</code></li>
-                    <li><code>borderStyle</code></li>
-                    <li><code>borderRadius</code></li>
-                    <li><code>displayIcon</code></li>
-                    <li><code>iconColor</code></li>
-                    <li><code>boxShadow</code></li>
-                    <li><code>height</code></li>
-                    <li><code>padding</code></li>
+                </ul>
+                <p>The following pseudo-classes and pseudo-elements can also be styled with the above properties, as a nested object.</p>
+                <ul>
+                    <li><code>:hover</code></li>
+                    <li><code>:focus</code></li>
+                    <li><code>:disabled</code></li>
+                    <li><code>:webkitAuofill</code> Only color and fontSize properties are available</li>
+                    <li><code>::placeholder</code> Includes wordSpacing and opacity properties</li>
+                    <li><code>::selection</code> Only color, background and textShadow properties are available</li>
                 </ul>
                 <hr>
+                <br>
                 <h4>Buttons</h4>
                 The <code>base</code>, <code>focus</code> and <code>active</code> button states can define these CSS properties:
                 <ul>
@@ -166,10 +187,50 @@ The `configuration` must contain at a `publishableKey` otherwise an error will b
                 </ul>
             </td>
         </tr>
+        <tr>
+        <td style="vertical-align:top">
+            <strong>icon</strong><br>
+            <code>object</code><sub>optional</sub>
+        </td>
+        <td>
+            This object will let you control the color or the visibility of the icon in the card field.
+            <ul>
+                <li><code>display</code>, hides the icon. Default to false</li>
+                <li><code>color</code>, Changes the color of the icon</li>
+            </ul>
+        </td>
+        </tr>
     </tbody>
 </table>
 
+Here is an example that customizes the <code>base</code> and <code>invalid</code> states:
 
+```js
+// first call
+Rebilly.initialize(config);
+
+// where config is
+const config = {
+    icon: { // icon for combined field
+        display: true // false to hide
+    },
+    classes: {}, // when needed,
+    style: {
+        base: { // shared `base` state
+            color: '#fff', // generic JS property for DOM style
+            '::placeholder': { // access to pseudo-element
+                color: 'gray', // overwrite placeholder color only
+            },
+        },
+        invalid: {
+            color: 'red',
+            '::placeholder': {
+                color: 'firebrick',
+            },
+        },
+    }
+};
+```
 
 
 ## Rebilly.createToken
