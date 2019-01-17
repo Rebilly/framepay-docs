@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Example 1</title>
+    <link href="https://cdn.rebilly.com/framepay/v1/rebilly.css" rel="stylesheet">
+    <script src="http://localhost:8080/dist/rebilly.js"></script>
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            background-color: #f7f9f9;
+            height: 100%;
+            margin: 0;
+        }
+
+        .container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            border-radius: 8px;
+            -webkit-box-shadow: 0 0 0 1px rgba(0,0,0,0.1) inset;
+            box-shadow: 0 0 0 1px rgba(0,0,0,0.1) inset;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .example-5 {
+            max-width: 500px;
+            width: 100%;
+            font-family: Roboto, Open Sans, Segoe UI, sans-serif;
+            padding: 20px;
+            box-sizing: border-box;
+            border-radius: 8px;
+        }
+
+        .example-5 * {
+            font-family: Roboto, Open Sans, Segoe UI, sans-serif;
+        }
+
+        .example-5 fieldset {
+            border: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .example-5 .field {
+            background: #ffffff;
+            padding: 16px 20px 0;
+            border: 1px solid #d2d9dd;
+        }
+
+        .example-5 .field:first-child {
+             border-radius: 6px 6px 0 0;
+         }
+
+        .example-5 .field:last-child {
+            border-radius: 0 0 6px 6px;
+        }
+
+        .example-5 .field + .field {
+            margin-top: -1px;
+        }
+
+        .example-5 label {
+            display: block;
+            text-transform: uppercase;
+            font-size: 12px;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .example-5 input,
+        .example-5 button {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            outline: none;
+            border-style: none;
+        }
+
+        .example-5 input {
+            border: none;
+            font-size: 15px;
+            margin: 0;
+            outline: 0;
+            padding: 10px 10px 12px 0;
+            width: 100%;
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            background-color: transparent;
+            -webkit-box-shadow: 0 0 0 0px #d2d9dd inset;
+            box-shadow: 0 0 0 0px #d2d9dd inset;
+            color:#8a97a0;
+            -webkit-transition: all 0.4s;
+            -o-transition: all 0.4s;
+            -moz-transition: all 0.4s;
+            transition: all 0.4s;
+        }
+
+        .example-5 input:focus {
+            background: transparent;
+            -webkit-box-shadow: 0 -3px 0 0px #57b846 inset;
+            box-shadow: 0 -3px 0 0px #57b846 inset;
+            color: #000000;
+        }
+
+        .example-5 input:-webkit-autofill {
+            -webkit-text-fill-color: #000;
+            transition: background-color 100000000s;
+            -webkit-animation: 1ms void-animation-out;
+        }
+
+
+        .example-5 input::-webkit-input-placeholder {
+            color: #8a97a0;
+        }
+
+        .example-5 input::-moz-placeholder {
+            color: #8a97a0;
+        }
+
+        .example-5 input:-ms-input-placeholder {
+            color: #8a97a0;
+        }
+
+        .example-5 button {
+            position: relative;
+            display: block;
+            padding: 19px 39px 18px 39px;
+            color: #FFF;
+            margin: 10px auto 0;
+            border-radius: 6px;
+            background: #57b846;
+            font-size: 18px;
+            text-align: center;
+            font-style: normal;
+            width: 100%;
+            -webkit-transition: all 0.4s;
+            -o-transition: all 0.4s;
+            -moz-transition: all 0.4s;
+            transition: all 0.4s;
+        }
+
+        .example-5 button:hover {
+            background: #000000;
+            cursor: pointer;
+        }
+
+        .example-5 .rebilly-framepay {
+            background: transparent;
+            padding: 10px 10px 12px 0;
+            height: 38px;
+            border: none;
+            margin-bottom: -1px;
+            -webkit-box-shadow: 0 -1px 0 0px #d2d9dd inset;
+            box-shadow: 0 -1px 0 0px #d2d9dd inset;
+            border-radius: 0;
+            -webkit-transition: all 0.4s;
+            -o-transition: all 0.4s;
+            -moz-transition: all 0.4s;
+            transition: all 0.4s;
+        }
+
+        .example-5 .rebilly-framepay.rebilly-framepay-buttons {
+            box-shadow: none;
+            padding: initial;
+            margin-bottom: 16px;
+        }
+
+        .example-5 .rebilly-framepay.rebilly-framepay-focus {
+            background: transparent;
+            -webkit-box-shadow: 0 -3px 0 0px #57b846 inset;
+            box-shadow: 0 -3px 0 0px #57b846 inset;
+        }
+
+        .example-5 .rebilly-framepay.rebilly-framepay-focus.rebilly-framepay-buttons {
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="example-5">
+        <form>
+            <fieldset>
+                <div class="field">
+                    <label>First Name</label>
+                    <input type="text" name="field1" autofocus placeholder="John">
+                </div>
+                <div class="field">
+                    <label>Last Name</label>
+                    <input type="text" name="field1" autofocus placeholder="Doe">
+                </div>
+                <div class="field">
+                    <label>Email</label>
+                    <input type="text" name="field2" placeholder="johnd@example.com">
+                </div>
+                <div class="field">
+                    <label>Account Type</label>
+                    <div id="bank-account-type"></div>
+                </div>
+                <div class="field">
+                    <label>Account Number</label>
+                    <div id="bank-account-number"></div>
+                </div>
+                <div class="field">
+                    <label>Routing Number</label>
+                    <div id="bank-routing-number"></div>
+                </div>
+            </fieldset>
+            <button>Make Payment</button>
+        </form>
+    </div>
+</div>
+<script>
+    (function(){
+        const config = {
+            publishableKey: 'pk_sandbox_1234567890',
+            style: {
+                buttons: {
+                    base: {
+                        color: '#8a97a0',
+                        fontSize: '14px',
+                        borderColor: '#d2d9dd',
+                    },
+                    focus: {
+                        borderColor: '#57b846',
+                    },
+                    active: {
+                        background: '#57b846',
+                        borderColor: '#57b846',
+                    }
+                }
+            }
+        };
+        Rebilly.initialize(config);
+        const type = Rebilly.card.mount('#bank-account-type', 'bankAccountType');
+        const number = Rebilly.card.mount('#bank-account-number', 'bankAccountNumber');
+        const routing = Rebilly.card.mount('#bank-routing-number', 'bankRoutingNumber');
+    })();
+</script>
+</body>
+</html>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Example 1</title>
     <link href="https://cdn.rebilly.com/framepay/v1/rebilly.css" rel="stylesheet">
-    <script src="https://cdn.rebilly.com/framepay/v1/rebilly.js"></script>
+    <script src="http://localhost:8080/dist/rebilly.js"></script>
     <style>
         html {
             height: 100%;
@@ -62,7 +62,7 @@
         .example-3 label {
             display: block;
             margin-right: 4px;
-            min-width: 60px;
+            min-width: 90px;
             color: #ffffff;
         }
 
@@ -158,12 +158,16 @@
         <form>
             <fieldset>
                 <div class="field">
-                    <label>Name</label>
-                    <input type="text" name="field1" placeholder="John Ruppert">
+                    <label>First Name</label>
+                    <input type="text" name="field1" placeholder="John">
+                </div>
+                <div class="field">
+                    <label>Last Name</label>
+                    <input type="text" name="field1" placeholder="Ruppert">
                 </div>
                 <div class="field">
                     <label>Email</label>
-                    <input type="text" name="field2" placeholder="jruppert@email.com">
+                    <input type="text" name="field2" placeholder="john.ruppert@example.com">
                 </div>
                 <div class="field">
                     <label>Phone</label>
@@ -182,7 +186,25 @@
 </div>
 <script>
     (function(){
-        Rebilly.initialize({publishableKey: 'pk_sandbox_1234567890'});
+        const config = {
+            publishableKey: 'pk_sandbox_1234567890',
+            icon: {
+                color: '#ffffff',
+            },
+            style: {
+                base: {
+                    fontSize: '15px',
+                    fontFamily: 'Verdana, sans-serif',
+                    fontSmoothing: 'none',
+                    color: '#ffffff',
+                    '::placeholder': {
+                        color: 'rgba(255,255,255,0.4)',
+                    },
+                },
+            }
+        };
+
+        Rebilly.initialize(config);
         const card = Rebilly.card.mount('#payment-card');
     })();
 </script>
