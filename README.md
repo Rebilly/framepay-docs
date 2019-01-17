@@ -61,7 +61,13 @@ Inline validation is automatic but no error messages are displayed unless you su
 
 ```js
 card.on('change', function (event) {
-    // error messages
+    if (event.error) {
+        // event.error exposes {code, message, type}
+        console.log(event.error.message);
+    }
+    if (event.valid) {
+        // field input became valid
+    }
 });
 ```
 Alternatively you can display error messages only when submitting the form.
