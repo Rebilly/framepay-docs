@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Example 1</title>
+    <link href="https://cdn.rebilly.com/framepay/v1/rebilly.css" rel="stylesheet">
+    <script src="https://cdn.rebilly.com/framepay/v1/rebilly.js"></script>
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            background-color: #E74C3C;
+            height: 100%;
+            margin: 0;
+        }
+
+        .container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .example-7 {
+            width: 100%;
+            max-width: 500px;
+            font-family: "Helvetica Neue", sans-serif;
+            padding: 20px;
+            box-sizing: border-box;
+            border-radius: 8px;
+        }
+
+        .example-7 * {
+            font-family: "Helvetica Neue", sans-serif;
+        }
+
+        .example-7 fieldset {
+            border: none;
+            padding: 0;
+        }
+
+        .example-7 fieldset + fieldset {
+            margin-top: 20px;
+        }
+
+        .example-7 .fields {
+            display: flex;
+        }
+
+        .example-7 .fields > * {
+            flex: 1 auto;
+        }
+
+        .example-7 .fields + .fields {
+            margin-top: 40px;
+        }
+
+        .example-7 .field {
+            position: relative;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .example-7 .field span {
+            position: absolute;
+            top: 6px;
+            z-index: 1;
+            font-size: 16px;
+            color: #fff;
+            transition: 0.3s;
+            -webkit-transition: 0.3s;
+            -moz-transition: 0.3s;
+        }
+
+        .example-7 label {
+            display: block;
+            font-size: 14px;
+            line-height: 14px;
+            margin-bottom: 0;
+            min-width: 60px;
+            color: #ffffff;
+        }
+
+        .example-7 input,
+        .example-7 button {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            outline: none;
+            border-style: none;
+        }
+
+        .example-7 input {
+            background: transparent;
+            position: relative;
+            border: none;
+            z-index: 100;
+            font-size: 16px;
+            margin: 0;
+            outline: 0;
+            padding: 10px 0 5px;
+            color: #ffffff;
+            width: 100%;
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            border-bottom: 2px solid #ffffff;
+        }
+
+        .example-7 input:focus {
+            background: none;
+            color: #ffffff;
+            border-bottom: 2px solid #2C3E50;
+        }
+
+        .example-7 input:focus + span {
+            cursor: initial;
+            position: absolute;
+            top: -16px;
+            color: #2C3E50;
+        }
+
+        .f-label-up {
+            top: -16px!important;
+        }
+
+        .example-7 input:-webkit-autofill {
+            -webkit-text-fill-color: #ffffff;
+            transition: background-color 100000000s;
+            -webkit-animation: 1ms void-animation-out;
+        }
+
+
+        .example-7 input::-webkit-input-placeholder {
+            color: rgba(0, 0, 0, 0.4);
+        }
+
+        .example-7 input::-moz-placeholder {
+            color: rgba(0, 0, 0, 0.4);
+        }
+
+        .example-7 input:-ms-input-placeholder {
+            color: rgba(0, 0, 0, 0.4);
+        }
+
+        .example-7 button {
+            position: relative;
+            display: block;
+            padding: 16px 40px;
+            color: #E74C3C;
+            margin: 40px auto 0;
+            background: #ffffff;
+            font-size: 16px;
+            text-align: center;
+            line-height: 20px;
+            font-style: normal;
+            width: 100%;
+            border-radius: 30px;
+            -webkit-box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.2), 0 4px 8px 0 rgba(0,0,0,0.08);
+            box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.2), 0 4px 8px 0 rgba(0,0,0,0.08);
+            transition: 0.3s;
+            -webkit-transition: 0.3s;
+            -moz-transition: 0.3s;
+        }
+
+        .example-7 button:hover {
+            cursor: pointer;
+            color: #ffffff;
+            background: #2C3E50;
+        }
+
+        .example-7 .rebilly-framepay {
+            background: transparent;
+            height: 38px;
+            border-radius: 0;
+            border: none;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            border-bottom: 1px solid #000000;
+        }
+
+        .example-7 .rebilly-framepay.rebilly-framepay-focus {
+            background: transparent;
+        }
+
+        input[type="radio"] {
+            color: #ffffff;
+        }
+
+        [type="radio"]:checked,
+        [type="radio"]:not(:checked) {
+            position: absolute;
+            left: -9999px;
+        }
+        [type="radio"]:checked + label,
+        [type="radio"]:not(:checked) + label
+        {
+            position: relative;
+            padding-left: 28px;
+            cursor: pointer;
+            font-size: 16px;
+            line-height: 20px;
+            display: inline-block;
+            color: #ffffff;
+        }
+        [type="radio"]:checked + label:before,
+        [type="radio"]:not(:checked) + label:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 18px;
+            height: 18px;
+            border: 1px solid #ddd;
+            border-radius: 100%;
+            background: #fff;
+        }
+        [type="radio"]:checked + label:after,
+        [type="radio"]:not(:checked) + label:after {
+            content: '';
+            width: 12px;
+            height: 12px;
+            background: #E74C3C;
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            border-radius: 100%;
+            -webkit-transition: all 0.2s ease;
+            transition: all 0.2s ease;
+        }
+        [type="radio"]:not(:checked) + label:after {
+            opacity: 0;
+            -webkit-transform: scale(0);
+            transform: scale(0);
+        }
+        [type="radio"]:checked + label:after {
+            opacity: 1;
+            -webkit-transform: scale(1);
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="example-7">
+        <form>
+            <fieldset>
+                <div class="fields">
+                    <div class="field">
+                        <input class="form-input" type="text" name="field1">
+                        <span class="f-label">First Name</span>
+                    </div>
+                </div>
+                <div class="fields">
+                    <div class="field">
+                        <input class="form-input" type="text" name="field1">
+                        <span class="f-label">Last Name</span>
+                    </div>
+                </div>
+                <div class="fields">
+                    <div class="field">
+                        <input class="form-input" type="text" name="field2">
+                        <span class="f-label">Email</span>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <p>
+                    <input type="radio" id="test1" name="radio-group" checked>
+                    <label for="test1">PayPal</label>
+                </p>
+                <p>
+                    <input type="radio" id="test2" name="radio-group">
+                    <label for="test2">Stripe</label>
+                </p>
+                <p>
+                    <input type="radio" id="test3" name="radio-group">
+                    <label for="test3">China Union Pay</label>
+                </p>
+            </fieldset>
+            <button>Make Payment</button>
+        </form>
+    </div>
+</div>
+<script>
+    (function(){
+        const formInput = document.querySelectorAll('.form-input');
+        const formLabel = document.querySelectorAll('.f-label');
+
+        formInput.forEach((input, index) => {
+            input.addEventListener('blur', () => {
+                if (input.value.length) {
+                    formLabel[index].classList.add('f-label-up');
+                } else {
+                    formLabel[index].classList.remove('f-label-up');
+                }
+            });
+        });
+
+
+        const config = {
+            publishableKey: 'pk_sandbox_1234567890',
+            icon: {
+                display: false,
+            },
+            style: {
+                base: {
+                    fontSize: '16px',
+                    fontFamily: '"Trebuchet MS", sans-serif',
+                    fontSmoothing: 'none',
+                    color: '#000000',
+                    '::placeholder': {
+                        color: 'rgba(0, 0, 0, 0.4)',
+                    },
+                },
+            }
+        };
+    })();
+</script>
+</body>
+</html>
