@@ -137,13 +137,14 @@ The `configuration` must contain at a `publishableKey` otherwise an error will b
                     <li><code>color</code></li>
                     <li><code>fontFamily</code></li>
                     <li><code>fontSize</code></li>
-                    <li><code>fontSmoothing</code></li>
                     <li><code>fontStyle</code></li>
                     <li><code>fontVariant</code></li>
                     <li><code>fontStretch</code></li>
                     <li><code>fontWeight</code></li>
                     <li><code>fontFeatureSettings</code></li>
                     <li><code>fontKerning</code></li>
+                    <li><code>webkitFontSmoothing</code></li>
+                    <li><code>mozOsxFontSmoothing</code></li
                     <li><code>letterSpacing</code></li>
                     <li><code>lineHeight</code></li>
                     <li><code>textDecoration</code></li>
@@ -157,9 +158,9 @@ The `configuration` must contain at a `publishableKey` otherwise an error will b
                     <li><code>:hover</code></li>
                     <li><code>:focus</code></li>
                     <li><code>:disabled</code></li>
-                    <li><code>:webkitAuofill</code> Only color and fontSize properties are available</li>
-                    <li><code>::placeholder</code> Includes wordSpacing and opacity properties</li>
-                    <li><code>::selection</code> Only color, background and textShadow properties are available</li>
+                    <li><code>:webkitAuofill</code> Only <code>webkitTextFillColor</code> and <code>fontSize</code> properties are available</li>
+                    <li><code>::placeholder</code> Includes <code>wordSpacing</code> and <code>opacity</code> properties</li>
+                    <li><code>::selection</code> Only <code>color</code>, <code>background</code> and <code>textShadow</code> properties are available</li>
                 </ul>
                 <hr>
                 <br>
@@ -169,13 +170,14 @@ The `configuration` must contain at a `publishableKey` otherwise an error will b
                     <li><code>color</code></li>
                     <li><code>fontFamily</code></li>
                     <li><code>fontSize</code></li>
-                    <li><code>fontSmoothing</code></li>
                     <li><code>fontStyle</code></li>
                     <li><code>fontVariant</code></li>
                     <li><code>fontStretch</code></li>
                     <li><code>fontWeight</code></li>
                     <li><code>fontFeatureSettings</code></li>
                     <li><code>fontKerning</code></li>
+                    <li><code>webkitFontSmoothing</code></li>
+                    <li><code>mozOsxFontSmoothing</code></li>
                     <li><code>background</code></li>
                     <li><code>borderColor</code></li>
                     <li><code>borderWidth</code></li>
@@ -183,7 +185,10 @@ The `configuration` must contain at a `publishableKey` otherwise an error will b
                     <li><code>borderRadius</code></li>
                     <li><code>lineHeight</code></li>
                     <li><code>textTransform</code></li>
-                    <li><code>height</code></li>
+                </ul>
+                <p>The hover selector can be added for <code>base</code> and <code>active</code> states as a nested object containing the above properties,.</p>
+                <ul>
+                    <li><code>:hover</code></li>
                 </ul>
             </td>
         </tr>
