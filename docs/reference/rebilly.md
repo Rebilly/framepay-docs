@@ -2,7 +2,7 @@
 
 Under the `Rebilly` namespace you will find methods for initializing FramePay and creating payment tokens from a form.
 
-## Rebilly.initialize
+## Rebilly.initialize()
 
 Use this method to initialize FramePay with your publishable API key and customize the look and feel of elements.
 
@@ -238,7 +238,7 @@ const config = {
 ```
 
 
-## Rebilly.createToken
+## Rebilly.createToken()
 
 Use this method to create a token from the contents of a form. FramePay will automatically look for all elements that were mounted and any `input` fields with a `data-rebilly` attribute will be parsed automatically and sent alongside the elements' data.
 
@@ -277,7 +277,7 @@ In order for the token creation to work you must mount fields before triggering 
 
 ### Extra Data
 
-The `extraData` argument is optional and allows you to define specific values to include in your payment token request. These values match the properties supported by `data-rebilly` input fields and can be provided as either form fields or as this object literal.
+The `extraData` argument is optional and allows you to define specific values to include in your payment token request. The billing address values match the properties supported by `data-rebilly` input fields and can be provided as either form fields or as this object literal.
 
 These options can be defined within:
 
@@ -289,6 +289,18 @@ These options can be defined within:
         </tr>
     </thead>
     <tbody>
+        <tr>
+            <td style="vertical-align:top">
+                <strong>method</strong><br>
+                <code>string</code>
+            </td>
+            <td>
+                <p>When provided FramePay will attempt to process the form data to generate a payment token for this <code>method</code>. We recommended always defining this property.</p>
+                <h4>Multiple Methods</h4>
+                <p>This property is required when using multiple payment methods at the same time in a form or when using methods other than <code>payment-card</code> or <code>ach</code>.</p>
+                <p>Accepts any of the <a href="https://rebilly.github.io/RebillyAPI/#operation/paymentTokenCreation">methods supported by Rebilly</a>.</p>
+            </td>
+        </tr>
         <tr>
             <td style="vertical-align:top">
                 <strong>billingAddress</strong><br>
@@ -340,3 +352,132 @@ Rebilly.createToken(form, extraData)
 });
 ```
 
+### `data-rebilly` Fields
+
+Most billing address fields can be automatically gathered by FramePay if they are present within the form with a `data-rebilly` attribute:
+
+- `firstName`
+- `lastName`
+- `organization`
+- `address`
+- `address2`
+- `city`
+- `region`
+- `country`
+- `postalCode`
+
+For example, to collect the `firstName` and `lastName` when the token is created you can setup your form as follows:
+```html
+<form>
+    <fieldset>
+        <div class="field">
+            <input type="text" data-rebilly="firstName" placeholder="First Name">
+        </div>
+        <div class="field">
+            <input type="text" data-rebilly="lastName" placeholder="Last Name">
+        </div>
+        <div class="field">
+            <input type="text" name="email" placeholder="Email">
+        </div>
+        <input type="hidden" data-rebilly="token" name="rebilly-token">
+    </fieldset>
+    <button>Pay using PayPal</button>
+</form>
+```
+
+# Card Namespace
+
+The card namespace allows you to mount payment card specific fields. This will generate a FramePay element at the location you desire within your form.
+
+ You can choose to use either:
+- a combined element, that includes the number, expiry and CVV in a single element for easier use
+- three separate elements for the card number, expiry or CVV
+
+We recommend using the combined field because it is easier to integrate and provides a better user experience to your customers.
+
+## Rebilly.card.mount()
+
+After Rebilly is initialized you can mount payment card elements into your form.
+
+The first argument must be either a valid string DOM selector or an instance of a `jQuery` or `Zepto` object that wraps an element within the page. FramePay will attempt to resolve the element and generate a card field within.
+
+By default a **combined card element** will be generated. However if you wish to mount three separate fields for the card number, expiry and CVV you can provide a second argument to define the type of element to generate.
+
+```js
+// mount a combined card element on a container `div`
+var card = Rebilly.card.mount('#card');
+
+// mount an expiry card element and return the instance
+var cardExpiry = Rebilly.card.mount('#card-expiry', 'cardExpiry');
+```
+
+:::tip Field Events
+The card element instances can be used to [subscribe to events](/reference/element.html#element-on) and complete additional actions afterwards.
+:::
+
+The supported element types for the second argument are:
+
+- `cardNumber`, a payment card element with automatic formatting
+- `cardExpiry`, an expiry month and expiry year element with automatic formatting
+- `cardCvv`, a CVV element
+
+Please note that when specifying the element types you must include one of each type in your form.
+
+
+#### Mounting Points
+The mounting points within your form should be empty, their content will be replaced with the FramePay element.
+```html
+<form method="post" action="/process">
+    <div class="field">
+        <label>Payment Card</label>
+        <div id="card">
+            <!-- FramePay will inject the combined payment card field here -->
+        </div>
+    </div>
+    <button>Checkout</button>
+</form>
+```
+
+
+# Bank Account Namespace
+
+The bank account namespace allows you to mount bank account specific fields. This will generate a FramePay element at the location you desire within your form.
+
+
+## Rebilly.bankAccount.mount()
+
+After Rebilly is initialized you can mount bank account elements into your form. This method requires two arguments, the first being a `selector` and the second being an `element type`.
+
+The first argument must be either a valid string DOM selector or an instance of a `jQuery` or `Zepto` object that wraps an element within the page. FramePay will attempt to resolve the element and generate a bank field within.
+
+```js
+// mount an account type element and return the instance
+var accountType = Rebilly.bankAccount.mount('#account-type', 'bankAccountType');
+```
+
+:::tip Field Events
+The bank element instances can be used to [subscribe to events](/reference/element.html#element-on) and complete additional actions afterwards.
+:::
+
+The supported element types for the second argument are:
+
+- `bankAccountType`: a set of inline buttons allowing the selection of the account type
+- `bankAccountNumber`: a simple element to enter the account number
+- `bankRoutingNumber`: a simple element to enter the routing number
+
+You must include mount one of each type into your form in order to create a token for a bank account.
+
+
+#### Mounting Points
+The mounting points within your form should be empty, their content will be replaced with the FramePay element.
+```html
+<form method="post" action="/process">
+    <div class="field">
+        <label>Account Type</label>
+        <div id="account-type">
+            <!-- FramePay will inject the combined payment card field here -->
+        </div>
+    </div>
+    <button>Continue</button>
+</form>
+```

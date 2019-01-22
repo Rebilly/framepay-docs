@@ -106,7 +106,7 @@
             errors: document.getElementById('errors'),
             errorList: document.getElementById('error-list'),
             result: document.getElementById('result'),
-            token: document.getElementById('token'),
+            token: document.getElementById('token')
         };
 
         var errors = [];
@@ -190,7 +190,7 @@
                 billingAddress: {
                     firstName: fields.firstName.value.trim(),
                     lastName: fields.lastName.value.trim(),
-                },
+                }
             };
             showValidationErrors(errors);
             setToken(null);
