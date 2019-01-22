@@ -88,7 +88,7 @@ Wrap your code with a `try/catch` block to detect any thrown errors that would p
 
 To collect the customer's information and the payment card data, define an event handler for the form `submit` event. Any `input` fields with a `data-rebilly` attribute will be parsed automatically and sent alongside the elements' data.
 
-See the [list of all `data-rebilly` properties](#) that can be automatically saved by FramePay for more details.
+See the [list of all `data-rebilly` fields](/reference/rebilly.html#data-rebilly-fields) that can be automatically saved by FramePay for more details.
 
 Trigger `Rebilly.createToken` to generate and inject the payment token into your form. The method returns a `Promise` with a single argument representing the API result of the operation. Validation or network errors can be caught using a `catch()` handler and displayed to the customer.
 
