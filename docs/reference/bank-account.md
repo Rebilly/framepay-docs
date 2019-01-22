@@ -11,14 +11,14 @@ The first argument must be either a valid string DOM selector or an instance of 
 
 ```js
 // mount an account type element
-Rebilly.card.mount('#account-type', 'bankAccountType');
+Rebilly.bankAccount.mount('#account-type', 'bankAccountType');
 ```
 
 The supported element types for the second argument are:
 
-- `bankAccountType`, a set of inline buttons allowing the selection of the account type
-- `bankAccountNumber`, a simple element to enter the account number
-- `bankRoutingNumber`, a simple element to enter the routing number
+- `bankAccountType`: a set of inline buttons allowing the selection of the account type
+- `bankAccountNumber`: a simple element to enter the account number
+- `bankRoutingNumber`: a simple element to enter the routing number
 
 You must include mount one of each type into your form in order to create a token for a bank account.
 
