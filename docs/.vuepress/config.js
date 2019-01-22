@@ -19,8 +19,7 @@ module.exports = {
             ]),
             '/reference/': genSidebarConfig('Reference', [
                 ['rebilly', 'Rebilly Namespace'],
-                ['card', 'Card Namespace'],
-                ['bank-account', 'Bank Account Namespace'],
+                ['element', 'Element Instance'],
             ]),
             '/examples/': genSidebarConfig('Examples', []),
         },
