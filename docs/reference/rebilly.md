@@ -438,6 +438,25 @@ The mounting points within your form should be empty, their content will be repl
 </form>
 ```
 
+#### Labels
+When a `<label>` is present in your form and you wish to automatically focus on the FramePay element once the label is clicked. There are 2 different ways to achieve this:
+
+1. Add the `for` attribute to the `<label>`, referencing the ID of your container.
+```html
+<label for="card">Payment Card</label>
+<div id="card">
+    <!-- FramePay will inject the combined payment card field here -->
+</div>
+```
+
+2. Wrap the FramePay element within a `<label>`.
+```html
+<label>Payment Card
+    <div id="card">
+        <!-- FramePay will inject the combined payment card field here -->
+    </div>
+</label>
+```
 
 # Bank Account Namespace
 
@@ -480,4 +499,24 @@ The mounting points within your form should be empty, their content will be repl
     </div>
     <button>Continue</button>
 </form>
+```
+
+#### Labels
+When a `<label>` is present in your form and you wish to automatically focus on the FramePay element once the label is clicked. There are 2 different ways to achieve this:
+
+1. Add the `for` attribute to the `<label>`, referencing the ID of your container.
+```html
+<label for="account-type">Account Type</label>
+<div id="account-type">
+    <!-- FramePay will inject the combined payment card field here -->
+</div>
+```
+
+2. Wrap the FramePay element within a `<label>`.
+```html
+<label>Account Type
+    <div id="account-type">
+        <!-- FramePay will inject the combined payment card field here -->
+    </div>
+</label>
 ```
