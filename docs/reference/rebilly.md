@@ -502,7 +502,7 @@ The mounting points within your form should be empty, their content will be repl
 ```
 
 #### Labels
-When a `<label>` is present in your form and you wish to automatically focus on the FramePay element once the label is clicked. There are 2 different ways to archive this:
+When a `<label>` is present in your form and you wish to automatically focus on the FramePay element once the label is clicked. There are 2 different ways to achieve this:
 
 1. Add the `for` attribute to the `<label>`, referencing the ID of your container.
 ```html
