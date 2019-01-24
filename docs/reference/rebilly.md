@@ -193,17 +193,17 @@ The `configuration` must contain at a `publishableKey` otherwise an error will b
             </td>
         </tr>
         <tr>
-        <td style="vertical-align:top">
-            <strong>icon</strong><br>
-            <code>object</code><sub>optional</sub>
-        </td>
-        <td>
-            This object will let you control the color or the visibility of the icon in the card field.
-            <ul>
-                <li><code>display</code>, hides the icon. Default to false</li>
-                <li><code>color</code>, Changes the color of the icon</li>
-            </ul>
-        </td>
+            <td style="vertical-align:top">
+                <strong>icon</strong><br>
+                <code>object</code><sub>optional</sub>
+            </td>
+            <td>
+                This object will let you control the color or the visibility of the icon in the card field.
+                <ul>
+                    <li><code>display</code>, hides the icon. Default to false</li>
+                    <li><code>color</code>, Changes the color of the icon</li>
+                </ul>
+            </td>
         </tr>
     </tbody>
 </table>
@@ -327,16 +327,51 @@ These options can be defined within:
                 present within your form's fields you must define them as <code>extraData</code>.</p>
             </td>
         </tr>
+        <tr>
+            <td style="vertical-align:top">
+                <strong>leadSource</strong><br>
+                <code>object</code><sub>optional</sub>
+            </td>
+            <td>
+                <p>A lead source is Rebilly's term for the marketing campaign responsible for a customer interaction (typically a customer purchasing something).<p>
+                <p>There are two ways to collect lead source information: either you provide it explicity within the <code>extraData</code> option or let <a href="/guide/lead-source.html#automatic-attribution">FramePay collect Google UTM parameters</a> from the web address hosting it.</p>
+                <p>If the lead source parameter is defined all UTM parameters from the web address will be ignored.</p>
+                <h4>Lead Source Parameters</h4>
+                <p>A lead source is just some additional metadata that attaches to the customer’s record, and contains attributes common from both <strong>Google analytics</strong> (UTM) and affiliate tracking applications:</p>  
+                <ul>
+                    <li><code>source</code> a UTM parameter</li>
+                    <li><code>medium</code> a UTM parameter</li>
+                    <li><code>campaign</code> a UTM parameter</li>
+                    <li><code>content</code> a UTM parameter</li>
+                    <li><code>term</code> a UTM parameter</li>
+                    <li><code>affiliate</code> an affiliate tracking parameter</li>
+                    <li><code>subAffiliate</code> an affiliate tracking parameter</li>
+                    <li><code>clickId</code> an affiliate tracking parameter</li>
+                    <li><code>salesAgent</code> a sales tracking parameter</li>
+                    <li><code>path</code> the path of the URL where the lead was recorded</li>
+                    <li><code>currency</code> and <code>amount</code>:  the cost of the lead</li>
+                </ul>
+                <p>Any and all of these parameters are optional.</p>
+                <h4>Prevent Automatic Attribution</h4>
+                <p>If you wish to prevent automatic lead source attribution from Google analytics UTM fields you can define this property as an emtpy object.</p>
+                <pre><code>var extraData = {
+   leadSource: {}
+};</code></pre>
+            </td>
+        </tr>
     </tbody>
 </table>
 
 For example, if your form gathered the customer's name at a previous step and doesn't include the fields in the form used to create the token, then you would define it as extra data:
 ```js
-// within the event listener for submit
+// within the event listener for the form submit
 var extraData = {
     billingAddress: {
         firstName: 'John',
         lastName: 'Doe'
+    },
+    leadSource: {
+        campaign: 'facebook',
     }
 };
 // define extra data as the second argument
