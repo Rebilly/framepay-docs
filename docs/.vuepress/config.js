@@ -16,6 +16,7 @@ module.exports = {
         sidebar: {
             '/guide/': genSidebarConfig('Guide', [
                 ['multiple-methods', 'Multiple Payment Methods'],
+                ['lead-source', 'Lead Source Attribution'],
             ]),
             '/reference/': genSidebarConfig('Reference', [
                 ['rebilly', 'Rebilly Namespace'],
