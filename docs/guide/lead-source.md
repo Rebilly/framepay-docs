@@ -19,7 +19,6 @@ A lead source is just some additional metadata that attaches to the customer’s
 - SubAffiliate (an affiliate tracking parameter)
 - ClickId (an affiliate tracking parameter)
 - SalesAgent (a sales tracking parameter)
-- Path (the path of the URL where the lead was recorded)
 - Currency and Amount:  the cost of the lead
 
 Any and all of these parameters are optional.
@@ -76,6 +75,36 @@ There are five different UTM parameters, which may be used in any order:
     </tbody>
 </table>
 
+#### FramePay Parameters
+
+In addition to the UTM parameters, FramePay will look for additional values to collect for the lead source data in the web address:
+
+<table>
+    <thead>
+        <tr>
+            <th>Lead Source Parameter</th>
+            <th>Example</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>affiliate</code></td>
+            <td><code>affiliate=Acme</code></td>
+        </tr>
+        <tr>
+            <td><code>subAffiliate</code></td>
+            <td><code>subAffiliate=junior</code></td>
+        </tr>
+        <tr>
+            <td><code>clickId</code></td>
+            <td><code>clickId=btnSale</code></td>
+        </tr>
+        <tr>
+            <td><code>salesAgent</code></td>
+            <td><code>salesAgent=jdoe</code></td>
+        </tr>
+    </tbody>
+</table>
 
 ::: warning Disabling Automatic Attribution
 If the web address hosting FramePay contains UTM parameters but you do not wish to collect that data you can provide an empty `object` to the `extraData` option when [creating a token](/reference/rebilly.html#extra-data).
@@ -84,10 +113,10 @@ If the web address hosting FramePay contains UTM parameters but you do not wish 
 
 Considering a checkout page hosting FramePay located at this web address:
 ```
-https://www.example.com/checkout?utm_content=buynowlink&utm_medium=social&utm_source=facebook.com&utm_campaign=instantbuy
+https://www.example.com/checkout?utm_content=buynowlink&utm_medium=social&utm_source=facebook.com&utm_campaign=instantbuy&affiliate=gearbuy
 ```
 
-The following lead source data would be gathered from the UTM parameters:
+The following lead source data would be gathered from the UTM and FramePay parameters:
 
 ```js
 {
@@ -95,7 +124,8 @@ The following lead source data would be gathered from the UTM parameters:
         content: 'buynowlink',
         medium: 'social',
         source: 'facebook.com',
-        campaign: 'instantbuy'
+        campaign: 'instantbuy',
+        affiliate: 'gearbuy'
     }
 }
 ```
@@ -111,8 +141,7 @@ var extraData = {
         medium: 'affiliate',
         source: 'affiliate-website.com',
         campaign: 'affiliate-campaign',
-        affiliate: 'af12345',
-        path: 'http://www.example.com/some/landing/path'
+        affiliate: 'af12345'
     }
 };
 Rebilly.createToken(form, extraData);
