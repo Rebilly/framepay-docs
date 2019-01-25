@@ -348,7 +348,6 @@ These options can be defined within:
                     <li><code>subAffiliate</code> an affiliate tracking parameter</li>
                     <li><code>clickId</code> an affiliate tracking parameter</li>
                     <li><code>salesAgent</code> a sales tracking parameter</li>
-                    <li><code>path</code> the path of the URL where the lead was recorded</li>
                     <li><code>currency</code> and <code>amount</code>:  the cost of the lead</li>
                 </ul>
                 <p>Any and all of these parameters are optional.</p>
