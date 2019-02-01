@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Example 1</title>
+    <link href="https://cdn.rebilly.com/framepay/v1/rebilly.css" rel="stylesheet">
+    <script src="https://cdn.rebilly.com/framepay/v1/rebilly.js"></script>
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            background-color: #ffffff;
+            height: 100%;
+            margin: 0;
+        }
+
+        .container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            border-radius: 8px;
+            -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1) inset;
+            -moz-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1) inset;
+            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1) inset;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .example-9 {
+            max-width: 500px;
+            width: 100%;
+            font-family: Roboto, Open Sans, Segoe UI, sans-serif;
+            padding: 20px;
+            box-sizing: border-box;
+            border-radius: 8px;
+        }
+
+        .example-9 * {
+            font-family: Roboto, Open Sans, Segoe UI, sans-serif;
+        }
+
+        .example-9 fieldset {
+            border: none;
+            margin: 0 0 32px 0;
+            padding: 0;
+        }
+
+        .example-9 .field + .field {
+            margin-top: 16px;
+        }
+
+        .example-9 label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .example-9 input,
+        .example-9 button {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            outline: none;
+            border-style: none;
+        }
+
+        .example-9 input {
+            border: none;
+            border-radius: 32px;
+            font-size: 15px;
+            margin: 0;
+            outline: 0;
+            padding: 10px 20px;
+            width: 100%;
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            background-color: #d2d9dd;
+            color: #ffffff;
+        }
+
+        .example-9 input:focus {
+            background: #e8eeef;
+            color: #8a97a0;
+        }
+
+        .example-9 input:-webkit-autofill {
+            -webkit-text-fill-color: #000;
+            transition: background-color 100000000s;
+            -webkit-animation: 1ms void-animation-out;
+        }
+
+
+        .example-9 input::-webkit-input-placeholder {
+            color: #8a97a0;
+        }
+
+        .example-9 input::-moz-placeholder {
+            color: #8a97a0;
+        }
+
+        .example-9 input:-ms-input-placeholder {
+            color: #8a97a0;
+        }
+
+        .example-9 button {
+            position: relative;
+            display: block;
+            padding: 19px 39px 18px 39px;
+            color: #FFF;
+            margin: 0 auto;
+            border-radius: 30px;
+            background: #0044d4;
+            font-size: 18px;
+            text-align: center;
+            font-style: normal;
+            width: 100%;
+            box-shadow: 0 10px 30px 0 rgba(0, 68, 212, 0.5);
+            -moz-box-shadow: 0 10px 30px 0 rgba(0, 68, 212, 0.5);
+            -webkit-box-shadow: 0 10px 30px 0 rgba(0, 68, 212, 0.5);
+            -o-box-shadow: 0 10px 30px 0 rgba(0, 68, 212, 0.5);
+            -ms-box-shadow: 0 10px 30px 0 rgba(0, 68, 212, 0.5);
+            -webkit-transition: all 0.4s;
+            -o-transition: all 0.4s;
+            -moz-transition: all 0.4s;
+            transition: all 0.4s;
+        }
+
+        .example-9 button:hover {
+            background: #000000;
+            box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.2);
+            -moz-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.2);
+            -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.2);
+            -o-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.2);
+            -ms-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+
+        .example-9 .rebilly-framepay {
+            height: 38px;
+            border: none;
+            border-radius: 32px;
+            padding-left: 20px;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            background: #d2d9dd;
+        }
+
+        .example-9 .rebilly-framepay.rebilly-framepay-focus {
+            background: #e8eeef;
+        }
+
+        .example-9 .rebilly-framepay.rebilly-framepay-invalid {
+            background: #ffd7d8;
+        }
+
+        .example-9 .error {
+            margin-top: 4px;
+            display: block;
+            text-align: center;
+            background: #ffd7d8;
+            padding: 8px 0 10px;
+            font-size: 14px;
+            line-height: 14px;
+            width: 7%;
+            opacity: 0;
+            color: #cc0013;
+            height: 32px;
+            box-sizing: border-box;
+            border-radius: 20px;
+            position: relative;
+            -webkit-transition: all 0.4s;
+            -o-transition: all 0.4s;
+            -moz-transition: all 0.4s;
+            transition: all 0.4s;
+        }
+
+        .example-9 .error-icon {
+            position: absolute;
+            left: 3px;
+            top: 3px;
+            width: 26px;
+            line-height: 26px;
+            font-size: 16px;
+            height: 26px;
+            background: rgba(204, 0, 19, 0.38);
+            color: #ffffff;
+            border-radius: 28px;
+        }
+
+        .example-9 .error .error-message {
+            height: 14px;
+            display: block;
+            opacity: 0;
+            overflow: hidden;
+            -webkit-transition: all 0.8s;
+            -o-transition: all 0.8s;
+            -moz-transition: all 0.8s;
+            transition: all 0.8s;
+        }
+
+        .example-9 .error.is-active {
+            width: 100%;
+            opacity: 1;
+        }
+
+        .example-9 .error.is-active .error-message {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="example-9">
+        <form>
+            <fieldset>
+                <div class="field">
+                    <label>First Name</label>
+                    <input type="text" name="field1" placeholder="John">
+                </div>
+                <div class="field">
+                    <label>Last Name</label>
+                    <input type="text" name="field1" placeholder="Doe">
+                </div>
+                <div class="field">
+                    <label for="payment-card">Payment Card</label>
+                    <div id="payment-card"></div>
+                </div>
+                <span class="error"><span class="error-icon">&times;</span><span class="error-message">This is an error message</span></span>
+            </fieldset>
+            <button id="submit-button">Make Payment</button>
+        </form>
+    </div>
+</div>
+<script>
+    const button = document.getElementById('submit-button');
+    const error = document.querySelector('.error');
+    let errorMessage = document.querySelector('.error-message');
+
+    button.addEventListener('click', function (event) {
+        event.preventDefault();
+    });
+
+    (function () {
+        const config = {
+            publishableKey: 'pk_sandbox_1234567890',
+            icon: {
+                display: false,
+            },
+            style: {
+                base: {
+                    fontSize: '15px',
+                    fontFamily: 'Roboto, Open Sans, Segoe UI, sans-serif',
+                    '::placeholder': {
+                        color: '#8a97a0',
+                    },
+                },
+            },
+        };
+
+        Rebilly.initialize(config);
+        const card = Rebilly.card.mount('#payment-card');
+
+        card.on('change', function (event) {
+            if (event.error) {
+                error.classList.add('is-active');
+                errorMessage.innerText = event.error.details.pop();
+            }
+            if (event.valid) {
+                error.classList.remove('is-active');
+            }
+        });
+    })();
+</script>
+</body>
+</html>
