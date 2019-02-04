@@ -62,6 +62,10 @@
             margin-top: 20px;
         }
 
+        .example-10 .fields.error-full-name {
+            margin-top: -1px;
+        }
+
         .example-10 .field {
             color: rgba(255, 255, 255, 0.6);
         }
@@ -193,6 +197,7 @@
             padding: 12px 4px 12px 12px;
         }
 
+        .example-10 .field.is-error input,
         .example-10 .rebilly-framepay-focus.rebilly-framepay-invalid {
             border-color: #dd0000;
             box-shadow: inset 4px 0 0 0 #dd0000;
@@ -207,21 +212,24 @@
                 <div class="fields">
                     <div class="field">
                         <label>First Name</label>
-                        <input type="text" name="field1" placeholder="John">
+                        <input type="text" data-rebilly="firstName" placeholder="John">
                     </div><span></span>
                     <div class="field">
                         <label>Last Name</label>
-                        <input type="text" name="field1" placeholder="Ruppert">
+                        <input type="text" data-rebilly="lastName" placeholder="Ruppert">
                     </div>
+                </div>
+                <div class="fields error-full-name">
+                    <div class="error"></div>
                 </div>
                 <div class="fields">
                     <div class="field">
                         <label>Email</label>
-                        <input type="text" name="field2" placeholder="jruppert@example.com">
+                        <input type="text" name="email" placeholder="jruppert@example.com">
                     </div><span></span>
                     <div class="field">
                         <label>Phone</label>
-                        <input type="text" name="field3" placeholder="(123) 456-7890">
+                        <input type="text" name="phone" placeholder="(123) 456-7890">
                     </div>
                 </div>
                 <div class="fields">
@@ -246,21 +254,39 @@
             </fieldset>
             <br>
             <br>
-            <button id="submit-button">Make Payment</button>
+            <button type="submit">Make Payment</button>
         </form>
     </div>
 </div>
 <script>
-    const button = document.getElementById('submit-button');
-    const error = document.querySelectorAll('.error');
+    const errorList = document.querySelectorAll('.error');
+    const fields = document.querySelectorAll('.field');
 
-    button.addEventListener('click', function (event) {
-        event.preventDefault();
+    fields.forEach((field) => {
+        field.lastElementChild.addEventListener('change', (event) => {
+            const firstName = document.querySelector('.field input[data-rebilly="firstName"]');
+            const lastName = document.querySelector('.field input[data-rebilly="lastName"]');
+            if (firstName.value.length && lastName.value.length) {
+                firstName.parentElement.classList.remove('is-error');
+                lastName.parentElement.classList.remove('is-error');
+                errorList[0].classList.remove('is-active');
+            }
+        });
     });
+
+    function setError(index, cssClass, event) {
+        if (event.error) {
+            errorList[index].classList.add(cssClass);
+            errorList[index].innerText = event.error.message;
+        }
+        if (event.valid) {
+            errorList[index].classList.remove(cssClass);
+        }
+    }
 
     (function(){
         const config = {
-            publishableKey: 'pk_sandbox_1234567890',
+            publishableKey: 'pk_sandbox_c6cqKLddciVikuBOjhcng-rLccTz70NT4W_qZ_h',
             icon: {
                 display: false
             },
@@ -281,27 +307,42 @@
         const card = Rebilly.card.mount('#payment-card', 'cardNumber');
         const exp = Rebilly.card.mount('#exp', 'cardExpiry');
         const cvv = Rebilly.card.mount('#cvv', 'cardCvv');
+        const form = document.querySelector('form');
 
-        function setError(index, cssClass, event) {
-            if (event.error) {
-                error[index].classList.add(cssClass);
-                error[index].innerText = event.error.message;
-            }
-            if (event.valid) {
-                error[index].classList.remove(cssClass);
-            }
-        }
-
-        card.on('change', function (event) {
-            setError(0, 'is-active', event);
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+            Rebilly.createToken(form)
+                .then(function (token) {
+                    form.submit();
+                })
+                .catch(function (error) {
+                    fields.forEach((field) => {
+                        if (!!field.lastElementChild.dataset.rebilly
+                            && error.code === 'fullname-required'
+                            && field.lastElementChild.value === '') {
+                            field.classList.add('is-error');
+                            errorList[0].classList.add('is-active');
+                            errorList[0].innerText = error.message;
+                        }
+                        if (!!field.lastElementChild.dataset.rebilly
+                            && error.code !== 'fullname-required') {
+                            field.classList.remove('is-error');
+                            errorList[0].classList.remove('is-active');
+                        }
+                    });
+                });
         });
 
-        exp.on('change', function (event) {
+        card.on('change', function (event) {
             setError(1, 'is-active', event);
         });
 
-        cvv.on('change', function (event) {
+        exp.on('change', function (event) {
             setError(2, 'is-active', event);
+        });
+
+        cvv.on('change', function (event) {
+            setError(3, 'is-active', event);
         });
     })();
 </script>

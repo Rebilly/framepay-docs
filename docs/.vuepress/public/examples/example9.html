@@ -5,6 +5,7 @@
     <title>Example 1</title>
     <link href="https://cdn.rebilly.com/framepay/v1/rebilly.css" rel="stylesheet">
     <script src="https://cdn.rebilly.com/framepay/v1/rebilly.js"></script>
+
     <style>
         html {
             height: 100%;
@@ -78,7 +79,6 @@
             -webkit-box-sizing: border-box;
             -moz-box-sizing: border-box;
             background-color: #d2d9dd;
-            color: #ffffff;
         }
 
         .example-9 input:focus {
@@ -218,11 +218,11 @@
             <fieldset>
                 <div class="field">
                     <label>First Name</label>
-                    <input type="text" name="field1" placeholder="John">
+                    <input type="text" name="firstName" data-rebilly="firstName" placeholder="John" required>
                 </div>
                 <div class="field">
                     <label>Last Name</label>
-                    <input type="text" name="field1" placeholder="Doe">
+                    <input type="text" name="LastName" data-rebilly="lastName" placeholder="Doe" required>
                 </div>
                 <div class="field">
                     <label for="payment-card">Payment Card</label>
@@ -230,22 +230,17 @@
                 </div>
                 <span class="error"><span class="error-icon">&times;</span><span class="error-message">This is an error message</span></span>
             </fieldset>
-            <button id="submit-button">Make Payment</button>
+            <button type="submit">Make Payment</button>
         </form>
     </div>
 </div>
 <script>
-    const button = document.getElementById('submit-button');
     const error = document.querySelector('.error');
     let errorMessage = document.querySelector('.error-message');
 
-    button.addEventListener('click', function (event) {
-        event.preventDefault();
-    });
-
     (function () {
         const config = {
-            publishableKey: 'pk_sandbox_1234567890',
+            publishableKey: 'pk_sandbox_c6cqKLddciVikuBOjhcng-rLccTz70NT4W_qZ_h',
             icon: {
                 display: false,
             },
@@ -262,6 +257,19 @@
 
         Rebilly.initialize(config);
         const card = Rebilly.card.mount('#payment-card');
+        const form = document.querySelector('form');
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+            Rebilly.createToken(form)
+                .then(function (token) {
+                    form.submit();
+                })
+                .catch(function (e) {
+                    error.classList.add('is-active');
+                    errorMessage.innerText = e.message;
+                });
+        });
 
         card.on('change', function (event) {
             if (event.error) {
