@@ -27,4 +27,11 @@ FramePay can be customized to match the look and feel of your existing forms. Fo
 <iframe style="margin-bottom: 8px;" border="0" frameborder="0" height="1080" scrolling="no" src="/framepay-docs/examples/example8.html"></iframe>
 <a href="https://github.com/Rebilly/framepay-docs/blob/master/docs/.vuepress/public/examples/example8.html" style="margin-bottom: 60px; display: block; text-align: right;">View source on GitHub</a>
 
-
+## Error Messages
+<br>
+<iframe style="margin-bottom: 8px;" border="0" frameborder="0" height="500" scrolling="no" src="/framepay-docs/examples/example9.html"></iframe>
+<a href="https://github.com/Rebilly/framepay-docs/blob/master/docs/.vuepress/public/examples/example9.html" style="margin-bottom: 60px; display: block; text-align: right;">View source on GitHub</a>
+<iframe style="margin-bottom: 8px;" border="0" frameborder="0" height="600" scrolling="no" src="/framepay-docs/examples/example10.html"></iframe>
+<a href="https://github.com/Rebilly/framepay-docs/blob/master/docs/.vuepress/public/examples/example10.html" style="margin-bottom: 60px; display: block; text-align: right;">View source on GitHub</a>
+<iframe style="margin-bottom: 8px;" border="0" frameborder="0" height="880" scrolling="no" src="/framepay-docs/examples/example11.html"></iframe>
+<a href="https://github.com/Rebilly/framepay-docs/blob/master/docs/.vuepress/public/examples/example11.html" style="margin-bottom: 60px; display: block; text-align: right;">View source on GitHub</a>

@@ -50,6 +50,10 @@ element.on('ready', function() {
                             <td>A boolean that is present if the element contains valid data.</td>
                         </tr>
                         <tr>
+                            <td><code>source</code></td>
+                            <td>A string indicating the source of the event. Returns the type of the element used.</td>
+                        </tr>
+                        <tr>
                             <td><code>error</code></td>
                             <td>An object that is present if the element has invalid data. Exposes the <code>error.code</code>, <code>error.message</code> and <code>error.type</code> properties.</td>
                         </tr>
