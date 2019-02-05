@@ -275,8 +275,7 @@
             if (event.error) {
                 error.classList.add('is-active');
                 errorMessage.innerText = event.error.details.pop();
-            }
-            if (event.valid) {
+            } else if (event.valid) {
                 error.classList.remove('is-active');
             }
         });

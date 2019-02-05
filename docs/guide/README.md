@@ -70,7 +70,7 @@ Inline validation is automatic but no error messages are displayed unless you su
 ```js
 card.on('change', function (event) {
     if (event.error) {
-        // event.error exposes {code, message, type}
+        // event.error exposes {code, message, type, details}
         console.log(event.error.message);
     }
     if (event.valid) {
