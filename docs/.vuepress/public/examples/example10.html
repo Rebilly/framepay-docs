@@ -212,11 +212,11 @@
                 <div class="fields">
                     <div class="field">
                         <label>First Name</label>
-                        <input type="text" data-rebilly="firstName" placeholder="John">
+                        <input type="text" data-rebilly="firstName" placeholder="John" required>
                     </div><span></span>
                     <div class="field">
                         <label>Last Name</label>
-                        <input type="text" data-rebilly="lastName" placeholder="Ruppert">
+                        <input type="text" data-rebilly="lastName" placeholder="Ruppert" required>
                     </div>
                 </div>
                 <div class="fields error-full-name">
@@ -260,19 +260,6 @@
 </div>
 <script>
     const errorList = document.querySelectorAll('.error');
-    const fields = document.querySelectorAll('.field');
-
-    fields.forEach((field) => {
-        field.lastElementChild.addEventListener('change', (event) => {
-            const firstName = document.querySelector('.field input[data-rebilly="firstName"]');
-            const lastName = document.querySelector('.field input[data-rebilly="lastName"]');
-            if (firstName.value.length && lastName.value.length) {
-                firstName.parentElement.classList.remove('is-error');
-                lastName.parentElement.classList.remove('is-error');
-                errorList[0].classList.remove('is-active');
-            }
-        });
-    });
 
     function setError(index, cssClass, event) {
         if (event.error) {
@@ -316,20 +303,6 @@
                     form.submit();
                 })
                 .catch(function (error) {
-                    fields.forEach((field) => {
-                        if (!!field.lastElementChild.dataset.rebilly
-                            && error.code === 'fullname-required'
-                            && field.lastElementChild.value === '') {
-                            field.classList.add('is-error');
-                            errorList[0].classList.add('is-active');
-                            errorList[0].innerText = error.message;
-                        }
-                        if (!!field.lastElementChild.dataset.rebilly
-                            && error.code !== 'fullname-required') {
-                            field.classList.remove('is-error');
-                            errorList[0].classList.remove('is-active');
-                        }
-                    });
                 });
         });
 

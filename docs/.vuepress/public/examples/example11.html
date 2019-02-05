@@ -230,11 +230,11 @@
             <fieldset>
                 <div class="field">
                     <label>First Name</label>
-                    <input type="text" name="field1" data-rebilly="firstName" placeholder="John">
+                    <input type="text" name="firstName" data-rebilly="firstName" placeholder="John" required>
                 </div>
                 <div class="field">
                     <label>Last Name</label>
-                    <input type="text" name="field1" data-rebilly="lastName" placeholder="Denver">
+                    <input type="text" name="lastName" data-rebilly="lastName" placeholder="Denver" required>
                 </div>
                 <div class="field">
                     <label>Account Type</label>
@@ -256,7 +256,6 @@
 <script>
     const errorMessages = document.querySelector('.error-messages');
     const errorList = document.querySelector('.error-list');
-    const fields = document.querySelectorAll('.field');
 
     (function () {
         const config = {
@@ -299,18 +298,6 @@
                 })
                 .catch(function (error) {
                     errorMessages.classList.add('is-active');
-                    fields.forEach((field) => {
-                        if (!!field.lastElementChild.dataset.rebilly
-                            && error.code === 'fullname-required'
-                            && field.lastElementChild.value === '') {
-                            field.classList.add('is-error');
-                        }
-                        if (!!field.lastElementChild.dataset.rebilly
-                            && error.code !== 'fullname-required') {
-                            field.classList.remove('is-error');
-                        }
-                    });
-
                     errorList.innerHTML = `<li>${error.message}</li>`;
                     if (error.details.length) {
                         error.details.forEach(item => errorList.innerHTML += `<li>${item}</li>`);
