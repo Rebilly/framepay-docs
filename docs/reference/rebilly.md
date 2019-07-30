@@ -298,7 +298,7 @@ These options can be defined within:
                 <p>When provided FramePay will attempt to process the form data to generate a payment token for this <code>method</code>. We recommended always defining this property.</p>
                 <h4>Multiple Methods</h4>
                 <p>This property is required when using multiple payment methods at the same time in a form or when using methods other than <code>payment-card</code> or <code>ach</code>.</p>
-                <p>Accepts any of the <a href="https://rebilly.github.io/RebillyAPI/#operation/paymentTokenCreation">methods supported by Rebilly</a>.</p>
+                <p>Accepts any of the <a href="https://rebilly.github.io/RebillyAPI/#operation/PostToken">methods supported by Rebilly</a>.</p>
             </td>
         </tr>
         <tr>
