@@ -1,6 +1,6 @@
 # Multiple Payment Methods
 
-Rebilly offers supports for more than [twenty different payment methods](https://rebilly.github.io/RebillyAPI/#operation/paymentTokenCreation) and FramePay allows you to implement them all within a single form.
+Rebilly offers supports for more than [twenty different payment methods](https://rebilly.github.io/RebillyAPI/#operation/PostToken) and FramePay allows you to implement them all within a single form.
 
 
 ## Using multiple methods
@@ -109,7 +109,7 @@ form.addEventListener('submit', function (event) {
 
 ## Other methods
 
-To use any other [method supported by Rebilly](https://rebilly.github.io/RebillyAPI/#operation/paymentTokenCreation) just define its value when creating the payment token.
+To use any other [method supported by Rebilly](https://rebilly.github.io/RebillyAPI/#operation/PostToken) just define its value when creating the payment token.
 
 ```js
 var extraData = {
