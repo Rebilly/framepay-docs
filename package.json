@@ -12,6 +12,8 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
-    "vuepress": "^0.14.8"
+    "dotenv": "^8.0.0",
+    "vuepress": "^1.0.3",
+    "vuepress-plugin-element-tabs": "^0.1.8"
   }
 }
