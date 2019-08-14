@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto|Montserrat|Roboto+Mono');
+
+$accentColor = #0044D4
+$textColor = #0D2B3E
+$borderColor = #E1E7EA
+$codeBgColor = #F6F8F9
+
+$brand = #0044D4
+$text = #0D2B3E
+$muted = #6B7384
+$gray = #A1B2C1
+$light-gray = #C4CED8
+$faint-gray = #E1E7EA
+$blue = #0044D4
+$light-blue = #DCE7FE
+$yellow = #F1C400
+$light-yellow = #FFF0AD
+$green = #00AA13
+$light-green = #C4F7CA
+$red = #E53935
+$light-red = #FFD4D3
+$accent = #00CCC4
+$background = #F6F8F9
+$dark-background = #505A6F
+$light-background = #F9FAFB
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Montserrat", sans-serif;
+}
+
+h1 {
+  letter-spacing: -0.6px;
+  font-weight: 400;
+}
+
+h2 {
+  letter-spacing: -0.6px;
+  font-weight: 500;
+}
+
+.content:not(.custom) > h2 {
+  padding-top: 5rem;
+}
+
+h3 {
+  letter-spacing: -0.6px;
+  font-weight: 500;
+}
+
+iframe {
+  width: 100%;
+  border-radius: 6px
+  height: auto;
+}
+
+pre code, .content pre code, .content pre[class*="language-"] code {
+  font-family: 'Roboto Mono', sans-serif;
+  color: $text;
+}
+
+.view-source {
+  display: block;
+  text-align: right;
+}
+
+div[class~="language-html"]:before,
+div[class~="language-js"]:before {
+  color: $muted;
+}
+
+.configuration-example-frame {
+  overflow: auto;
+}
+
+.configuration-example-frame--small {
+  height: 80px;
+}
+
+.configuration-example-frame--middle {
+  height: 160px;
+}
+
+p a > code {
+  text-decoration: underline;
+}
+
+p a:hover > code {
+  text-decoration: none;
+}
