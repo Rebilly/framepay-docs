@@ -234,8 +234,8 @@
                 </div>
                 <div class="fields">
                     <div class="field">
-                        <label for="payment-card">Payment Card</label>
-                        <div id="payment-card"></div>
+                        <label for="mounting-point">Payment Card</label>
+                        <div id="mounting-point"></div>
                         <div class="error"></div>
                     </div>
                 </div>
@@ -291,7 +291,7 @@
         };
 
         Rebilly.initialize(config);
-        const card = Rebilly.card.mount('#payment-card', 'cardNumber');
+        const card = Rebilly.card.mount('#mounting-point', 'cardNumber');
         const exp = Rebilly.card.mount('#exp', 'cardExpiry');
         const cvv = Rebilly.card.mount('#cvv', 'cardCvv');
         const form = document.querySelector('form');

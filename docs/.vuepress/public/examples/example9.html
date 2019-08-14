@@ -225,8 +225,8 @@
                     <input type="text" name="LastName" data-rebilly="lastName" placeholder="Doe" required>
                 </div>
                 <div class="field">
-                    <label for="payment-card">Payment Card</label>
-                    <div id="payment-card"></div>
+                    <label for="mounting-point">Payment Card</label>
+                    <div id="mounting-point"></div>
                 </div>
                 <span class="error"><span class="error-icon">&times;</span><span class="error-message">This is an error message</span></span>
             </fieldset>
@@ -256,7 +256,7 @@
         };
 
         Rebilly.initialize(config);
-        const card = Rebilly.card.mount('#payment-card');
+        const card = Rebilly.card.mount('#mounting-point');
         const form = document.querySelector('form');
 
         form.addEventListener('submit', function (event) {

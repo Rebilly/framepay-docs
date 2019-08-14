@@ -109,7 +109,7 @@
         }
 
         .example-2 button {
-            position: relative;
+    position: relative; border:none;
             display: block;
             padding: 19px 39px 18px 39px;
             color: #FFF;
@@ -172,7 +172,7 @@
                     <input type="text" name="field3" placeholder="Phone">
                 </div>
                 <div class="field">
-                    <div id="payment-card"></div>
+                    <div id="mounting-point"></div>
                 </div>
             </fieldset>
             <button>Make Payment</button>
@@ -195,7 +195,7 @@
         };
 
         Rebilly.initialize(config);
-        const card = Rebilly.card.mount('#payment-card');
+        const card = Rebilly.card.mount('#mounting-point');
     })();
 </script>
 </body>
