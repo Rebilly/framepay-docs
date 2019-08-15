@@ -26,7 +26,8 @@ module.exports = {
             {text: 'Guide', link: '/guide/'},
             {text: 'Configuration', link: '/configuration/'},
             {text: 'Reference', link: '/reference/'},
-            {text: 'Examples', link: '/examples/'},
+            {text: 'React', link: 'https://github.com/Rebilly/framepay-react'},
+            {text: 'Vue', link: 'https://github.com/Rebilly/framepay-vue'},
         ],
         sidebar: {
             '/guide/': genSidebarConfig(

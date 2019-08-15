@@ -155,3 +155,10 @@ For customization and configuration options available with FramePay visit the [d
 ### View Examples
 
 Take a look at [example implementations](/examples/) of FramePay for payment cards, bank accounts and other payment methods supported by Rebilly.
+
+## Use with React
+Supported versions: 14,15,16+  
+We have simple wrapper for ReactJS please take a look at [framepay-react](https://github.com/Rebilly/framepay-react) 
+
+## Use with Vue
+We have simple wrapper for ReactJS please take a look at [framepay-vue](https://github.com/Rebilly/framepay-vue) 
