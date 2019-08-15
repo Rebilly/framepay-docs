@@ -12,7 +12,8 @@
 }
 
 button {
-    position: relative; border:none;
+    position: relative;
+    border: none;
     padding: 8px 16px;
     color: #FFF;
     margin: 0 auto;

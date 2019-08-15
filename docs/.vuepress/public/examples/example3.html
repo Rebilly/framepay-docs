@@ -44,8 +44,8 @@
             margin: 0 0 20px 0;
             padding: 8px 20px;
             border-radius: 4px;
-            -webkit-box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.2), 0 4px 8px 0 rgba(0,0,0,0.08);
-            box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.2), 0 4px 8px 0 rgba(0,0,0,0.08);
+            -webkit-box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.08);
+            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.08);
         }
 
         .example-3 .field + .field {
@@ -87,7 +87,7 @@
             box-sizing: border-box;
             -webkit-box-sizing: border-box;
             -moz-box-sizing: border-box;
-            color:#8a97a0;
+            color: #8a97a0;
         }
 
         .example-3 input:focus {
@@ -127,8 +127,8 @@
             font-style: normal;
             width: 100%;
             border-radius: 6px;
-            -webkit-box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.2), 0 4px 8px 0 rgba(0,0,0,0.08);
-            box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.2), 0 4px 8px 0 rgba(0,0,0,0.08);
+            -webkit-box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.08);
+            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.08);
         }
 
         .example-3 button:hover {
@@ -159,19 +159,19 @@
             <fieldset>
                 <div class="field">
                     <label>First Name</label>
-                    <input type="text" name="field1" placeholder="John">
+                    <input name="field1" placeholder="John" type="text">
                 </div>
                 <div class="field">
                     <label>Last Name</label>
-                    <input type="text" name="field1" placeholder="Ruppert">
+                    <input name="field1" placeholder="Ruppert" type="text">
                 </div>
                 <div class="field">
                     <label>Email</label>
-                    <input type="text" name="field2" placeholder="john.ruppert@example.com">
+                    <input name="field2" placeholder="john.ruppert@example.com" type="text">
                 </div>
                 <div class="field">
                     <label>Phone</label>
-                    <input type="text" name="field3" placeholder="(123) 456-7890">
+                    <input name="field3" placeholder="(123) 456-7890" type="text">
                 </div>
             </fieldset>
             <fieldset>
@@ -185,11 +185,11 @@
     </div>
 </div>
 <script>
-    (function(){
+    (function () {
         const config = {
             publishableKey: 'pk_sandbox_1234567890',
             icon: {
-                color: '#ffffff'
+                color: '#ffffff',
             },
             style: {
                 base: {
@@ -198,10 +198,10 @@
                     fontSmoothing: 'none',
                     color: '#ffffff',
                     '::placeholder': {
-                        color: 'rgba(255,255,255,0.4)'
-                    }
-                }
-            }
+                        color: 'rgba(255,255,255,0.4)',
+                    },
+                },
+            },
         };
 
         Rebilly.initialize(config);

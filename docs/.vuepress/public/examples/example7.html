@@ -124,7 +124,7 @@
         }
 
         .f-label-up {
-            top: -16px!important;
+            top: -16px !important;
         }
 
         .example-7 input:-webkit-autofill {
@@ -159,8 +159,8 @@
             font-style: normal;
             width: 100%;
             border-radius: 30px;
-            -webkit-box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.2), 0 4px 8px 0 rgba(0,0,0,0.08);
-            box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.2), 0 4px 8px 0 rgba(0,0,0,0.08);
+            -webkit-box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.08);
+            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.08);
             transition: 0.3s;
             -webkit-transition: 0.3s;
             -moz-transition: 0.3s;
@@ -195,9 +195,9 @@
             position: absolute;
             left: -9999px;
         }
+
         [type="radio"]:checked + label,
-        [type="radio"]:not(:checked) + label
-        {
+        [type="radio"]:not(:checked) + label {
             position: relative;
             padding-left: 28px;
             cursor: pointer;
@@ -206,6 +206,7 @@
             display: inline-block;
             color: #ffffff;
         }
+
         [type="radio"]:checked + label:before,
         [type="radio"]:not(:checked) + label:before {
             content: '';
@@ -218,6 +219,7 @@
             border-radius: 100%;
             background: #fff;
         }
+
         [type="radio"]:checked + label:after,
         [type="radio"]:not(:checked) + label:after {
             content: '';
@@ -231,11 +233,13 @@
             -webkit-transition: all 0.2s ease;
             transition: all 0.2s ease;
         }
+
         [type="radio"]:not(:checked) + label:after {
             opacity: 0;
             -webkit-transform: scale(0);
             transform: scale(0);
         }
+
         [type="radio"]:checked + label:after {
             opacity: 1;
             -webkit-transform: scale(1);
@@ -250,34 +254,34 @@
             <fieldset>
                 <div class="fields">
                     <div class="field">
-                        <input class="form-input" type="text" name="field1">
+                        <input class="form-input" name="field1" type="text">
                         <span class="f-label">First Name</span>
                     </div>
                 </div>
                 <div class="fields">
                     <div class="field">
-                        <input class="form-input" type="text" name="field1">
+                        <input class="form-input" name="field1" type="text">
                         <span class="f-label">Last Name</span>
                     </div>
                 </div>
                 <div class="fields">
                     <div class="field">
-                        <input class="form-input" type="text" name="field2">
+                        <input class="form-input" name="field2" type="text">
                         <span class="f-label">Email</span>
                     </div>
                 </div>
             </fieldset>
             <fieldset>
                 <p>
-                    <input type="radio" id="test1" name="radio-group" checked>
+                    <input checked id="test1" name="radio-group" type="radio">
                     <label for="test1">PayPal</label>
                 </p>
                 <p>
-                    <input type="radio" id="test2" name="radio-group">
+                    <input id="test2" name="radio-group" type="radio">
                     <label for="test2">Bitcoin</label>
                 </p>
                 <p>
-                    <input type="radio" id="test3" name="radio-group">
+                    <input id="test3" name="radio-group" type="radio">
                     <label for="test3">China UnionPay</label>
                 </p>
             </fieldset>
@@ -286,7 +290,7 @@
     </div>
 </div>
 <script>
-    (function(){
+    (function () {
         const formInput = document.querySelectorAll('.form-input');
         const formLabel = document.querySelectorAll('.f-label');
 
@@ -304,7 +308,7 @@
         const config = {
             publishableKey: 'pk_sandbox_1234567890',
             icon: {
-                display: false
+                display: false,
             },
             style: {
                 base: {
@@ -313,10 +317,10 @@
                     fontSmoothing: 'none',
                     color: '#000000',
                     '::placeholder': {
-                        color: 'rgba(0, 0, 0, 0.4)'
-                    }
-                }
-            }
+                        color: 'rgba(0, 0, 0, 0.4)',
+                    },
+                },
+            },
         };
     })();
 </script>

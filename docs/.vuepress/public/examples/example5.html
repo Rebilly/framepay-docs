@@ -21,8 +21,8 @@
             height: 100%;
             display: flex;
             border-radius: 8px;
-            -webkit-box-shadow: 0 0 0 1px rgba(0,0,0,0.1) inset;
-            box-shadow: 0 0 0 1px rgba(0,0,0,0.1) inset;
+            -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1) inset;
+            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1) inset;
             flex-direction: column;
             justify-content: center;
             align-items: center;
@@ -54,8 +54,8 @@
         }
 
         .example-5 .field:first-child {
-             border-radius: 6px 6px 0 0;
-         }
+            border-radius: 6px 6px 0 0;
+        }
 
         .example-5 .field:last-child {
             border-radius: 0 0 6px 6px;
@@ -95,7 +95,7 @@
             background-color: transparent;
             -webkit-box-shadow: 0 0 0 0px #d2d9dd inset;
             box-shadow: 0 0 0 0px #d2d9dd inset;
-            color:#8a97a0;
+            color: #8a97a0;
             -webkit-transition: all 0.4s;
             -o-transition: all 0.4s;
             -moz-transition: all 0.4s;
@@ -190,15 +190,15 @@
             <fieldset>
                 <div class="field">
                     <label>First Name</label>
-                    <input type="text" name="field1" placeholder="John">
+                    <input name="field1" placeholder="John" type="text">
                 </div>
                 <div class="field">
                     <label>Last Name</label>
-                    <input type="text" name="field1" placeholder="Doe">
+                    <input name="field1" placeholder="Doe" type="text">
                 </div>
                 <div class="field">
                     <label>Email</label>
-                    <input type="text" name="field2" placeholder="johnd@example.com">
+                    <input name="field2" placeholder="johnd@example.com" type="text">
                 </div>
                 <div class="field">
                     <label>Account Type</label>
@@ -218,7 +218,7 @@
     </div>
 </div>
 <script>
-    (function(){
+    (function () {
         const config = {
             publishableKey: 'pk_sandbox_1234567890',
             style: {
@@ -226,17 +226,17 @@
                     base: {
                         color: '#8a97a0',
                         fontSize: '14px',
-                        borderColor: '#d2d9dd'
+                        borderColor: '#d2d9dd',
                     },
                     focus: {
-                        borderColor: '#57b846'
+                        borderColor: '#57b846',
                     },
                     active: {
                         background: '#57b846',
-                        borderColor: '#57b846'
-                    }
-                }
-            }
+                        borderColor: '#57b846',
+                    },
+                },
+            },
         };
         Rebilly.initialize(config);
         const type = Rebilly.bankAccount.mount('#bank-account-type', 'bankAccountType');

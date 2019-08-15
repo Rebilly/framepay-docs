@@ -134,8 +134,8 @@
             font-style: normal;
             width: 100%;
             border-radius: 6px;
-            -webkit-box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.2), 0 4px 8px 0 rgba(0,0,0,0.08);
-            box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.2), 0 4px 8px 0 rgba(0,0,0,0.08);
+            -webkit-box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.08);
+            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.08);
         }
 
         .example-4 button:hover {
@@ -166,41 +166,45 @@
                 <div class="fields">
                     <div class="field">
                         <label>First Name</label>
-                        <input type="text" name="field1" placeholder="John">
-                    </div><span></span>
+                        <input name="field1" placeholder="John" type="text">
+                    </div>
+                    <span></span>
                     <div class="field">
                         <label>Last Name</label>
-                        <input type="text" name="field1" placeholder="Ruppert">
+                        <input name="field1" placeholder="Ruppert" type="text">
                     </div>
                 </div>
                 <div class="fields">
                     <div class="field">
                         <label>Email</label>
-                        <input type="text" name="field2" placeholder="jruppert@example.com">
-                    </div><span></span>
+                        <input name="field2" placeholder="jruppert@example.com" type="text">
+                    </div>
+                    <span></span>
                     <div class="field">
                         <label>Phone</label>
-                        <input type="text" name="field3" placeholder="(123) 456-7890">
+                        <input name="field3" placeholder="(123) 456-7890" type="text">
                     </div>
                 </div>
                 <div class="fields">
                     <div class="field">
                         <label>Address</label>
-                        <input type="text" name="field4" placeholder="123456 Apple Street">
+                        <input name="field4" placeholder="123456 Apple Street" type="text">
                     </div>
                 </div>
                 <div class="fields">
                     <div class="field">
                         <label>City</label>
-                        <input type="text" name="field5" placeholder="Montreal">
-                    </div><span></span>
+                        <input name="field5" placeholder="Montreal" type="text">
+                    </div>
+                    <span></span>
                     <div class="field">
                         <label>State</label>
-                        <input type="text" name="field6" placeholder="QC">
-                    </div><span></span>
+                        <input name="field6" placeholder="QC" type="text">
+                    </div>
+                    <span></span>
                     <div class="field">
                         <label>ZIP</label>
-                        <input type="text" name="field7" placeholder="H2M 2M9">
+                        <input name="field7" placeholder="H2M 2M9" type="text">
                     </div>
                 </div>
                 <div class="fields">
@@ -213,7 +217,8 @@
                     <div class="field">
                         <label>Expiry Date</label>
                         <div id="exp"></div>
-                    </div><span></span>
+                    </div>
+                    <span></span>
                     <div class="field">
                         <label>CVV Number</label>
                         <div id="cvv"></div>
@@ -227,11 +232,11 @@
     </div>
 </div>
 <script>
-    (function(){
+    (function () {
         const config = {
             publishableKey: 'pk_sandbox_1234567890',
             icon: {
-                display: false
+                display: false,
             },
             style: {
                 base: {
@@ -240,10 +245,10 @@
                     fontSmoothing: 'none',
                     color: '#000000',
                     '::placeholder': {
-                        color: 'rgba(0, 0, 0, 0.4)'
-                    }
-                }
-            }
+                        color: 'rgba(0, 0, 0, 0.4)',
+                    },
+                },
+            },
         };
 
         Rebilly.initialize(config);
