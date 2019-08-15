@@ -487,6 +487,32 @@ The card expiry field supports 2 render types.
 :::
 ::::
 
+#### Expiry dropdown card separated style
+:::: tabs
+::: tab result
+<iframe 
+    style="margin-bottom: 8px;" border="0" 
+    frameborder="0"
+    scrolling="no" 
+    class="configuration-example-frame configuration-example-frame--middle"
+    src="/framepay-docs/examples/example-expiry-dropdown-2/index.html"></iframe>
+<a 
+    class="view-source"
+    href="https://github.com/Rebilly/framepay-docs/blob/master/docs/.vuepress/public/examples/example-expiry-dropdown-2/index.html">
+        View source on GitHub
+    </a>
+:::
+::: tab html
+<<< @/docs/.vuepress/public/examples/example-expiry-dropdown-2/index.html
+:::
+::: tab javascript
+<<< @/docs/.vuepress/public/examples/example-expiry-dropdown-2/index.js
+:::
+::: tab css
+<<< @/docs/.vuepress/public/examples/example-expiry-dropdown-2/index.css
+:::
+::::
+
 ### cvv
 This option allows you to customize the card cvv render type.  
 The card cvv field supports 2 render types.  
@@ -502,6 +528,31 @@ The card cvv field supports 2 render types.
     <tr><td>Supported values</td><td><code>'text'</code>, <code>'password'</code></td></tr>
 </table>
 
+:::: tabs
+::: tab result
+<iframe 
+    style="margin-bottom: 8px;" border="0" 
+    frameborder="0"
+    scrolling="no" 
+    class="configuration-example-frame configuration-example-frame--middle"
+    src="/framepay-docs/examples/example-cvv-1/index.html"></iframe>
+<a 
+    class="view-source"
+    href="https://github.com/Rebilly/framepay-docs/blob/master/docs/.vuepress/public/examples/example-cvv-1/index.html">
+        View source on GitHub
+    </a>
+:::
+::: tab html
+<<< @/docs/.vuepress/public/examples/example-cvv-1/index.html
+:::
+::: tab javascript
+<<< @/docs/.vuepress/public/examples/example-cvv-1/index.js
+:::
+::: tab css
+<<< @/docs/.vuepress/public/examples/example-cvv-1/index.css
+:::
+::::
+
 ## style 
 The option to override the default FramePay styles
 <table>
@@ -509,12 +560,6 @@ The option to override the default FramePay styles
     <tr><td>Updatable</td><td>True</td></tr>
     <tr><td>Type</td><td>Object</td></tr>
 </table>
-
-### base
-### focus
-### valid
-### invalid
-### buttons
 
 This object can customize the look of elements using these keys:
 - `base`, base state applied to the elements regardless of validation state
@@ -572,6 +617,30 @@ The <code>base</code>, <code>focus</code> and <code>active</code> button states 
     <li><code>:hover</code></li>
 </ul>
 
+:::: tabs
+::: tab result
+<iframe 
+    style="margin-bottom: 8px;" border="0" 
+    frameborder="0"
+    scrolling="no" 
+    class="configuration-example-frame configuration-example-frame--small"
+    src="/framepay-docs/examples/example-buttons-1/index.html"></iframe>
+<a 
+    class="view-source"
+    target="_blank"
+    href="https://github.com/Rebilly/framepay-docs/blob/master/docs/.vuepress/public/examples/example-buttons-1/index.html">
+        View source on GitHub
+    </a>
+:::
+::: tab html
+<<< @/docs/.vuepress/public/examples/example-buttons-1/index.html
+:::
+::: tab javascript
+<<< @/docs/.vuepress/public/examples/example-buttons-1/index.js
+:::
+::::
+
+
 
 ## classes
 An object defining custom class names for the fields that were injected into your checkout form.
@@ -581,15 +650,6 @@ An object defining custom class names for the fields that were injected into you
     <tr><td>Type</td><td>Object</td></tr>
 </table>
 
-### base
-### focus
-### valid
-### invalid
-### secondary
-### dropdown
-### group
-### buttons
-### webkitAutofill
 
 <p>An object defining custom class names for the fields that were injected into your checkout form.</p>
 <p>If you modify the default classes <a href="/reference/#adding-default-element-styles"><code>rebilly.css</code></a> will no longer apply any styles to the fields.</p>
@@ -642,6 +702,32 @@ An object defining custom class names for the fields that were injected into you
                 The class applied to the element container for buttons. Only applicable to the bank <code>account type</code> field.
                 <br><br>
                 Default value: <code>rebilly-framepay-buttons</code>
+            </td>
+        </tr>
+        <tr>
+            <td><code>secondary</code></td>
+            <td>
+                The class applied to the element container for additional elements, like hidden dropdowns, see <a href="#expiry">card expiry dropdown</a>.
+                <br><br>
+                Default value: <code>rebilly-framepay-secondary</code> 
+            </td>
+        </tr>
+        <tr>
+            <td><code>dropdown</code></td>
+            <td>
+                The <code>secondary</code> element type <code>dropdown</code>, the element will have 2 classes <code>secondary</code> and <code>dropdown></code>, 
+                see <a href="#expiry">card expiry dropdown</a>.
+                <br><br>
+                Default value: <code>rebilly-framepay-dropdown</code>  
+            </td>
+        </tr>
+        <tr>
+            <td><code>group</code></td>
+            <td>
+                The class applied to the parent node which contains 2 and more rebilly elements,
+                see <a href="#expiry">card expiry dropdown</a>. 
+                <br><br>
+                Default value: <code>rebilly-framepay-group</code> 
             </td>
         </tr>
     </tbody>
