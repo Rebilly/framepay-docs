@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Example 1</title>
+    <link href="https://cdn.rebilly.com/framepay/v1/rebilly.css" rel="stylesheet">
+    <script src="https://cdn.rebilly.com/framepay/v1/rebilly.js"></script>
+
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            background-color: #f6f9fc;
+            height: 100%;
+            margin: 0;
+        }
+
+        .container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .example-10 {
+            width: 100%;
+            max-width: 500px;
+            font-family: "Trebuchet MS", sans-serif;
+            padding: 20px;
+            box-sizing: border-box;
+            border-radius: 8px;
+        }
+
+        .example-10 * {
+            font-family: "Trebuchet MS", sans-serif;
+        }
+
+        .example-10 fieldset {
+            border: none;
+            padding: 0;
+        }
+
+        .example-10 .fields {
+            display: flex;
+        }
+
+        .example-10 .fields > * {
+            flex: 1 auto;
+        }
+
+        .example-10 .fields span {
+            width: 10px;
+            display: block;
+            max-width: 10px;
+        }
+
+        .example-10 .fields + .fields {
+            margin-top: 20px;
+        }
+
+        .example-10 .fields.error-full-name {
+            margin-top: -1px;
+        }
+
+        .example-10 .field {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .example-10 label {
+            display: block;
+            font-size: 12px;
+            line-height: 12px;
+            margin-bottom: 4px;
+            min-width: 60px;
+            text-transform: uppercase;
+            color: #000000;
+        }
+
+        .example-10 input,
+        .example-10 button {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            outline: none;
+            border-style: none;
+            -webkit-transition: all 0.2s;
+            -o-transition: all 0.2s;
+            -moz-transition: all 0.2s;
+            transition: all 0.2s;
+        }
+
+        .example-10 input {
+            background: transparent;
+            font-size: 16px;
+            margin: 0;
+            outline: 0;
+            padding: 12px 8px 12px 8px;
+            width: 100%;
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            border: 1px solid #000000;
+            box-shadow: inset 0 0 0 0 #000000;
+        }
+
+        .example-10 input:focus {
+            background: #ffffff;
+            color: #000000;
+            box-shadow: inset 4px 0 0 0 #000000;
+            padding: 12px 4px 12px 12px;
+        }
+
+        .example-10 input:-webkit-autofill {
+            -webkit-text-fill-color: #000000;
+            transition: background-color 100000000s;
+            -webkit-animation: 1ms void-animation-out;
+        }
+
+
+        .example-10 input::-webkit-input-placeholder {
+            color: rgba(0, 0, 0, 0.4);
+        }
+
+        .example-10 input::-moz-placeholder {
+            color: rgba(0, 0, 0, 0.4);
+        }
+
+        .example-10 input:-ms-input-placeholder {
+            color: rgba(0, 0, 0, 0.4);
+        }
+
+        .example-10 button {
+            position: relative;
+            display: block;
+            padding: 16px 40px;
+            color: #ffffff;
+            margin: 0 auto;
+            background: #000000;
+            font-size: 16px;
+            text-align: center;
+            line-height: 20px;
+            font-style: normal;
+            width: 100%;
+            border-radius: 6px;
+            -webkit-box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.08);
+            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.08);
+        }
+
+        .example-10 button:hover {
+            cursor: pointer;
+        }
+
+        .example-10 .error {
+            background: #dd0000;
+            color: #ffffff;
+            padding: 0;
+            height: 0;
+            opacity: 0;
+            font-size: 12px;
+            -webkit-transition: all 0.2s;
+            -o-transition: all 0.2s;
+            -moz-transition: all 0.2s;
+            transition: all 0.2s;
+        }
+
+        .example-10 .error.is-active {
+            opacity: 1;
+            padding: 8px 12px;
+            height: auto;
+        }
+
+        .example-10 .rebilly-framepay {
+            background: transparent;
+            height: 45px;
+            border-radius: 0;
+            padding: 12px 8px 12px 8px;
+            border: 1px solid #000000;
+            box-shadow: inset 0 0 0 0 #000000;
+            -webkit-transition: all 0.2s;
+            -o-transition: all 0.2s;
+            -moz-transition: all 0.2s;
+            transition: all 0.2s;
+        }
+
+        .example-10 .rebilly-framepay-invalid {
+            border-color: #dd0000;
+        }
+
+        .example-10 .rebilly-framepay.rebilly-framepay-focus {
+            background: #ffffff;
+            color: #000000;
+            box-shadow: inset 4px 0 0 0 #000000;
+            padding: 12px 4px 12px 12px;
+        }
+
+        .example-10 .field.is-error input,
+        .example-10 .rebilly-framepay-focus.rebilly-framepay-invalid {
+            border-color: #dd0000;
+            box-shadow: inset 4px 0 0 0 #dd0000;
+        }
+
+
+        /*    custom expiry fields styles */
+        .example-10 .rebilly-framepay-group > .rebilly-framepay {
+            width: 100px;
+        }
+
+        .example-10 .rebilly-framepay-group > .rebilly-framepay:nth-child(2) {
+            margin-left: 10px;
+        }
+
+        .example-10 .rebilly-framepay-dropdown {
+            width: auto;
+            border-radius: 0;
+            background-color: #f6f9fc;
+            padding: 0;
+            border: 1px solid #000000;
+            box-shadow: inset 0 0 0 0 #000000;
+            -webkit-transition: all 0.2s;
+            -o-transition: all 0.2s;
+            -moz-transition: all 0.2s;
+            transition: all 0.2s;
+            height: 150px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="example-10">
+        <form>
+            <fieldset>
+                <div class="fields">
+                    <div class="field">
+                        <label>First Name</label>
+                        <input data-rebilly="firstName" placeholder="John" required type="text">
+                    </div>
+                    <span></span>
+                    <div class="field">
+                        <label>Last Name</label>
+                        <input data-rebilly="lastName" placeholder="Ruppert" required type="text">
+                    </div>
+                </div>
+                <div class="fields error-full-name">
+                    <div class="error"></div>
+                </div>
+                <div class="fields">
+                    <div class="field">
+                        <label>Email</label>
+                        <input name="email" placeholder="jruppert@example.com" type="text">
+                    </div>
+                    <span></span>
+                    <div class="field">
+                        <label>Phone</label>
+                        <input name="phone" placeholder="(123) 456-7890" type="text">
+                    </div>
+                </div>
+                <div class="fields">
+                    <div class="field">
+                        <label for="mounting-point">Payment Card</label>
+                        <div id="mounting-point"></div>
+                        <div class="error"></div>
+                    </div>
+                </div>
+                <div class="fields">
+                    <div class="field">
+                        <label for="exp">Expiry Date</label>
+                        <div id="exp"></div>
+                        <div class="error"></div>
+                    </div>
+                    <span></span>
+                    <div class="field">
+                        <label for="cvv">CVV Number</label>
+                        <div id="cvv"></div>
+                        <div class="error"></div>
+                    </div>
+                </div>
+            </fieldset>
+            <br>
+            <br>
+            <button type="submit">Make Payment</button>
+        </form>
+    </div>
+</div>
+<script>
+    const errorList = document.querySelectorAll('.error');
+
+    function setError(index, cssClass, event) {
+        if (event.error) {
+            errorList[index].classList.add(cssClass);
+            errorList[index].innerText = event.error.message;
+        }
+        if (event.valid) {
+            errorList[index].classList.remove(cssClass);
+        }
+    }
+
+    (function () {
+        const config = {
+            publishableKey: 'pk_sandbox_c6cqKLddciVikuBOjhcng-rLccTz70NT4W_qZ_h',
+            icon: {
+                display: false,
+            },
+            style: {
+                base: {
+                    fontSize: '16px',
+                    fontFamily: '"Trebuchet MS", sans-serif',
+                    fontSmoothing: 'none',
+                    color: '#000000',
+                    '::placeholder': {
+                        color: 'rgba(0, 0, 0, 0.4)',
+                    },
+                },
+            },
+            card: {
+                expiry: {
+                    type: 'dropdown',
+                },
+            },
+        };
+
+        Rebilly.initialize(config);
+        const card = Rebilly.card.mount('#mounting-point', 'cardNumber');
+        const exp = Rebilly.card.mount('#exp', 'cardExpiry');
+        const cvv = Rebilly.card.mount('#cvv', 'cardCvv');
+        const form = document.querySelector('form');
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+            Rebilly.createToken(form)
+                .then(function (token) {
+                    form.submit();
+                })
+                .catch(function (error) {
+                });
+        });
+
+        card.on('change', function (event) {
+            setError(1, 'is-active', event);
+        });
+
+        exp.on('change', function (event) {
+            setError(2, 'is-active', event);
+        });
+
+        cvv.on('change', function (event) {
+            setError(3, 'is-active', event);
+        });
+    })();
+</script>
+</body>
+</html>

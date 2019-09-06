@@ -26,8 +26,10 @@ module.exports = {
             {text: 'Guide', link: '/guide/'},
             {text: 'Configuration', link: '/configuration/'},
             {text: 'Reference', link: '/reference/'},
+            {text: 'Examples', link: '/examples/'},
             {text: 'React', link: 'https://github.com/Rebilly/framepay-react'},
             {text: 'Vue', link: 'https://github.com/Rebilly/framepay-vue'},
+            {text: 'GitHub', link: 'https://github.com/Rebilly/framepay-docs'},
         ],
         sidebar: {
             '/guide/': genSidebarConfig(
@@ -49,6 +51,7 @@ module.exports = {
             ),
             '/examples/': genSidebarConfig(
                 'Examples', [],
+                {sidebarDepth: 3},
             ),
         },
         sidebarDepth: 1,
