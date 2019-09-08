@@ -10,15 +10,19 @@ module.exports = {
     port: 8088, // for local dev
     base: '/framepay-docs/', // defines github.io location under /Rebilly
     title: 'Rebilly FramePay',
-    description: 'Pre-built components for your checkout flow',
     plugins: [
         // https://superbiger.github.io/vuepress-plugin-tabs/#install
         'vuepress-plugin-element-tabs',
     ],
+    description: 'Pre-built components for your checkout flow',
     head: [
         ['link', {rel: 'icon', href: '/favicon.ico'}],
+        // add Rebilly script
         ['script', {src: process.env.FRAMEPAY_DOCS_FRAMEPAY_JS_REMOTE_URL}],
     ],
+    markdown: {
+        lineNumbers: false,
+    },
     themeConfig: {
         logo: '/favicon.ico',
         nav: [
