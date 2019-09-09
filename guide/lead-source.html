@@ -5,9 +5,40 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Lead Source Attribution | Rebilly FramePay</title>
     <meta name="description" content="Pre-built components for your checkout flow">
-    <script src="https://cdn.rebilly.com/framepay/v1/rebilly.js"></script>
+    <script>var INTERCOM_ID = "hvbieiwv";
+        INTERCOM_ID = INTERCOM_ID || '';
+
+function isNoTrack() {
+    return document.location.host.indexOf('localhost') >= 0 || window.location.href.search('notrack=1') > 0;
+}
+
+if (!isNoTrack() && INTERCOM_ID) {
+    !function () {
+        function t() {
+            var t = a.createElement('script');
+            t.type = 'text/javascript', t.async = !0, t.src = 'https://widget.intercom.io/widget/' + INTERCOM_ID;
+            var e = a.getElementsByTagName('script')[0];
+            e.parentNode.insertBefore(t, e);
+        }
+
+        var e = window, n = e.Intercom;
+        if ('function' == typeof n) {
+            n('reattach_activator'), n('update', {});
+        } else {
+            var a = document, c = function () {
+                c.c(arguments);
+            };
+            c.q = [], c.c = function (t) {
+                c.q.push(t);
+            }, e.Intercom = c, e.attachEvent ? e.attachEvent('onload', t) : e.addEventListener('load', t, !1);
+        }
+    }();
+}
+
+</script>
+  <script src="https://cdn.rebilly.com/framepay/v1/rebilly.js"></script>
     
-    <link rel="preload" href="/framepay-docs/assets/css/0.styles.31438dc0.css" as="style"><link rel="preload" href="/framepay-docs/assets/js/app.3db97be7.js" as="script"><link rel="preload" href="/framepay-docs/assets/js/1.1d5e2a36.js" as="script"><link rel="preload" href="/framepay-docs/assets/js/9.4de18ce0.js" as="script"><link rel="prefetch" href="/framepay-docs/assets/js/6.e24f6519.js"><link rel="prefetch" href="/framepay-docs/assets/js/2.0a58b998.js"><link rel="prefetch" href="/framepay-docs/assets/js/3.f528f7fc.js"><link rel="prefetch" href="/framepay-docs/assets/js/4.4bf75cbe.js"><link rel="prefetch" href="/framepay-docs/assets/js/5.9a124ef7.js"><link rel="prefetch" href="/framepay-docs/assets/js/7.414da79b.js"><link rel="prefetch" href="/framepay-docs/assets/js/8.f1bafa89.js"><link rel="prefetch" href="/framepay-docs/assets/js/10.325aba59.js"><link rel="prefetch" href="/framepay-docs/assets/js/11.334b68f8.js"><link rel="prefetch" href="/framepay-docs/assets/js/12.ee8babe5.js">
+    <link rel="preload" href="/framepay-docs/assets/css/0.styles.31438dc0.css" as="style"><link rel="preload" href="/framepay-docs/assets/js/app.e77052bf.js" as="script"><link rel="preload" href="/framepay-docs/assets/js/1.826397d4.js" as="script"><link rel="preload" href="/framepay-docs/assets/js/7.76461c4f.js" as="script"><link rel="prefetch" href="/framepay-docs/assets/js/6.3b6f4da8.js"><link rel="prefetch" href="/framepay-docs/assets/js/2.ff943d54.js"><link rel="prefetch" href="/framepay-docs/assets/js/3.f528f7fc.js"><link rel="prefetch" href="/framepay-docs/assets/js/4.02227f40.js"><link rel="prefetch" href="/framepay-docs/assets/js/5.386df12b.js"><link rel="prefetch" href="/framepay-docs/assets/js/8.f645fad6.js"><link rel="prefetch" href="/framepay-docs/assets/js/9.5b4e5599.js"><link rel="prefetch" href="/framepay-docs/assets/js/10.1de76064.js"><link rel="prefetch" href="/framepay-docs/assets/js/11.eec6f228.js"><link rel="prefetch" href="/framepay-docs/assets/js/12.1f140503.js">
     <link rel="stylesheet" href="/framepay-docs/assets/css/0.styles.31438dc0.css">
   </head>
   <body>
@@ -39,7 +70,7 @@ Rebilly<span class="token punctuation">.</span><span class="token function">crea
         ←
         <a href="/framepay-docs/guide/multiple-methods.html" class="prev">
           Multiple Payment Methods
-        </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
-    <script src="/framepay-docs/assets/js/1.1d5e2a36.js" defer></script><script src="/framepay-docs/assets/js/9.4de18ce0.js" defer></script><script src="/framepay-docs/assets/js/app.3db97be7.js" defer></script>
+        </a></span> <!----></p></div> </main></div><div class="global-ui"><div></div></div></div>
+    <script src="/framepay-docs/assets/js/1.826397d4.js" defer></script><script src="/framepay-docs/assets/js/7.76461c4f.js" defer></script><script src="/framepay-docs/assets/js/app.e77052bf.js" defer></script>
   </body>
 </html>
