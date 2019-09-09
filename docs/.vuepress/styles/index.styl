@@ -1,24 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto|Montserrat|Roboto+Mono');
 
-$brand = #0044D4
-$text = #0D2B3E
-$muted = #6B7384
-$gray = #A1B2C1
-$light-gray = #C4CED8
-$faint-gray = #E1E7EA
-$blue = #0044D4
-$light-blue = #DCE7FE
-$yellow = #F1C400
-$light-yellow = #FFF0AD
-$green = #00AA13
-$light-green = #C4F7CA
-$red = #E53935
-$light-red = #FFD4D3
-$accent = #00CCC4
-$background = #F6F8F9
-$dark-background = #505A6F
-$light-background = #F9FAFB
-
 body {
   font-family: 'Roboto', sans-serif;
 }
@@ -51,13 +32,14 @@ iframe {
   border-radius: 6px
 }
 
-.content pre code, .content pre[class*="language-"] code {
+.content pre code,
+.content pre[class*="language-"] code,
+.content__default pre[class*="language-"] code {
   font-family: 'Roboto Mono', sans-serif;
   color: $text;
 }
 
-div[class~="language-html"]:before,
-div[class~="language-js"]:before {
+div[class*="language-"]:before {
   color: $muted;
 }
 
