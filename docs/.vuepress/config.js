@@ -1,3 +1,13 @@
+require('../../load-env');
+
+// get env keys
+const environmentKeys = Object.keys(process.env)
+    .filter(
+        key => key.indexOf('FRAMEPAY_DOCS') === 0,
+    );
+
+const createIntercomScript = require('./plugins/intercom/create-header-script');
+
 module.exports = {
     port: 8088, // for local dev
     base: '/framepay-docs/', // defines github.io location under /Rebilly
@@ -10,6 +20,12 @@ module.exports = {
     markdown: {
         lineNumbers: false,
     },
+    head: [
+        // add intercom script content
+        ['script', {}, createIntercomScript()],
+        // add Rebilly script
+        ['script', {src: process.env.FRAMEPAY_DOCS_FRAMEPAY_JS_REMOTE_URL}],
+    ],
     themeConfig: {
         nav: [
             {text: 'Home', link: '/'},
@@ -40,6 +56,22 @@ module.exports = {
         editLinks: true,
         // custom text for edit link. Defaults to "Edit this page"
         editLinkText: 'Edit this page on Github',
+    },
+    plugins: [
+        [require('./plugins/intercom/index.js'), {}],
+    ],
+    // update webpack env variables
+    chainWebpack(config) {
+        config.plugin('injections')
+            .tap(([options]) => [
+                Object.assign(
+                    options,
+                    environmentKeys.reduce((memo, key) => ({
+                        ...memo,
+                        [key]: JSON.stringify(process.env[key]),
+                    }), {}),
+                ),
+            ]);
     },
 };
 
