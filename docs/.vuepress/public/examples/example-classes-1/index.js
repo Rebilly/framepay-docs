@@ -8,5 +8,7 @@
             invalid: 'custom-invalid',
         },
     });
-    const card = Rebilly.card.mount('#mounting-point');
+    Rebilly.on('ready', () => {
+        var card = Rebilly.card.mount('#mounting-point');
+    });
 })();

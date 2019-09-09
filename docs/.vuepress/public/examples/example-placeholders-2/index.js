@@ -8,11 +8,13 @@
             },
         },
     });
-    const [
-        accountNumber,
-        routingNumber,
-    ] = [
-        Rebilly.bankAccount.mount('#mount-point-1', 'bankAccountNumber'),
-        Rebilly.bankAccount.mount('#mount-point-2', 'bankRoutingNumber'),
-    ];
+    Rebilly.on('ready', () => {
+        var [
+            accountNumber,
+            routingNumber,
+        ] = [
+            Rebilly.bankAccount.mount('#mount-point-1', 'bankAccountNumber'),
+            Rebilly.bankAccount.mount('#mount-point-2', 'bankRoutingNumber'),
+        ];
+    });
 })();

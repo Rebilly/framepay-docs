@@ -8,5 +8,7 @@
         },
         locale: Rebilly.locales.es,
     });
-    const card = Rebilly.card.mount('#mount-point');
+    Rebilly.on('ready', () => {
+        var card = Rebilly.card.mount('#mount-point');
+    });
 })();

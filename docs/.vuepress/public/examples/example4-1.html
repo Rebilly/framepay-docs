@@ -190,45 +190,45 @@
                 <div class="fields">
                     <div class="field">
                         <label>First Name</label>
-                        <input name="field1" placeholder="John" type="text">
+                        <input data-rebilly="firstName" name="field1" placeholder="John" type="text">
                     </div>
                     <span></span>
                     <div class="field">
                         <label>Last Name</label>
-                        <input name="field1" placeholder="Ruppert" type="text">
+                        <input data-rebilly="lastName" name="field1" placeholder="Ruppert" type="text">
                     </div>
                 </div>
                 <div class="fields">
                     <div class="field">
                         <label>Email</label>
-                        <input name="field2" placeholder="jruppert@example.com" type="text">
+                        <input data-rebilly="emails" name="field2" placeholder="jruppert@example.com" type="text">
                     </div>
                     <span></span>
                     <div class="field">
                         <label>Phone</label>
-                        <input name="field3" placeholder="(123) 456-7890" type="text">
+                        <input data-rebilly="phoneNumbers" name="field3" placeholder="(123) 456-7890" type="text">
                     </div>
                 </div>
                 <div class="fields">
                     <div class="field">
                         <label>Address</label>
-                        <input name="field4" placeholder="123456 Apple Street" type="text">
+                        <input data-rebilly="address" name="field4" placeholder="123456 Apple Street" type="text">
                     </div>
                 </div>
                 <div class="fields">
                     <div class="field">
                         <label>City</label>
-                        <input name="field5" placeholder="Montreal" type="text">
+                        <input data-rebilly="city" name="field5" placeholder="Montreal" type="text">
                     </div>
                     <span></span>
                     <div class="field">
                         <label>State</label>
-                        <input name="field6" placeholder="QC" type="text">
+                        <input data-rebilly="region" name="field6" placeholder="QC" type="text">
                     </div>
                     <span></span>
                     <div class="field">
                         <label>ZIP</label>
-                        <input name="field7" placeholder="H2M 2M9" type="text">
+                        <input data-rebilly="postalCode" name="field7" placeholder="H2M 2M9" type="text">
                     </div>
                 </div>
                 <div class="fields">
@@ -257,7 +257,7 @@
 </div>
 <script>
     (function () {
-        const config = {
+        var config = {
             publishableKey: 'pk_sandbox_1234567890',
             icon: {
                 display: false,
@@ -280,10 +280,25 @@
             },
         };
 
+        var form = document.querySelector('form');
+
         Rebilly.initialize(config);
-        const card = Rebilly.card.mount('#mounting-point', 'cardNumber');
-        const exp = Rebilly.card.mount('#exp', 'cardExpiry');
-        const cvv = Rebilly.card.mount('#cvv', 'cardCvv');
+
+        Rebilly.on('ready', () => {
+
+            // mount framepay
+            var card = Rebilly.card.mount('#mounting-point', 'cardNumber');
+            var exp = Rebilly.card.mount('#exp', 'cardExpiry');
+            var cvv = Rebilly.card.mount('#cvv', 'cardCvv');
+        });
+
+        form.onsubmit = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            Rebilly.createToken(form)
+                .then(resp => alert(JSON.stringify(resp, null, 2)))
+                .catch(err => alert(JSON.stringify(err, null, 2)));
+        };
     })();
 </script>
 </body>

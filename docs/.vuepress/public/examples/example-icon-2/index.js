@@ -5,5 +5,7 @@
             color: 'rgba(0,0,0,0.1)',
         },
     });
-    const card = Rebilly.card.mount('#mount-point');
+    Rebilly.on('ready', () => {
+        var card = Rebilly.card.mount('#mount-point');
+    });
 })();

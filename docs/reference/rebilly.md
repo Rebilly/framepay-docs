@@ -17,12 +17,18 @@ Rebilly.on('error', () => {
 }); 
 ```
 
-::: warning All mounted elements will automatically unmount on error
+::: warning Rebilly ready/error events 
 ```javascript
 Rebilly.initialize({ /* configuration */ });
-const card = Rebilly.card.mount('#mount-point');
-Rebilly.on('error', () => {
-    // card already unmounted  
+
+Rebilly.on('ready', () => {
+    // will not be executed when the CDN have some errors in the initialization
+    const card = Rebilly.card.mount('#mount-point');  
+})
+
+Rebilly.on('error', (err) => {
+    // err
+    // {"code":"network-error","type":"error","message":"Initialization Error","details":[]}
 })
 ```
 :::

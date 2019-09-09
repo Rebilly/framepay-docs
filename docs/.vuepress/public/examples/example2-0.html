@@ -162,10 +162,7 @@
         <form>
             <fieldset>
                 <div class="field">
-                    <input data-rebilly="firstName" name="field1" placeholder="First Name" type="text">
-                </div>
-                <div class="field">
-                    <input data-rebilly="lastName" name="field1" placeholder="Last Name" type="text">
+                    <input data-rebilly="fullName" name="field1" placeholder="Full Name" type="text">
                 </div>
                 <div class="field">
                     <input data-rebilly="emails" name="field2" placeholder="Email" type="text">
@@ -208,9 +205,7 @@
 
         Rebilly.on('error', (err) => {
             // rebiily cdn error
-            console.log(JSON.stringify(err));
         });
-
 
         form.onsubmit = (e) => {
             e.preventDefault();

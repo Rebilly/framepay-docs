@@ -254,34 +254,34 @@
             <fieldset>
                 <div class="fields">
                     <div class="field">
-                        <input class="form-input" name="field1" type="text">
+                        <input class="form-input" data-rebilly="firstName" name="field1" type="text">
                         <span class="f-label">First Name</span>
                     </div>
                 </div>
                 <div class="fields">
                     <div class="field">
-                        <input class="form-input" name="field1" type="text">
+                        <input class="form-input" data-rebilly="lastName" name="field1" type="text">
                         <span class="f-label">Last Name</span>
                     </div>
                 </div>
                 <div class="fields">
                     <div class="field">
-                        <input class="form-input" name="field2" type="text">
+                        <input class="form-input" data-rebilly="emails" name="field2" type="text">
                         <span class="f-label">Email</span>
                     </div>
                 </div>
             </fieldset>
             <fieldset>
                 <p>
-                    <input checked id="test1" name="radio-group" type="radio">
+                    <input checked id="test1" name="radio-group" type="radio" value="paypal">
                     <label for="test1">PayPal</label>
                 </p>
                 <p>
-                    <input id="test2" name="radio-group" type="radio">
+                    <input id="test2" name="radio-group" type="radio" value="bitcoin">
                     <label for="test2">Bitcoin</label>
                 </p>
                 <p>
-                    <input id="test3" name="radio-group" type="radio">
+                    <input id="test3" name="radio-group" type="radio" value="China UnionPay">
                     <label for="test3">China UnionPay</label>
                 </p>
             </fieldset>
@@ -291,8 +291,8 @@
 </div>
 <script>
     (function () {
-        const formInput = document.querySelectorAll('.form-input');
-        const formLabel = document.querySelectorAll('.f-label');
+        var formInput = document.querySelectorAll('.form-input');
+        var formLabel = document.querySelectorAll('.f-label');
 
         formInput.forEach((input, index) => {
             input.addEventListener('blur', () => {
@@ -305,7 +305,7 @@
         });
 
 
-        const config = {
+        var config = {
             publishableKey: 'pk_sandbox_1234567890',
             icon: {
                 display: false,
@@ -321,6 +321,21 @@
                     },
                 },
             },
+        };
+
+        var form = document.querySelector('form');
+
+        Rebilly.initialize(config);
+
+        form.onsubmit = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+
+            var method = document.querySelector('input:checked').value;
+
+            Rebilly.createToken(form, {method})
+                .then(resp => alert(JSON.stringify(resp, null, 2)))
+                .catch(err => alert(JSON.stringify(err, null, 2)));
         };
     })();
 </script>

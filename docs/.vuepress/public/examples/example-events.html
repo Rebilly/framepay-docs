@@ -174,8 +174,8 @@
                     <input data-rebilly="phoneNumbers" name="field3" placeholder="Phone" type="text">
                 </div>
                 <div class="field">
-                    <div id="mounting-point">
-                    </div>
+                    <span id="mounting-loading"></span>
+                    <div id="mounting-point"></div>
                 </div>
             </fieldset>
             <button>Make Payment</button>
@@ -202,13 +202,40 @@
         Rebilly.initialize(config);
 
         Rebilly.on('ready', () => {
-            // mount framepay
+            console.log('Events Rebilly.ready');
+
+            // the rebilly script ready to mounting the elements
             var card = Rebilly.card.mount('#mounting-point');
+
+            card.on('ready', () => {
+                // the card element ready to user input
+                console.log('Events card.ready');
+            });
+
+            card.on('error', (error) => {
+                // card mount CDN error
+                console.log('Events card.error', error);
+            });
+
+            card.on('change', (data) => {
+                // card element change event
+                console.log('Events card.change', data);
+            });
+
+            card.on('focus', (data) => {
+                // card element change event
+                console.log('Events card.focus', data);
+            });
+
+            card.on('blur', (data) => {
+                // card element change event
+                console.log('Events card.blur', data);
+            });
         });
 
         Rebilly.on('error', (err) => {
-            // rebiily cdn error
-            console.log(JSON.stringify(err));
+            // Rebilly CDN error
+            console.log('Events Rebilly.error', err);
         });
 
 

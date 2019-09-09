@@ -235,11 +235,11 @@
     </div>
 </div>
 <script>
-    const error = document.querySelector('.error');
+    var error = document.querySelector('.error');
     let errorMessage = document.querySelector('.error-message');
 
     (function () {
-        const config = {
+        var config = {
             publishableKey: 'pk_sandbox_c6cqKLddciVikuBOjhcng-rLccTz70NT4W_qZ_h',
             icon: {
                 display: false,
@@ -256,28 +256,32 @@
         };
 
         Rebilly.initialize(config);
-        const card = Rebilly.card.mount('#mounting-point');
-        const form = document.querySelector('form');
+
+        Rebilly.on('ready', () => {
+            var card = Rebilly.card.mount('#mounting-point');
+
+            card.on('change', function (event) {
+                if (event.error) {
+                    error.classList.add('is-active');
+                    errorMessage.innerText = event.error.details.pop();
+                } else if (event.valid) {
+                    error.classList.remove('is-active');
+                }
+            });
+        });
+
+        var form = document.querySelector('form');
 
         form.addEventListener('submit', function (event) {
             event.preventDefault();
             Rebilly.createToken(form)
-                .then(function (token) {
-                    form.submit();
+                .then(function (resp) {
+                    alert(JSON.stringify(resp, null, 2));
                 })
                 .catch(function (e) {
                     error.classList.add('is-active');
                     errorMessage.innerText = e.message;
                 });
-        });
-
-        card.on('change', function (event) {
-            if (event.error) {
-                error.classList.add('is-active');
-                errorMessage.innerText = event.error.details.pop();
-            } else if (event.valid) {
-                error.classList.remove('is-active');
-            }
         });
     })();
 </script>

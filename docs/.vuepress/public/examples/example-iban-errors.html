@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Example 1</title>
     <link href="https://cdn.rebilly.com/framepay/v1/rebilly.css" rel="stylesheet">
+    <link href="common.css" rel="stylesheet">
     <script src="https://cdn.rebilly.com/framepay/v1/rebilly.js"></script>
     <style>
         html {
@@ -181,6 +182,39 @@
         .example-5 .rebilly-framepay.rebilly-framepay-focus.rebilly-framepay-buttons {
             box-shadow: none;
         }
+
+        .error-messages {
+            border-left: 4px solid #dd0000;
+            opacity: 0;
+            margin: 0;
+            padding: 0;
+            visibility: hidden;
+            background: rgba(221, 0, 0, 0.07);
+            -webkit-transition: all 0.4s;
+            -o-transition: all 0.4s;
+            -moz-transition: all 0.4s;
+            transition: all 0.4s;
+        }
+
+        .error-messages.is-active {
+            opacity: 1;
+            padding: 16px;
+            margin-bottom: 32px;
+            visibility: visible;
+        }
+
+        .error-messages ul {
+            padding: 0 0 0 16px;
+            margin: 0;
+        }
+
+        .error-messages ul li {
+            color: #dd0000;
+        }
+
+        .error-messages ul li + li {
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -201,16 +235,12 @@
                     <input data-rebilly="emails" name="field2" placeholder="johnd@example.com" type="text">
                 </div>
                 <div class="field">
-                    <label>Account Type</label>
-                    <div id="bank-account-type"></div>
+                    <label>IBAN Number</label>
+                    <div id="mount-point"></div>
                 </div>
-                <div class="field">
-                    <label>Account Number</label>
-                    <div id="bank-account-number"></div>
-                </div>
-                <div class="field">
-                    <label>Routing Number</label>
-                    <div id="bank-routing-number"></div>
+                <div class="error-messages">
+                    <ul class="error-list">
+                    </ul>
                 </div>
             </fieldset>
             <button>Make Payment</button>
@@ -221,34 +251,33 @@
     (function () {
         var config = {
             publishableKey: 'pk_sandbox_1234567890',
-            style: {
-                buttons: {
-                    base: {
-                        color: '#8a97a0',
-                        fontSize: '14px',
-                        borderColor: '#d2d9dd',
-                    },
-                    focus: {
-                        borderColor: '#57b846',
-                    },
-                    active: {
-                        background: '#57b846',
-                        borderColor: '#57b846',
-                    },
-                },
-            },
         };
 
         var form = document.querySelector('form');
+        var errorMessages = document.querySelector('.error-messages');
+        var errorList = document.querySelector('.error-list');
 
         Rebilly.initialize(config);
 
         Rebilly.on('ready', () => {
 
             // mount framepay
-            var type = Rebilly.bankAccount.mount('#bank-account-type', 'bankAccountType');
-            var number = Rebilly.bankAccount.mount('#bank-account-number', 'bankAccountNumber');
-            var routing = Rebilly.bankAccount.mount('#bank-routing-number', 'bankRoutingNumber');
+            var iban = Rebilly.iban.mount('#mount-point');
+
+            iban.on('change', (data) => {
+                if (data.valid) {
+                    errorList.innerHTML = '';
+                    errorMessages.classList.remove('is-active');
+                } else {
+                    errorMessages.classList.add('is-active');
+                    if (data.error.message) {
+                        errorList.innerHTML = `<li>${data.error.message}</li>`;
+                    }
+                    if (data.error.details.length) {
+                        data.error.details.forEach(item => errorList.innerHTML += `<li>${item}</li>`);
+                    }
+                }
+            });
         });
 
         form.onsubmit = (e) => {

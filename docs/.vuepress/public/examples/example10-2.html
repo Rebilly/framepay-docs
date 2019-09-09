@@ -286,7 +286,7 @@
     </div>
 </div>
 <script>
-    const errorList = document.querySelectorAll('.error');
+    var errorList = document.querySelectorAll('.error');
 
     function setError(index, cssClass, event) {
         if (event.error) {
@@ -299,7 +299,7 @@
     }
 
     (function () {
-        const config = {
+        var config = {
             publishableKey: 'pk_sandbox_c6cqKLddciVikuBOjhcng-rLccTz70NT4W_qZ_h',
             icon: {
                 display: false,
@@ -323,10 +323,24 @@
         };
 
         Rebilly.initialize(config);
-        const card = Rebilly.card.mount('#mounting-point', 'cardNumber');
-        const exp = Rebilly.card.mount('#exp', 'cardExpiry');
-        const cvv = Rebilly.card.mount('#cvv', 'cardCvv');
-        const form = document.querySelector('form');
+        Rebilly.on('ready', () => {
+            var card = Rebilly.card.mount('#mounting-point', 'cardNumber');
+            var exp = Rebilly.card.mount('#exp', 'cardExpiry');
+            var cvv = Rebilly.card.mount('#cvv', 'cardCvv');
+
+            card.on('change', function (event) {
+                setError(1, 'is-active', event);
+            });
+
+            exp.on('change', function (event) {
+                setError(2, 'is-active', event);
+            });
+
+            cvv.on('change', function (event) {
+                setError(3, 'is-active', event);
+            });
+        });
+        var form = document.querySelector('form');
 
         form.addEventListener('submit', function (event) {
             event.preventDefault();
@@ -336,18 +350,6 @@
                 })
                 .catch(function (error) {
                 });
-        });
-
-        card.on('change', function (event) {
-            setError(1, 'is-active', event);
-        });
-
-        exp.on('change', function (event) {
-            setError(2, 'is-active', event);
-        });
-
-        cvv.on('change', function (event) {
-            setError(3, 'is-active', event);
         });
     })();
 </script>

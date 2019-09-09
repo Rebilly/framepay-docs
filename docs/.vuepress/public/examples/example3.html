@@ -159,19 +159,19 @@
             <fieldset>
                 <div class="field">
                     <label>First Name</label>
-                    <input name="field1" placeholder="John" type="text">
+                    <input data-rebilly="firstName" name="field1" placeholder="John" type="text">
                 </div>
                 <div class="field">
                     <label>Last Name</label>
-                    <input name="field1" placeholder="Ruppert" type="text">
+                    <input data-rebilly="lastNameName" name="field1" placeholder="Ruppert" type="text">
                 </div>
                 <div class="field">
                     <label>Email</label>
-                    <input name="field2" placeholder="john.ruppert@example.com" type="text">
+                    <input data-rebilly="emails" name="field2" placeholder="john.ruppert@example.com" type="text">
                 </div>
                 <div class="field">
                     <label>Phone</label>
-                    <input name="field3" placeholder="(123) 456-7890" type="text">
+                    <input data-rebilly="phoneNumbers" name="field3" placeholder="(123) 456-7890" type="text">
                 </div>
             </fieldset>
             <fieldset>
@@ -186,7 +186,7 @@
 </div>
 <script>
     (function () {
-        const config = {
+        var config = {
             publishableKey: 'pk_sandbox_1234567890',
             icon: {
                 color: '#ffffff',
@@ -204,8 +204,28 @@
             },
         };
 
+        var form = document.querySelector('form');
+
         Rebilly.initialize(config);
-        const card = Rebilly.card.mount('#mounting-point');
+
+        Rebilly.on('ready', () => {
+
+            // mount framepay
+            var card = Rebilly.card.mount('#mounting-point');
+        });
+
+        Rebilly.on('error', (err) => {
+            // rebiily cdn error
+        });
+
+
+        form.onsubmit = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            Rebilly.createToken(form)
+                .then(resp => alert(JSON.stringify(resp, null, 2)))
+                .catch(err => alert(JSON.stringify(err, null, 2)));
+        };
     })();
 </script>
 </body>

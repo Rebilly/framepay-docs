@@ -1,9 +1,11 @@
 (function () {
     Rebilly.initialize({publishableKey: 'pk_sandbox_1234567890'});
 
-    const form = document.querySelector('form');
+    var form = document.querySelector('form');
 
-    const card = Rebilly.card.mount('#mounting-point');
+    Rebilly.on('ready', () => {
+        var card = Rebilly.card.mount('#mounting-point');
+    });
 
 
     form.addEventListener('submit', (e) => {

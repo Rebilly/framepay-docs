@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Example 1</title>
     <link href="https://cdn.rebilly.com/framepay/v1/rebilly.css" rel="stylesheet">
+    <link href="common.css" rel="stylesheet">
     <script src="https://cdn.rebilly.com/framepay/v1/rebilly.js"></script>
     <style>
         html {
@@ -165,19 +166,20 @@
         <form>
             <fieldset>
                 <div class="field">
-                    <input name="field1" placeholder="First Name" type="text">
+                    <input data-rebilly="firstName" name="field1" placeholder="First Name" type="text">
                 </div>
                 <div class="field">
-                    <input name="field1" placeholder="Last Name" type="text">
+                    <input data-rebilly="lastName" name="field1" placeholder="Last Name" type="text">
                 </div>
                 <div class="field">
-                    <input name="field2" placeholder="Email" type="text">
+                    <input data-rebilly="emails" name="field2" placeholder="Email" type="text">
                 </div>
                 <div class="field">
-                    <input name="field3" placeholder="Phone" type="text">
+                    <input data-rebilly="phoneNumbers" name="field3" placeholder="Phone" type="text">
                 </div>
                 <div class="field">
-                    <div id="mounting-point"></div>
+                    <div id="mounting-point">
+                    </div>
                 </div>
             </fieldset>
             <button>Make Payment</button>
@@ -186,7 +188,7 @@
 </div>
 <script>
     (function () {
-        const config = {
+        var config = {
             publishableKey: 'pk_sandbox_1234567890',
             style: {
                 base: {
@@ -204,8 +206,27 @@
             },
         };
 
+        var form = document.querySelector('form');
+
         Rebilly.initialize(config);
-        const card = Rebilly.card.mount('#mounting-point');
+
+        Rebilly.on('ready', () => {
+
+            // mount framepay
+            var card = Rebilly.card.mount('#mounting-point');
+        });
+
+        Rebilly.on('error', (err) => {
+            // rebiily cdn error
+        });
+
+        form.onsubmit = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            Rebilly.createToken(form)
+                .then(resp => alert(JSON.stringify(resp, null, 2)))
+                .catch(err => alert(JSON.stringify(err, null, 2)));
+        };
     })();
 </script>
 </body>

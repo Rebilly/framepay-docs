@@ -6,5 +6,7 @@
             color: 'rgb(200,197,31)',
         },
     });
-    const iban = Rebilly.iban.mount('#mount-point');
+    Rebilly.on('ready', () => {
+        var iban = Rebilly.iban.mount('#mount-point');
+    });
 })();

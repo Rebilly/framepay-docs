@@ -18,9 +18,11 @@
             },
         },
     });
-    const [
-        accountType,
-    ] = [
-        Rebilly.bankAccount.mount('#mount-point-1', 'bankAccountType'),
-    ];
+    Rebilly.on('ready', () => {
+        var [
+            accountType,
+        ] = [
+            Rebilly.bankAccount.mount('#mount-point-1', 'bankAccountType'),
+        ];
+    });
 })();
