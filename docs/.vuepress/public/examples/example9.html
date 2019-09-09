@@ -218,15 +218,15 @@
             <fieldset>
                 <div class="field">
                     <label>First Name</label>
-                    <input type="text" name="firstName" data-rebilly="firstName" placeholder="John" required>
+                    <input data-rebilly="firstName" name="firstName" placeholder="John" required type="text">
                 </div>
                 <div class="field">
                     <label>Last Name</label>
-                    <input type="text" name="LastName" data-rebilly="lastName" placeholder="Doe" required>
+                    <input data-rebilly="lastName" name="LastName" placeholder="Doe" required type="text">
                 </div>
                 <div class="field">
-                    <label for="payment-card">Payment Card</label>
-                    <div id="payment-card"></div>
+                    <label for="mounting-point">Payment Card</label>
+                    <div id="mounting-point"></div>
                 </div>
                 <span class="error"><span class="error-icon">&times;</span><span class="error-message">This is an error message</span></span>
             </fieldset>
@@ -235,11 +235,11 @@
     </div>
 </div>
 <script>
-    const error = document.querySelector('.error');
+    var error = document.querySelector('.error');
     let errorMessage = document.querySelector('.error-message');
 
     (function () {
-        const config = {
+        var config = {
             publishableKey: 'pk_sandbox_c6cqKLddciVikuBOjhcng-rLccTz70NT4W_qZ_h',
             icon: {
                 display: false,
@@ -256,28 +256,32 @@
         };
 
         Rebilly.initialize(config);
-        const card = Rebilly.card.mount('#payment-card');
-        const form = document.querySelector('form');
+
+        Rebilly.on('ready', () => {
+            var card = Rebilly.card.mount('#mounting-point');
+
+            card.on('change', function (event) {
+                if (event.error) {
+                    error.classList.add('is-active');
+                    errorMessage.innerText = event.error.details.pop();
+                } else if (event.valid) {
+                    error.classList.remove('is-active');
+                }
+            });
+        });
+
+        var form = document.querySelector('form');
 
         form.addEventListener('submit', function (event) {
             event.preventDefault();
             Rebilly.createToken(form)
-                .then(function (token) {
-                    form.submit();
+                .then(function (resp) {
+                    alert(JSON.stringify(resp, null, 2));
                 })
                 .catch(function (e) {
                     error.classList.add('is-active');
                     errorMessage.innerText = e.message;
                 });
-        });
-
-        card.on('change', function (event) {
-            if (event.error) {
-                error.classList.add('is-active');
-                errorMessage.innerText = event.error.details.pop();
-            } else if (event.valid) {
-                error.classList.remove('is-active');
-            }
         });
     })();
 </script>

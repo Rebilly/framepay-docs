@@ -26,14 +26,16 @@
     <form>
         <div class="field">
             <label>Payment Card</label>
-            <div id="payment-card"></div>
+            <div id="mounting-point"></div>
         </div>
     </form>
 </div>
 <script>
-    (function(){
+    (function () {
         Rebilly.initialize({publishableKey: 'pk_sandbox_1234567890'});
-        const card = Rebilly.card.mount('#payment-card');
+        Rebilly.on('ready', () => {
+            var card = Rebilly.card.mount('#mounting-point');
+        });
     })();
 </script>
 </body>

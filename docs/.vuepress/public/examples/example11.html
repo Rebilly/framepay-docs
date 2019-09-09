@@ -33,14 +33,14 @@
         .example-11 {
             max-width: 500px;
             width: 100%;
-            font-family: BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+            font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
             padding: 20px;
             box-sizing: border-box;
             border-radius: 8px;
         }
 
         .example-11 * {
-            font-family: BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+            font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
         }
 
         .example-11 fieldset {
@@ -81,9 +81,9 @@
             -moz-box-sizing: border-box;
             background-color: #ffffff;
             color: #000;
-            -webkit-box-shadow: inset 0 1px 2px rgba(10,10,10,.1);
-            -moz-box-shadow: inset 0 1px 2px rgba(10,10,10,.1);
-            box-shadow: inset 0 1px 2px rgba(10,10,10,.1);
+            -webkit-box-shadow: inset 0 1px 2px rgba(10, 10, 10, .1);
+            -moz-box-shadow: inset 0 1px 2px rgba(10, 10, 10, .1);
+            box-shadow: inset 0 1px 2px rgba(10, 10, 10, .1);
             -webkit-transition: all 0.4s;
             -o-transition: all 0.4s;
             -moz-transition: all 0.4s;
@@ -184,9 +184,9 @@
             background: #ffffff;
             height: 40px;
             border: 1px solid #dbdbdb;
-            -webkit-box-shadow: inset 0 1px 2px rgba(10,10,10,.1);
-            -moz-box-shadow: inset 0 1px 2px rgba(10,10,10,.1);
-            box-shadow: inset 0 1px 2px rgba(10,10,10,.1);
+            -webkit-box-shadow: inset 0 1px 2px rgba(10, 10, 10, .1);
+            -moz-box-shadow: inset 0 1px 2px rgba(10, 10, 10, .1);
+            box-shadow: inset 0 1px 2px rgba(10, 10, 10, .1);
             -webkit-transition: all 0.4s;
             -o-transition: all 0.4s;
             -moz-transition: all 0.4s;
@@ -223,18 +223,14 @@
 <div class="container">
     <div class="example-11">
         <form>
-            <div class="error-messages">
-                <ul class="error-list">
-                </ul>
-            </div>
             <fieldset>
                 <div class="field">
                     <label>First Name</label>
-                    <input type="text" name="firstName" data-rebilly="firstName" placeholder="John" required>
+                    <input data-rebilly="firstName" name="firstName" placeholder="John" type="text">
                 </div>
                 <div class="field">
                     <label>Last Name</label>
-                    <input type="text" name="lastName" data-rebilly="lastName" placeholder="Denver" required>
+                    <input data-rebilly="lastName" name="lastName" placeholder="Denver" type="text">
                 </div>
                 <div class="field">
                     <label>Account Type</label>
@@ -249,16 +245,20 @@
                     <div id="bank-routing-number"></div>
                 </div>
             </fieldset>
+            <div class="error-messages">
+                <ul class="error-list">
+                </ul>
+            </div>
             <button type="submit">Make Payment</button>
         </form>
     </div>
 </div>
 <script>
-    const errorMessages = document.querySelector('.error-messages');
-    const errorList = document.querySelector('.error-list');
+    var errorMessages = document.querySelector('.error-messages');
+    var errorList = document.querySelector('.error-list');
 
     (function () {
-        const config = {
+        var config = {
             publishableKey: 'pk_sandbox_c6cqKLddciVikuBOjhcng-rLccTz70NT4W_qZ_h',
             style: {
                 buttons: {
@@ -285,20 +285,30 @@
             },
         };
         Rebilly.initialize(config);
-        const type = Rebilly.card.mount('#bank-account-type', 'bankAccountType');
-        const number = Rebilly.card.mount('#bank-account-number', 'bankAccountNumber');
-        const routing = Rebilly.card.mount('#bank-routing-number', 'bankRoutingNumber');
-        const form = document.querySelector('form');
 
-        form.addEventListener('submit', function (event) {
-            event.preventDefault();
+        Rebilly.on('ready', () => {
+            var type = Rebilly.card.mount('#bank-account-type', 'bankAccountType');
+            var number = Rebilly.card.mount('#bank-account-number', 'bankAccountNumber');
+            var routing = Rebilly.card.mount('#bank-routing-number', 'bankRoutingNumber');
+        });
+
+        var form = document.querySelector('form');
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            errorList.innerHTML = '';
+
             Rebilly.createToken(form)
-                .then(function (token) {
-                    form.submit();
+                .then(function (resp) {
+                    alert(JSON.stringify(resp, null, 2));
                 })
                 .catch(function (error) {
                     errorMessages.classList.add('is-active');
-                    errorList.innerHTML = `<li>${error.message}</li>`;
+                    if (data.message) {
+                        errorList.innerHTML = `<li>${data.message}</li>`;
+                    }
                     if (error.details.length) {
                         error.details.forEach(item => errorList.innerHTML += `<li>${item}</li>`);
                     }

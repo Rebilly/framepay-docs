@@ -2,7 +2,31 @@
 
 FramePay allows you to build your checkout flow by offloading strict PCI Compliance requirements directly to Rebilly while maintaining the same look and feel your customers are used to. Once the required payment card or bank account information is collected, FramePay generates a payment token you can use to complete the checkout process.
 
-<iframe border="0" frameborder="0" scrolling="no" src="/framepay-docs/examples/example1.html"></iframe>
+:::: tabs
+::: tab result
+<iframe 
+    border="0" 
+    frameborder="0" 
+    scrolling="no"
+    style="height:280px;" 
+    src="/framepay-docs/examples/example1/index.html"></iframe>
+<a 
+    class="view-source"
+    target="_blank"
+    href="https://github.com/Rebilly/framepay-docs/blob/master/docs/.vuepress/public/examples/example1/index.html">
+        View source on GitHub
+    </a>
+:::
+::: tab html
+<<< @/docs/.vuepress/public/examples/example1/index.html
+:::
+::: tab javascript
+<<< @/docs/.vuepress/public/examples/example1/index.js
+:::
+::: tab css
+<<< @/docs/.vuepress/public/examples/example1/index.css
+:::
+::::
 
 To create a checkout flow using FramePay you will have to complete these steps:
 1. [Set up FramePay](#set-up-framepay)
@@ -131,3 +155,10 @@ For customization and configuration options available with FramePay visit the [d
 ### View Examples
 
 Take a look at [example implementations](/examples/) of FramePay for payment cards, bank accounts and other payment methods supported by Rebilly.
+
+## Use with React
+Supported versions: 14,15,16+  
+We have simple wrapper for ReactJS please take a look at [framepay-react](https://github.com/Rebilly/framepay-react) 
+
+## Use with Vue
+We have simple wrapper for ReactJS please take a look at [framepay-vue](https://github.com/Rebilly/framepay-vue) 

@@ -12,37 +12,56 @@ module.exports = {
     port: 8088, // for local dev
     base: '/framepay-docs/', // defines github.io location under /Rebilly
     title: 'Rebilly FramePay',
+    plugins: [
+        // https://superbiger.github.io/vuepress-plugin-tabs/#install
+        'vuepress-plugin-element-tabs',
+        [require('./plugins/intercom/index.js'), {}],
+    ],
     description: 'Pre-built components for your checkout flow',
     head: [
+        ['link', {rel: 'icon', href: '/favicon.ico'}],
         // add Rebilly script
-        ['script', {src: 'https://cdn.rebilly.com/framepay/v1/rebilly.js'}],
+        ['script', {src: process.env.FRAMEPAY_DOCS_FRAMEPAY_JS_REMOTE_URL}],
+        // add intercom script content
+        ['script', {}, createIntercomScript()],
     ],
     markdown: {
         lineNumbers: false,
     },
-    head: [
-        // add intercom script content
-        ['script', {}, createIntercomScript()],
-        // add Rebilly script
-        ['script', {src: process.env.FRAMEPAY_DOCS_FRAMEPAY_JS_REMOTE_URL}],
-    ],
     themeConfig: {
+        logo: '/favicon.ico',
         nav: [
             {text: 'Home', link: '/'},
             {text: 'Guide', link: '/guide/'},
+            {text: 'Configuration', link: '/configuration/'},
             {text: 'Reference', link: '/reference/'},
             {text: 'Examples', link: '/examples/'},
+            {text: 'React', link: 'https://github.com/Rebilly/framepay-react'},
+            {text: 'Vue', link: 'https://github.com/Rebilly/framepay-vue'},
+            {text: 'GitHub', link: 'https://github.com/Rebilly/framepay-docs'},
         ],
         sidebar: {
-            '/guide/': genSidebarConfig('Guide', [
-                ['multiple-methods', 'Multiple Payment Methods'],
-                ['lead-source', 'Lead Source Attribution'],
-            ]),
-            '/reference/': genSidebarConfig('Reference', [
-                ['rebilly', 'Rebilly Namespace'],
-                ['element', 'Element Instance'],
-            ]),
-            '/examples/': genSidebarConfig('Examples', []),
+            '/guide/': genSidebarConfig(
+                'Guide', [
+                    ['multiple-methods', 'Multiple Payment Methods'],
+                    ['lead-source', 'Lead Source Attribution'],
+                ],
+            ),
+            '/reference/': genSidebarConfig(
+                'Reference', [
+                    ['rebilly', 'Rebilly Namespace'],
+                    ['element', 'Element Instance'],
+                ],
+            ),
+            '/configuration/': genSidebarConfig(
+                'Configuration', [
+                    ['properties', 'Properties'],
+                ], {sidebarDepth: 3},
+            ),
+            '/examples/': genSidebarConfig(
+                'Examples', [],
+                {sidebarDepth: 3},
+            ),
         },
         sidebarDepth: 1,
         lastUpdated: 'Last Updated',
@@ -57,9 +76,6 @@ module.exports = {
         // custom text for edit link. Defaults to "Edit this page"
         editLinkText: 'Edit this page on Github',
     },
-    plugins: [
-        [require('./plugins/intercom/index.js'), {}],
-    ],
     // update webpack env variables
     chainWebpack(config) {
         config.plugin('injections')
@@ -75,11 +91,12 @@ module.exports = {
     },
 };
 
-function genSidebarConfig(title, children = []) {
+function genSidebarConfig(title, children = [], params = {}) {
     return [
         {
             title,
             collapsable: false,
+            ...params,
             children: [
                 '',
             ].concat(children),

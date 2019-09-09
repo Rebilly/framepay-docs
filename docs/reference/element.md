@@ -7,7 +7,6 @@ When an element is mounted you can cache its instance into a variable and use it
 var card = Rebilly.card.mount('#card');
 ```
 
-
 ## element.on()
 
 Use the `on()` method to attach specific handlers to events. These handlers will be triggered when the customer interacts with the card element.
@@ -16,14 +15,20 @@ The method accepts two arguments:
 - `eventName`: a string that defines the event name to which the handler will be attached to
 - `handler`: a function to run when the event is triggered by the customer interaction
 
-
 ```js
 element.on('ready', function() {
     console.log('Card element is ready to use!');
 });
-``` 
+```
 
-### Available events   
+```js
+element.on('error', function() {
+    // element automatically unmounted and destroyed
+    console.log('Card mount error!');
+});
+```
+
+### Events   
 
 <table>
     <thead>
@@ -36,6 +41,10 @@ element.on('ready', function() {
         <tr>
             <td><code>ready</code></td>
             <td>Triggered after the element is mounted and the field has fully loaded into view.</td>
+        </tr>
+        <tr>
+            <td><code>error</code></td>
+            <td>Triggered in case if the element can't to mount see <a href="/framepay-docs/reference/rebilly.html#rebilly-on">Rebilly.on</a>.</td>
         </tr>
         <tr>
             <td><code>change</code></td>

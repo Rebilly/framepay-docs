@@ -44,8 +44,8 @@
             margin: 0 0 20px 0;
             padding: 8px 20px;
             border-radius: 4px;
-            -webkit-box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.2), 0 4px 8px 0 rgba(0,0,0,0.08);
-            box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.2), 0 4px 8px 0 rgba(0,0,0,0.08);
+            -webkit-box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.08);
+            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.08);
         }
 
         .example-3 .field + .field {
@@ -87,7 +87,7 @@
             box-sizing: border-box;
             -webkit-box-sizing: border-box;
             -moz-box-sizing: border-box;
-            color:#8a97a0;
+            color: #8a97a0;
         }
 
         .example-3 input:focus {
@@ -127,15 +127,15 @@
             font-style: normal;
             width: 100%;
             border-radius: 6px;
-            -webkit-box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.2), 0 4px 8px 0 rgba(0,0,0,0.08);
-            box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.2), 0 4px 8px 0 rgba(0,0,0,0.08);
+            -webkit-box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.08);
+            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.08);
         }
 
         .example-3 button:hover {
             cursor: pointer;
         }
 
-        #payment-card {
+        #mounting-point {
             flex: 1 0 auto;
         }
 
@@ -159,24 +159,24 @@
             <fieldset>
                 <div class="field">
                     <label>First Name</label>
-                    <input type="text" name="field1" placeholder="John">
+                    <input data-rebilly="firstName" name="field1" placeholder="John" type="text">
                 </div>
                 <div class="field">
                     <label>Last Name</label>
-                    <input type="text" name="field1" placeholder="Ruppert">
+                    <input data-rebilly="lastNameName" name="field1" placeholder="Ruppert" type="text">
                 </div>
                 <div class="field">
                     <label>Email</label>
-                    <input type="text" name="field2" placeholder="john.ruppert@example.com">
+                    <input data-rebilly="emails" name="field2" placeholder="john.ruppert@example.com" type="text">
                 </div>
                 <div class="field">
                     <label>Phone</label>
-                    <input type="text" name="field3" placeholder="(123) 456-7890">
+                    <input data-rebilly="phoneNumbers" name="field3" placeholder="(123) 456-7890" type="text">
                 </div>
             </fieldset>
             <fieldset>
                 <div class="field">
-                    <div id="payment-card"></div>
+                    <div id="mounting-point"></div>
                 </div>
             </fieldset>
             <br>
@@ -185,11 +185,11 @@
     </div>
 </div>
 <script>
-    (function(){
-        const config = {
+    (function () {
+        var config = {
             publishableKey: 'pk_sandbox_1234567890',
             icon: {
-                color: '#ffffff'
+                color: '#ffffff',
             },
             style: {
                 base: {
@@ -198,14 +198,34 @@
                     fontSmoothing: 'none',
                     color: '#ffffff',
                     '::placeholder': {
-                        color: 'rgba(255,255,255,0.4)'
-                    }
-                }
-            }
+                        color: 'rgba(255,255,255,0.4)',
+                    },
+                },
+            },
         };
 
+        var form = document.querySelector('form');
+
         Rebilly.initialize(config);
-        const card = Rebilly.card.mount('#payment-card');
+
+        Rebilly.on('ready', () => {
+
+            // mount framepay
+            var card = Rebilly.card.mount('#mounting-point');
+        });
+
+        Rebilly.on('error', (err) => {
+            // rebiily cdn error
+        });
+
+
+        form.onsubmit = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            Rebilly.createToken(form)
+                .then(resp => alert(JSON.stringify(resp, null, 2)))
+                .catch(err => alert(JSON.stringify(err, null, 2)));
+        };
     })();
 </script>
 </body>

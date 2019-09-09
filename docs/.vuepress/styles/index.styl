@@ -30,20 +30,30 @@ h3 {
 iframe {
   width: 100%;
   border-radius: 6px
+  height: auto;
 }
 
-.content pre code,
-.content pre[class*="language-"] code,
+.theme-container pre code,
+.theme-container .content pre code,
+.theme-container pre[class*="language-"] code,
+.theme-container .content pre[class*="language-"] code,
 .content__default pre[class*="language-"] code {
   font-family: 'Roboto Mono', sans-serif;
   color: $text;
+  line-height: normal;
 }
 
-div[class*="language-"]:before {
+.view-source {
+  display: block;
+  text-align: right;
+}
+
+.theme-container div[class*="language-"]:before {
   color: $muted;
 }
 
-div[class~="language-html"] {
+.theme-container div[class~="language-css"],
+.theme-container div[class~="language-html"] {
   .token.punctuation {
     color: $muted;
   }
@@ -69,7 +79,8 @@ div[class~="language-html"] {
   }
 }
 
-div[class~="language-js"] {
+.theme-container div[class~="language-javascript"],
+.theme-container div[class~="language-js"] {
   .token.punctuation {
     color: $muted;
   }
@@ -99,7 +110,32 @@ div[class~="language-js"] {
   }
 }
 
-p {
-  margin-top: 1.5em;
-  margin-bottom: 1.5em;
+.theme-container div[class~="language-css"] {
+  .token.selector {
+    color: $text;
+  }
+
+  .token.property {
+    color: $blue;
+  }
+}
+
+.configuration-example-frame {
+  overflow: auto;
+}
+
+.configuration-example-frame--small {
+  height: 80px;
+}
+
+.configuration-example-frame--middle {
+  height: 160px;
+}
+
+.theme-container p a > code {
+  text-decoration: underline;
+}
+
+.theme-container p a:hover > code {
+  text-decoration: none;
 }

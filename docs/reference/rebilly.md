@@ -2,11 +2,46 @@
 
 Under the `Rebilly` namespace you will find methods for initializing FramePay and creating payment tokens from a form.
 
+## Rebilly.on()
+The `Rebilly` namespace supports 2 events
+- `ready`
+- `error`
+
+The `ready` event called when the `Rebilly` ready to mounting the elements.  
+The `error` event called when the `Rebilly` has some api or cdn errors.  
+
+```javascript
+Rebilly.initialize({ /* configuration */ });
+Rebilly.on('error', () => {
+    // notitication/re-initialize/re-mount functionality
+}); 
+```
+
+::: warning Rebilly ready/error events 
+```javascript
+Rebilly.initialize({ /* configuration */ });
+
+Rebilly.on('ready', () => {
+    // will not be executed when the CDN have some errors in the initialization
+    const card = Rebilly.card.mount('#mount-point');  
+})
+
+Rebilly.on('error', (err) => {
+    // err
+    // {"code":"network-error","type":"error","message":"Initialization Error","details":[]}
+})
+```
+:::
+
+::: tip Element mount error event
+The elements also support the error event, see [element-on](./element.md#element-on)
+:::
+
 ## Rebilly.initialize()
 
 Use this method to initialize FramePay with your publishable API key and customize the look and feel of elements.
 
-It accepts a single `configuration` object.
+It accepts a single [`configuration`](../configuration) object.
 ```js
 // expects a configuration object
 Rebilly.initialize(configuration);
@@ -21,195 +56,9 @@ You must replace the key `pk_sandbox_1234567890` with your own. We recommend sta
 
 <br>
 
-The `configuration` must contain at a `publishableKey` otherwise an error will be thrown. It can optionally define CSS styles and class names to overwrite the style of FramePay.
+The `configuration` must contain at a [`publishableKey`](../configuration/properties.md#publishableKey) otherwise an error will be thrown. It can optionally define CSS styles and class names to overwrite the style of FramePay.
 
-<table>
-    <thead>
-        <tr>
-            <th>Option</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-                <strong>publishableKey</strong><br>
-                <code>string</code>
-            </td>
-            <td>
-                <p>A Rebilly publishable <a href="https://app.rebilly.com/api-keys/add">API key</a><OutboundLink/>. This property is required to authenticate your website.</p>
-            </td>
-        </tr>
-        <tr>
-            <td style="vertical-align:top">
-                <strong>classes</strong><br>
-                <code>object</code><sub>optional</sub>
-            </td>
-            <td>
-                <p>An object defining custom class names for the fields that were injected into your checkout form.</p>
-                <p>If you modify the default classes <a href="/reference/#adding-default-element-styles"><code>rebilly.css</code></a> will no longer apply any styles to the fields.</p>
-                <p>The following properties can be defined:</p>
-                <table>
-                    <tbody>
-                        <tr>
-                            <td><code>base</code></td>
-                            <td>
-                                The class shared by all element containers injected into your form. This is considered the default state.
-                                <br><br>
-                                Default value: <code>rebilly-framepay</code>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><code>focus</code></td>
-                            <td>
-                                The class applied when an element gains focus from user interaction.
-                                <br><br>
-                                Default value: <code>rebilly-framepay-focus</code>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><code>valid</code></td>
-                            <td>
-                                The class applied when an element becomes valid through validation.
-                                <br><br>
-                                Default value: <code>rebilly-framepay-valid</code>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><code>invalid</code></td>
-                            <td>
-                                The class applied when an element becomes invalid through validation.
-                                <br><br>
-                                Default value: <code>rebilly-framepay-invalid</code>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><code>webkitAutofill</code></td>
-                            <td>
-                                The class applied when an element value is autofill by the browser (Only on Chrome and Safari).
-                                <br><br>
-                                Default value: <code>rebilly-framepay-webikit-autofill</code>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><code>buttons</code></td>
-                            <td>
-                                The class applied to the element container for buttons. Only applicable to the bank <code>account type</code> field.
-                                <br><br>
-                                Default value: <code>rebilly-framepay-buttons</code>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td style="vertical-align:top">
-                <strong>style</strong><br>
-                <code>object</code><sub>optional</sub>
-            </td>
-            <td>
-                <p>This object can customize the look of elements using these keys:</p>
-                <ul>
-                    <li>
-                        <code>base</code>, base state applied to the elements regardless of validation state
-                    </li>
-                    <li>
-                        <code>focus</code>, focus state applied when the user has focused on an element by clicking or tabbing through fields
-                    </li>
-                    <li>
-                        <code>valid</code>, validation state applied when the data within is correct or complete, and after user interaction
-                    </li>
-                    <li>
-                        <code>invalid</code>, validation state applied when the data within is incorrect or incomplete, and after user interaction
-                    </li>
-                </ul>
-                <p>Additionally, for the bank <code>account type</code> element, another node can be defined:</p>
-                <ul>
-                    <li>
-                        <code>buttons</code>, another set of <code>base</code>, <code>focus</code> and <code>active</code> states to define the look of the buttons
-                    </li>
-                </ul>
-                <br>
-                <h4>Common States</h4>
-                The <code>base</code>, <code>focus</code>, <code>valid</code> and <code>invalid</code> states can define these CSS properties:
-                <ul>
-                    <li><code>color</code></li>
-                    <li><code>fontFamily</code></li>
-                    <li><code>fontSize</code></li>
-                    <li><code>fontStyle</code></li>
-                    <li><code>fontVariant</code></li>
-                    <li><code>fontStretch</code></li>
-                    <li><code>fontWeight</code></li>
-                    <li><code>fontFeatureSettings</code></li>
-                    <li><code>fontKerning</code></li>
-                    <li><code>webkitFontSmoothing</code></li>
-                    <li><code>mozOsxFontSmoothing</code></li
-                    <li><code>letterSpacing</code></li>
-                    <li><code>lineHeight</code></li>
-                    <li><code>textDecoration</code></li>
-                    <li><code>textShadow</code></li>
-                    <li><code>textTransform</code></li>
-                    <li><code>textAlign</code></li>
-                    <li><code>textRendering</code></li>
-                </ul>
-                <p>The following pseudo-classes and pseudo-elements can also be styled with the above properties, as a nested object.</p>
-                <ul>
-                    <li><code>:hover</code></li>
-                    <li><code>:focus</code></li>
-                    <li><code>:disabled</code></li>
-                    <li><code>:webkitAuofill</code> Only <code>webkitTextFillColor</code> and <code>fontSize</code> properties are available</li>
-                    <li><code>::placeholder</code> Includes <code>wordSpacing</code> and <code>opacity</code> properties</li>
-                    <li><code>::selection</code> Only <code>color</code>, <code>background</code> and <code>textShadow</code> properties are available</li>
-                </ul>
-                <hr>
-                <br>
-                <h4>Buttons</h4>
-                The <code>base</code>, <code>focus</code> and <code>active</code> button states can define these CSS properties:
-                <ul>
-                    <li><code>color</code></li>
-                    <li><code>fontFamily</code></li>
-                    <li><code>fontSize</code></li>
-                    <li><code>fontStyle</code></li>
-                    <li><code>fontVariant</code></li>
-                    <li><code>fontStretch</code></li>
-                    <li><code>fontWeight</code></li>
-                    <li><code>fontFeatureSettings</code></li>
-                    <li><code>fontKerning</code></li>
-                    <li><code>webkitFontSmoothing</code></li>
-                    <li><code>mozOsxFontSmoothing</code></li>
-                    <li><code>background</code></li>
-                    <li><code>borderColor</code></li>
-                    <li><code>borderWidth</code></li>
-                    <li><code>borderStyle</code></li>
-                    <li><code>borderRadius</code></li>
-                    <li><code>lineHeight</code></li>
-                    <li><code>textTransform</code></li>
-                </ul>
-                <p>The hover selector can be added for <code>base</code> and <code>active</code> states as a nested object containing the above properties,.</p>
-                <ul>
-                    <li><code>:hover</code></li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td style="vertical-align:top">
-                <strong>icon</strong><br>
-                <code>object</code><sub>optional</sub>
-            </td>
-            <td>
-                This object will let you control the color or the visibility of the icon in the card field.
-                <ul>
-                    <li><code>display</code>, hides the icon. Default to false</li>
-                    <li><code>color</code>, Changes the color of the icon</li>
-                </ul>
-            </td>
-        </tr>
-    </tbody>
-</table>
-
-Here is an example that customizes the <code>base</code> and <code>invalid</code> states:
-
+For the `configuration` details please take a look at [configuration](../configuration/)
 ```js
 // first call
 Rebilly.initialize(config);
@@ -237,6 +86,41 @@ const config = {
 };
 ```
 
+## Rebilly.update()
+Use this method has the same functionality as the `initialize` method, but this method will update actual configuration.
+```javascript
+Rebilly.update({/* new configuration object */}) 
+```
+  
+The update priority.   
+Any properties which were established and not passed in the new configuration - will stay.  
+```javascript
+Rebilly.initialize({
+    locale: Rebilly.locale.es,
+    icon: {
+        display: true
+    },
+    style: {
+        base: {
+            color: '#fff'
+        }
+    }
+});
+
+Rebilly.update({icon:{color:'red', style: null}});
+```
+
+The actual Rebilly configuration will be:
+```javascript
+{
+    locale: 'es',
+    icon: {
+        display: true,
+        color: 'red'
+    },
+    style: {} // default value
+}
+```
 
 ## Rebilly.createToken()
 
@@ -390,6 +274,7 @@ Rebilly.createToken(form, extraData)
 
 Most billing address fields can be automatically gathered by FramePay if they are present within the form with a `data-rebilly` attribute:
 
+- `fullName` <small>The form should contain 2 fields `firstName` + `lastName` or one `fullName`</small>
 - `firstName`
 - `lastName`
 - `organization`
@@ -398,20 +283,28 @@ Most billing address fields can be automatically gathered by FramePay if they ar
 - `city`
 - `region`
 - `country`
-- `postalCode`
+- `postalCode` <small>(no-required label in the `data-rebilly-label` node attribute)</small>
+- `phoneNumbers` <small>(no-required label in the `data-rebilly-label` node attribute)</small>
+- `emails`
 
 For example, to collect the `firstName` and `lastName` when the token is created you can setup your form as follows:
 ```html
 <form>
     <fieldset>
         <div class="field">
-            <input type="text" data-rebilly="firstName" placeholder="First Name">
+            <input data-rebilly="firstName" placeholder="First Name">
         </div>
         <div class="field">
-            <input type="text" data-rebilly="lastName" placeholder="Last Name">
+            <input data-rebilly="lastName" placeholder="Last Name">
         </div>
         <div class="field">
-            <input type="text" name="email" placeholder="Email">
+            <input data-rebilly="emails" placeholder="Email">
+        </div>
+        <div class="field">
+            <input data-rebilly="phoneNumbers" placeholder="Phone 1">
+        </div>
+        <div class="field">
+            <input data-rebilly="phoneNumbers" data-rebilly-label="Phone with custom label" placeholder="Phone 2">
         </div>
         <input type="hidden" data-rebilly="token" name="rebilly-token">
     </fieldset>
@@ -528,7 +421,7 @@ The mounting points within your form should be empty, their content will be repl
     <div class="field">
         <label>Account Type</label>
         <div id="account-type">
-            <!-- FramePay will inject the combined payment card field here -->
+            <!-- FramePay will inject the combined account type field here -->
         </div>
     </div>
     <button>Continue</button>
@@ -542,7 +435,7 @@ When a `<label>` is present in your form and you wish to automatically focus on 
 ```html
 <label for="account-type">Account Type</label>
 <div id="account-type">
-    <!-- FramePay will inject the combined payment card field here -->
+    <!-- FramePay will inject the combined account type field here -->
 </div>
 ```
 
@@ -550,7 +443,61 @@ When a `<label>` is present in your form and you wish to automatically focus on 
 ```html
 <label>Account Type
     <div id="account-type">
-        <!-- FramePay will inject the combined payment card field here -->
+        <!-- FramePay will inject the account type field here -->
+    </div>
+</label>
+```
+
+# IBAN Namespace
+
+The IBAN namespace allows you to mount iban account specific fields. This will generate a FramePay element at the location you desire within your form.
+
+
+## Rebilly.iban.mount()
+
+After Rebilly is initialized you can mount bank account elements into your form. This method requires two arguments, the first being a `selector` and the second being an `element type`.
+
+The first argument must be either a valid string DOM selector or an instance of a `jQuery` or `Zepto` object that wraps an element within the page. FramePay will attempt to resolve the element and generate a bank field within.
+
+```js
+// mount an account type element and return the instance
+var iban = Rebilly.iban.mount('#iban');
+```
+
+:::tip Field Events
+The iban element instances can be used to [subscribe to events](/reference/element.html#element-on) and complete additional actions afterwards.
+:::
+
+#### Mounting Points
+The mounting points within your form should be empty, their content will be replaced with the FramePay element.
+```html
+<form method="post" action="/process">
+    <div class="field">
+        <label>IBAN number</label>
+        <div id="account-type">
+            <!-- FramePay will inject the iban field here -->
+        </div>
+    </div>
+    <button>Continue</button>
+</form>
+```
+
+#### Labels
+When a `<label>` is present in your form and you wish to automatically focus on the FramePay element once the label is clicked. There are 2 different ways to achieve this:
+
+1. Add the `for` attribute to the `<label>`, referencing the ID of your container.
+```html
+<label for="iban">IBAN number</label>
+<div id="iban">
+    <!-- FramePay will inject the iban field here -->
+</div>
+```
+
+2. Wrap the FramePay element within a `<label>`.
+```html
+<label>IBAN
+    <div id="iban">
+        <!-- FramePay will inject the iban field here -->
     </div>
 </label>
 ```
