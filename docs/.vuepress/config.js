@@ -6,6 +6,8 @@ const environmentKeys = Object.keys(process.env)
         key => key.indexOf('FRAMEPAY_DOCS') === 0,
     );
 
+const createIntercomScript = require('./plugins/intercom/create-header-script');
+
 module.exports = {
     port: 8088, // for local dev
     base: '/framepay-docs/', // defines github.io location under /Rebilly
@@ -13,12 +15,15 @@ module.exports = {
     plugins: [
         // https://superbiger.github.io/vuepress-plugin-tabs/#install
         'vuepress-plugin-element-tabs',
+        [require('./plugins/intercom/index.js'), {}],
     ],
     description: 'Pre-built components for your checkout flow',
     head: [
         ['link', {rel: 'icon', href: '/favicon.ico'}],
         // add Rebilly script
         ['script', {src: process.env.FRAMEPAY_DOCS_FRAMEPAY_JS_REMOTE_URL}],
+        // add intercom script content
+        ['script', {}, createIntercomScript()],
     ],
     markdown: {
         lineNumbers: false,
