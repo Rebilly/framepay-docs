@@ -32,14 +32,14 @@
         .example-8 {
             max-width: 500px;
             width: 100%;
-            font-family: BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+            font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
             padding: 20px;
             box-sizing: border-box;
             border-radius: 8px;
         }
 
         .example-8 * {
-            font-family: BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+            font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
         }
 
         .example-8 fieldset {
@@ -80,9 +80,9 @@
             -moz-box-sizing: border-box;
             background-color: #ffffff;
             color: #8a97a0;
-            -webkit-box-shadow: inset 0 1px 2px rgba(10,10,10,.1);
-            -moz-box-shadow: inset 0 1px 2px rgba(10,10,10,.1);
-            box-shadow: inset 0 1px 2px rgba(10,10,10,.1);
+            -webkit-box-shadow: inset 0 1px 2px rgba(10, 10, 10, .1);
+            -moz-box-shadow: inset 0 1px 2px rgba(10, 10, 10, .1);
+            box-shadow: inset 0 1px 2px rgba(10, 10, 10, .1);
             -webkit-transition: all 0.4s;
             -o-transition: all 0.4s;
             -moz-transition: all 0.4s;
@@ -91,9 +91,9 @@
 
         .example-8 input:focus {
             border-color: #3273dc;
-            -webkit-box-shadow: 0 0 0 0.125em rgba(50,115,220,.25);
-            -moz-box-shadow: 0 0 0 0.125em rgba(50,115,220,.25);
-            box-shadow: 0 0 0 0.125em rgba(50,115,220,.25);
+            -webkit-box-shadow: 0 0 0 0.125em rgba(50, 115, 220, .25);
+            -moz-box-shadow: 0 0 0 0.125em rgba(50, 115, 220, .25);
+            box-shadow: 0 0 0 0.125em rgba(50, 115, 220, .25);
             color: #363636;
         }
 
@@ -214,9 +214,9 @@
             height: 40px;
             border: 1px solid #dbdbdb;
             padding: 0 10px;
-            -webkit-box-shadow: inset 0 1px 2px rgba(10,10,10,.1);
-            -moz-box-shadow: inset 0 1px 2px rgba(10,10,10,.1);
-            box-shadow: inset 0 1px 2px rgba(10,10,10,.1);
+            -webkit-box-shadow: inset 0 1px 2px rgba(10, 10, 10, .1);
+            -moz-box-shadow: inset 0 1px 2px rgba(10, 10, 10, .1);
+            box-shadow: inset 0 1px 2px rgba(10, 10, 10, .1);
             -webkit-transition: all 0.4s;
             -o-transition: all 0.4s;
             -moz-transition: all 0.4s;
@@ -225,9 +225,9 @@
 
         .example-8 .rebilly-framepay.rebilly-framepay-focus {
             border-color: #3273dc;
-            -webkit-box-shadow: 0 0 0 0.125em rgba(50,115,220,.25);
-            -moz-box-shadow: 0 0 0 0.125em rgba(50,115,220,.25);
-            box-shadow: 0 0 0 0.125em rgba(50,115,220,.25);
+            -webkit-box-shadow: 0 0 0 0.125em rgba(50, 115, 220, .25);
+            -moz-box-shadow: 0 0 0 0.125em rgba(50, 115, 220, .25);
+            box-shadow: 0 0 0 0.125em rgba(50, 115, 220, .25);
         }
 
         .example-8 .rebilly-framepay.rebilly-framepay-buttons {
@@ -244,31 +244,31 @@
             <fieldset>
                 <div class="field">
                     <label>First Name</label>
-                    <input type="text" name="field1" placeholder="John">
+                    <input data-rebilly="firstName" name="field1" placeholder="John" type="text">
                 </div>
                 <div class="field">
                     <label>Last Name</label>
-                    <input type="text" name="field1" placeholder="Denver">
+                    <input data-rebilly="lastName" name="field1" placeholder="Denver" type="text">
                 </div>
                 <div class="field">
                     <label>Email</label>
-                    <input type="text" name="field2" placeholder="john.denver@example.com">
+                    <input data-rebilly="emails" name="field2" placeholder="john.denver@example.com" type="text">
                 </div>
             </fieldset>
             <fieldset>
                 <label>Select your payment method</label>
                 <ul class="tab">
                     <li class="tab-item">
-                        <a class="tab-link is-active" href="#content-1" data-method="payment-card">Credit Card</a>
+                        <a class="tab-link is-active" data-method="mounting-point" href="#content-1">Credit Card</a>
                         <div class="tab-content-item is-active" id="content-1">
                             <div class="field">
                                 <label>Payment Card</label>
-                                <div id="payment-card"></div>
+                                <div id="mounting-point"></div>
                             </div>
                         </div>
                     </li>
                     <li class="tab-item">
-                        <a class="tab-link" href="#content-2" data-method="ach">Bank Account</a>
+                        <a class="tab-link" data-method="ach" href="#content-2">Bank Account</a>
                         <div class="tab-content-item" id="content-2">
                             <div class="field">
                                 <label>Account Type</label>
@@ -285,13 +285,15 @@
                         </div>
                     </li>
                     <li class="tab-item">
-                        <a class="tab-link" href="#content-3" data-method="paypal"><img src="/framepay-docs/images/paypal.svg" alt="paypal"></a>
+                        <a class="tab-link" data-method="paypal" href="#content-3"><img
+                                alt="paypal" src="/framepay-docs/images/paypal.svg"></a>
                     </li>
                     <li class="tab-item">
-                        <a class="tab-link" href="#content-4" data-method="bitcoin"><img src="/framepay-docs/images/bitcoin.svg" alt="bitcoin"></a>
+                        <a class="tab-link" data-method="bitcoin" href="#content-4"><img
+                                alt="bitcoin" src="/framepay-docs/images/bitcoin.svg"></a>
                     </li>
                     <li class="tab-item">
-                        <a class="tab-link" href="#content-5" data-method="China-UnionPay">China UnionPay</a>
+                        <a class="tab-link" data-method="China-UnionPay" href="#content-5">China UnionPay</a>
                     </li>
                 </ul>
             </fieldset>
@@ -301,7 +303,7 @@
 </div>
 <script>
     (function () {
-        var selectedMethod;
+        let selectedMethod;
 
         var tabListItems = document.querySelectorAll('.tab-link');
         var tabContent = document.querySelectorAll('.tab-content-item');
@@ -334,7 +336,7 @@
             tabListItems[i].addEventListener('click', toggleTab, false);
         }
 
-        const config = {
+        var config = {
             publishableKey: 'pk_sandbox_1234567890',
             style: {
                 buttons: {
@@ -346,42 +348,50 @@
                         height: '36px',
                         ':hover': {
                             background: '#ffffff',
-                            borderColor: '#b5b5b5'
-                        }
+                            borderColor: '#b5b5b5',
+                        },
                     },
                     focus: {
                         background: '#ffffff',
-                        borderColor: '#000000'
+                        borderColor: '#000000',
                     },
                     active: {
                         background: '#209cee',
-                        borderColor: '#209cee'
-                    }
-                }
-            }
+                        borderColor: '#209cee',
+                    },
+                },
+            },
         };
         Rebilly.initialize(config);
-        const card = Rebilly.card.mount('#payment-card');
-        const type = Rebilly.bankAccount.mount('#bank-account-type', 'bankAccountType');
-        const number = Rebilly.bankAccount.mount('#bank-account-number', 'bankAccountNumber');
-        const routing = Rebilly.bankAccount.mount('#bank-routing-number', 'bankRoutingNumber');
+
+        Rebilly.on('ready', () => {
+
+            // mount framepay
+            var card = Rebilly.card.mount('#mounting-point');
+            var type = Rebilly.bankAccount.mount('#bank-account-type', 'bankAccountType');
+            var number = Rebilly.bankAccount.mount('#bank-account-number', 'bankAccountNumber');
+            var routing = Rebilly.bankAccount.mount('#bank-routing-number', 'bankRoutingNumber');
+        });
 
         var form = document.querySelector('form');
 
-        form.addEventListener('submit', function (event) {
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
             var extraData = {
                 // use the method selected by the customer
-                method: selectedMethod
+                method: selectedMethod,
             };
-            event.preventDefault();
+
             Rebilly.createToken(form, extraData)
-                .then(function (token) {
+                .then(function (resp) {
                     // we have a token field in the form
                     // thus we can submit directly
-                    form.submit();
+                    alert(JSON.stringify(resp, null, 2));
                 })
-                .catch(function (error) {
-                    console.error(error);
+                .catch(function (err) {
+                    alert(JSON.stringify(err, null, 2));
                 });
         });
     })();
