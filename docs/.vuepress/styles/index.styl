@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto|Montserrat|Roboto+Mono');
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Montserrat", sans-serif;
+}
+
+h1 {
+  letter-spacing: -0.6px;
+  font-weight: 400;
+}
+
+h2 {
+  letter-spacing: -0.6px;
+  font-weight: 500;
+}
+
+.content:not(.custom) > h2 {
+  padding-top: 5rem;
+}
+
+h3 {
+  letter-spacing: -0.6px;
+  font-weight: 500;
+}
+
+iframe {
+  width: 100%;
+  border-radius: 6px
+}
+
+.content pre code,
+.content pre[class*="language-"] code,
+.content__default pre[class*="language-"] code {
+  font-family: 'Roboto Mono', sans-serif;
+  color: $text;
+}
+
+div[class*="language-"]:before {
+  color: $muted;
+}
+
+div[class~="language-html"] {
+  .token.punctuation {
+    color: $muted;
+  }
+
+  .token.tag, .token.attr-name, .token.namespace, .token.deleted {
+    color: $blue;
+  }
+
+  .token.comment, .token.block-comment, .token.prolog, .token.doctype, .token.cdata {
+    color: $gray;
+  }
+
+  .token.attr-name {
+    color: $red;
+  }
+
+  .token.string, .token.char, .token.attr-value, .token.regex, .token.variable {
+    color: $green;
+  }
+
+  .token.selector, .token.important, .token.atrule, .token.keyword, .token.builtin {
+    color: $blue;
+  }
+}
+
+div[class~="language-js"] {
+  .token.punctuation {
+    color: $muted;
+  }
+
+  .token.boolean, .token.number, .token.function {
+    color: $blue;
+  }
+
+  .token.tag, .token.attr-name, .token.namespace, .token.deleted {
+    color: $blue;
+  }
+
+  .token.comment, .token.block-comment, .token.prolog, .token.doctype, .token.cdata {
+    color: $gray;
+  }
+
+  .token.attr-name {
+    color: $red;
+  }
+
+  .token.string, .token.char, .token.attr-value, .token.regex, .token.variable {
+    color: $green;
+  }
+
+  .token.selector, .token.important, .token.atrule, .token.keyword, .token.builtin {
+    color: $blue;
+  }
+}
+
+p {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}

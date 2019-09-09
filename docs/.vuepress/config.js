@@ -13,6 +13,10 @@ module.exports = {
     base: '/framepay-docs/', // defines github.io location under /Rebilly
     title: 'Rebilly FramePay',
     description: 'Pre-built components for your checkout flow',
+    head: [
+        // add Rebilly script
+        ['script', {src: 'https://cdn.rebilly.com/framepay/v1/rebilly.js'}],
+    ],
     markdown: {
         lineNumbers: false,
     },
