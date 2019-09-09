@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto|Montserrat|Roboto+Mono');
 
-
 body {
   font-family: 'Roboto', sans-serif;
 }
@@ -37,7 +36,8 @@ iframe {
 .theme-container pre code,
 .theme-container .content pre code,
 .theme-container pre[class*="language-"] code,
-.theme-container .content pre[class*="language-"] code {
+.theme-container .content pre[class*="language-"] code,
+.content__default pre[class*="language-"] code {
   font-family: 'Roboto Mono', sans-serif;
   color: $text;
   line-height: normal;
@@ -70,7 +70,7 @@ iframe {
     color: $red;
   }
 
-  .token.string, .token.char, .token.attr-value, .token.regex, .token.constiable {
+  .token.string, .token.char, .token.attr-value, .token.regex, .token.variable {
     color: $green;
   }
 
@@ -101,7 +101,7 @@ iframe {
     color: $red;
   }
 
-  .token.string, .token.char, .token.attr-value, .token.regex, .token.constiable {
+  .token.string, .token.char, .token.attr-value, .token.regex, .token.variable {
     color: $green;
   }
 
