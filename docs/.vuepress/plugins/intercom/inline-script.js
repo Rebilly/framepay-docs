@@ -1,7 +1,7 @@
 INTERCOM_ID = INTERCOM_ID || '';
 
 function isNoTrack() {
-    return window.location.href.search('notrack=1') > 0;
+    return document.location.host.indexOf('localhost') >= 0 || window.location.href.search('notrack=1') > 0;
 }
 
 if (!isNoTrack() && INTERCOM_ID) {
