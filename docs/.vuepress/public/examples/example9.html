@@ -257,7 +257,7 @@
 
         Rebilly.initialize(config);
 
-        Rebilly.on('ready', () => {
+        Rebilly.on('ready', function () {
             var card = Rebilly.card.mount('#mounting-point');
 
             card.on('change', function (event) {

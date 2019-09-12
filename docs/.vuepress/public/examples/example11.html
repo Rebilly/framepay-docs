@@ -286,7 +286,7 @@
         };
         Rebilly.initialize(config);
 
-        Rebilly.on('ready', () => {
+        Rebilly.on('ready', function () {
             var type = Rebilly.card.mount('#bank-account-type', 'bankAccountType');
             var number = Rebilly.card.mount('#bank-account-number', 'bankAccountNumber');
             var routing = Rebilly.card.mount('#bank-routing-number', 'bankRoutingNumber');
@@ -305,12 +305,15 @@
                     alert(JSON.stringify(resp, null, 2));
                 })
                 .catch(function (error) {
+                    console.log(error);
                     errorMessages.classList.add('is-active');
-                    if (data.message) {
-                        errorList.innerHTML = `<li>${data.message}</li>`;
+                    if (error.message) {
+                        errorList.innerHTML = '<li>' + error.message + '</li>';
                     }
                     if (error.details.length) {
-                        error.details.forEach(item => errorList.innerHTML += `<li>${item}</li>`);
+                        error.details.forEach(function (item) {
+                            errorList.innerHTML += '<li>' + item + '</li>';
+                        });
                     }
                 });
         });

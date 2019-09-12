@@ -1,0 +1,19 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "browsers": [
+            "last 3 versions",
+            "> 0.25%",
+            "IE 10",
+            "not dead"
+          ]
+        },
+        "useBuiltIns": "usage",
+        "modules": false
+      }
+    ]
+  ]
+}

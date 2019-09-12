@@ -1,21 +1,18 @@
 require('../../load-env');
 
-// get env keys
-const environmentKeys = Object.keys(process.env)
-    .filter(
-        key => key.indexOf('FRAMEPAY_DOCS') === 0,
-    );
+const FRAMEPAY_DOCS_ENV_KEYS_LIST = require('./util/env-keys-list');
 
 const createIntercomScript = require('./plugins/intercom/create-header-script');
 
 module.exports = {
     port: 8088, // for local dev
-    base: '/framepay-docs/', // defines github.io location under /Rebilly
+    base: process.env.FRAMEPAY_DOCS_BASE_PATH, // defines github.io location under /Rebilly
     title: 'Rebilly FramePay',
     plugins: [
         // https://superbiger.github.io/vuepress-plugin-tabs/#install
         'vuepress-plugin-element-tabs',
         [require('./plugins/intercom/index.js'), {}],
+        [require('./plugins/inject-env/index.js'), {}],
     ],
     description: 'Pre-built components for your checkout flow',
     head: [
@@ -51,6 +48,7 @@ module.exports = {
                 'Reference', [
                     ['rebilly', 'Rebilly Namespace'],
                     ['element', 'Element Instance'],
+                    ['supported-browsers', 'Supported Browsers'],
                 ],
             ),
             '/configuration/': genSidebarConfig(
@@ -82,7 +80,7 @@ module.exports = {
             .tap(([options]) => [
                 Object.assign(
                     options,
-                    environmentKeys.reduce((memo, key) => ({
+                    FRAMEPAY_DOCS_ENV_KEYS_LIST.reduce((memo, key) => ({
                         ...memo,
                         [key]: JSON.stringify(process.env[key]),
                     }), {}),

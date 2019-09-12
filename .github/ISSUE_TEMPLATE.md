@@ -8,6 +8,7 @@ Please take a look at this list:
 - [Usage with Vue](https://github.com/Rebilly/framepay-vue)
 
 > **Note:** [Please use Intercom for the questions.](https://rebilly.github.io/framepay-docs/).
+> **Note:** Please do not use the github-issues for the security bugs.
 
 ## I want to submit the 
 - [ ] Feature request
