@@ -201,50 +201,54 @@
 
         Rebilly.initialize(config);
 
-        Rebilly.on('ready', () => {
+        Rebilly.on('ready', function () {
             console.log('Events Rebilly.ready');
 
             // the rebilly script ready to mounting the elements
             var card = Rebilly.card.mount('#mounting-point');
 
-            card.on('ready', () => {
+            card.on('ready', function () {
                 // the card element ready to user input
                 console.log('Events card.ready');
             });
 
-            card.on('error', (error) => {
+            card.on('error', function (error) {
                 // card mount CDN error
                 console.log('Events card.error', error);
             });
 
-            card.on('change', (data) => {
+            card.on('change', function (data) {
                 // card element change event
                 console.log('Events card.change', data);
             });
 
-            card.on('focus', (data) => {
+            card.on('focus', function (data) {
                 // card element change event
                 console.log('Events card.focus', data);
             });
 
-            card.on('blur', (data) => {
+            card.on('blur', function (data) {
                 // card element change event
                 console.log('Events card.blur', data);
             });
         });
 
-        Rebilly.on('error', (err) => {
+        Rebilly.on('error', function (err) {
             // Rebilly CDN error
             console.log('Events Rebilly.error', err);
         });
 
 
-        form.onsubmit = (e) => {
+        form.onsubmit = function (e) {
             e.preventDefault();
             e.stopPropagation();
             Rebilly.createToken(form)
-                .then(resp => alert(JSON.stringify(resp, null, 2)))
-                .catch(err => alert(JSON.stringify(err, null, 2)));
+                .then(function (resp) {
+                    alert(JSON.stringify(resp, null, 2));
+                })
+                .catch(function (err) {
+                    alert(JSON.stringify(err, null, 2));
+                });
         };
     })();
 </script>

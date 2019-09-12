@@ -364,7 +364,7 @@
         };
         Rebilly.initialize(config);
 
-        Rebilly.on('ready', () => {
+        Rebilly.on('ready', function () {
 
             // mount framepay
             var card = Rebilly.card.mount('#mounting-point');
