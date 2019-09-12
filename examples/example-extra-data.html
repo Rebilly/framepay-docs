@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Example 1</title>
-    <link href="https://cdn.rebilly.com/framepay/v1/rebilly.css" rel="stylesheet">
+    <link href="https://cdn.rebilly.com/framepay/v1/rebilly.js" rel="stylesheet">
     <link href="common.css" rel="stylesheet">
     <script src="https://cdn.rebilly.com/framepay/v1/rebilly.js"></script>
     <style>
@@ -201,18 +201,18 @@
 
         Rebilly.initialize(config);
 
-        Rebilly.on('ready', () => {
+        Rebilly.on('ready', function () {
             // mount framepay
             var card = Rebilly.card.mount('#mounting-point');
         });
 
-        Rebilly.on('error', (err) => {
+        Rebilly.on('error', function (err) {
             // rebiily cdn error
             console.log(JSON.stringify(err));
         });
 
 
-        form.onsubmit = (e) => {
+        form.onsubmit = function (e) {
             e.preventDefault();
             e.stopPropagation();
 
@@ -232,9 +232,14 @@
                     },
                 ],
             };
+
             Rebilly.createToken(form, {billingAddress})
-                .then(resp => alert(JSON.stringify(resp, null, 2)))
-                .catch(err => alert(JSON.stringify(err, null, 2)));
+                .then(function (resp) {
+                    alert(JSON.stringify(resp, null, 2));
+                })
+                .catch(function (err) {
+                    alert(JSON.stringify(err, null, 2));
+                });
         };
     })();
 </script>

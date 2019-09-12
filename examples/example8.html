@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Example 1</title>
-    <link href="https://cdn.rebilly.com/framepay/v1/rebilly.css" rel="stylesheet">
+    <link href="https://cdn.rebilly.com/framepay/v1/rebilly.js" rel="stylesheet">
     <script src="https://cdn.rebilly.com/framepay/v1/rebilly.js"></script>
     <style>
         html {
@@ -364,7 +364,7 @@
         };
         Rebilly.initialize(config);
 
-        Rebilly.on('ready', () => {
+        Rebilly.on('ready', function () {
 
             // mount framepay
             var card = Rebilly.card.mount('#mounting-point');

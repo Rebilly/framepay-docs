@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Example 1</title>
-    <link href="https://cdn.rebilly.com/framepay/v1/rebilly.css" rel="stylesheet">
+    <link href="https://cdn.rebilly.com/framepay/v1/rebilly.js" rel="stylesheet">
     <script src="https://cdn.rebilly.com/framepay/v1/rebilly.js"></script>
     <style>
         html {
@@ -294,8 +294,8 @@
         var formInput = document.querySelectorAll('.form-input');
         var formLabel = document.querySelectorAll('.f-label');
 
-        formInput.forEach((input, index) => {
-            input.addEventListener('blur', () => {
+        formInput.forEach(function (input, index) {
+            input.addEventListener('blur', function () {
                 if (input.value.length) {
                     formLabel[index].classList.add('f-label-up');
                 } else {
@@ -327,15 +327,19 @@
 
         Rebilly.initialize(config);
 
-        form.onsubmit = (e) => {
+        form.onsubmit = function (e) {
             e.preventDefault();
             e.stopPropagation();
 
             var method = document.querySelector('input:checked').value;
 
             Rebilly.createToken(form, {method})
-                .then(resp => alert(JSON.stringify(resp, null, 2)))
-                .catch(err => alert(JSON.stringify(err, null, 2)));
+                .then(function (resp) {
+                    alert(JSON.stringify(resp, null, 2));
+                })
+                .catch(function (err) {
+                    alert(JSON.stringify(err, null, 2));
+                });
         };
     })();
 </script>
