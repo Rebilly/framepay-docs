@@ -22,6 +22,11 @@ You could use that structure in the [initialize](../reference/rebilly.md#rebilly
         bankAccount: {
             routingNumber: null,
             accountNumber: null,
+            type: {
+                savings: null,
+                checking: null,
+                other: null,
+            },
         },
         iban: {accountNumber: null},
     },
