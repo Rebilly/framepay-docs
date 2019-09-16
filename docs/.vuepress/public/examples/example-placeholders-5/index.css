@@ -23,11 +23,6 @@ button {
     text-align: center;
     font-style: normal;
     width: 100%;
-    box-shadow: 0 2px 5px 0 rgba(26, 188, 156, 0.5);
-    -moz-box-shadow: 0 2px 5px 0 rgba(26, 188, 156, 0.5);
-    -webkit-box-shadow: 0 2px 5px 0 rgba(26, 188, 156, 0.5);
-    -o-box-shadow: 0 2px 5px 0 rgba(26, 188, 156, 0.5);
-    -ms-box-shadow: 0 2px 5px 0 rgba(26, 188, 156, 0.5);
     -webkit-transition: all 0.4s;
     -o-transition: all 0.4s;
     -moz-transition: all 0.4s;
@@ -49,4 +44,10 @@ button:hover {
     display: inline-block;
     width: auto;
     background: rgba(26, 188, 156, 0.6);
+}
+
+.btn-restore {
+    display: inline-block;
+    width: auto;
+    background: rgba(170, 188, 25, 0.6);
 }

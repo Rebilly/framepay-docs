@@ -291,7 +291,7 @@ The [bankAccount](../reference/rebilly.md#rebilly-bankaccount-mount) element pla
     style="margin-bottom: 8px;" border="0" 
     frameborder="0"
     scrolling="no" 
-    class="configuration-example-frame configuration-example-frame--small"
+    class="configuration-example-frame configuration-example-frame--middle"
     src="/framepay-docs/examples/example-placeholders-2/index.html"></iframe>
 <a 
     class="view-source"
