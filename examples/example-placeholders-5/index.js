@@ -16,5 +16,10 @@
       locale: Rebilly.locales.en
     });
   });
+  document.getElementById('btn-restore-1').addEventListener('click', function (e) {
+    Rebilly.update({
+      locale: Rebilly.locales.es
+    });
+  });
 })();
 //# sourceMappingURL=index.js.map

@@ -4,14 +4,20 @@
     placeholders: {
       bankAccount: {
         accountNumber: 'Account Number ****',
-        routingNumber: 'Routing Number ****'
+        routingNumber: 'Routing Number ****',
+        type: {
+          savings: 'Type 1 Savings',
+          checking: 'Type 2 Checking',
+          other: 'Type 3 Other'
+        }
       }
     }
   });
   Rebilly.on('ready', function () {
-    var _ref = [Rebilly.bankAccount.mount('#mount-point-1', 'bankAccountNumber'), Rebilly.bankAccount.mount('#mount-point-2', 'bankRoutingNumber')],
-        accountNumber = _ref[0],
-        routingNumber = _ref[1];
+    var _ref = [Rebilly.bankAccount.mount('#mount-point-0', 'bankAccountType'), Rebilly.bankAccount.mount('#mount-point-1', 'bankAccountNumber'), Rebilly.bankAccount.mount('#mount-point-2', 'bankRoutingNumber')],
+        accountType = _ref[0],
+        accountNumber = _ref[1],
+        routingNumber = _ref[2];
   });
 })();
 //# sourceMappingURL=index.js.map

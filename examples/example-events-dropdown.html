@@ -195,6 +195,11 @@
                     },
                 },
             },
+            card: {
+                expiry: {
+                    type: 'dropdown',
+                },
+            },
         };
 
         var form = document.querySelector('form');
@@ -202,40 +207,40 @@
         Rebilly.initialize(config);
 
         Rebilly.on('ready', function () {
-            console.log('[example-events] Rebilly.ready');
+            console.log('[example-events-dropdown] Rebilly.ready');
 
             // the rebilly script ready to mounting the elements
             var card = Rebilly.card.mount('#mounting-point');
 
             card.on('ready', function () {
                 // the card element ready to user input
-                console.log('[example-events] card.ready');
+                console.log('[example-events-dropdown] card.ready');
             });
 
             card.on('error', function (error) {
                 // card mount CDN error
-                console.log('[example-events] card.error', error);
+                console.log('[example-events-dropdown] card.error', error);
             });
 
             card.on('change', function (data) {
                 // card element change event
-                console.log('[example-events] card.change', data);
+                console.log('[example-events-dropdown] card.change', data);
             });
 
             card.on('focus', function (data) {
                 // card element change event
-                console.log('[example-events] card.focus', data);
+                console.log('[example-events-dropdown] card.focus', data);
             });
 
             card.on('blur', function (data) {
                 // card element change event
-                console.log('[example-events] card.blur', data);
+                console.log('[example-events-dropdown] card.blur', data);
             });
         });
 
         Rebilly.on('error', function (err) {
             // Rebilly CDN error
-            console.log('[example-events] Rebilly.error', err);
+            console.log('[example-events-dropdown] Rebilly.error', err);
         });
 
 

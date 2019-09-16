@@ -202,40 +202,50 @@
         Rebilly.initialize(config);
 
         Rebilly.on('ready', function () {
-            console.log('[example-events] Rebilly.ready');
+            console.log('[example-events-separated] Rebilly.ready');
 
-            // the rebilly script ready to mounting the elements
-            var card = Rebilly.card.mount('#mounting-point');
+            // mount framepay
+            var card = Rebilly.card.mount('#mounting-point', 'cardNumber');
+            var exp = Rebilly.card.mount('#exp', 'cardExpiry');
+            var cvv = Rebilly.card.mount('#cvv', 'cardCvv');
 
-            card.on('ready', function () {
-                // the card element ready to user input
-                console.log('[example-events] card.ready');
+            var fields = [[card, 'card'], [exp, 'exp'], [cvv, 'cvv']];
+
+            fields.forEach(function (params) {
+                var field = params[0];
+                var name = params[1];
+
+                field.on('ready', function () {
+                    // the card element ready to user input
+                    console.log('[example-events-separated] card.ready ' + name);
+                });
+
+                field.on('error', function (error) {
+                    // card mount CDN error
+                    console.log('[example-events-separated] card.error ' + name, error);
+                });
+
+                field.on('change', function (data) {
+                    // card element change event
+                    console.log('[example-events-separated] card.change ' + name, data);
+                });
+
+                field.on('focus', function (data) {
+                    // card element change event
+                    console.log('[example-events-separated] card.focus ' + name, data);
+                });
+
+                field.on('blur', function (data) {
+                    // card element change event
+                    console.log('[example-events-separated] card.blur ' + name, data);
+                });
             });
 
-            card.on('error', function (error) {
-                // card mount CDN error
-                console.log('[example-events] card.error', error);
-            });
-
-            card.on('change', function (data) {
-                // card element change event
-                console.log('[example-events] card.change', data);
-            });
-
-            card.on('focus', function (data) {
-                // card element change event
-                console.log('[example-events] card.focus', data);
-            });
-
-            card.on('blur', function (data) {
-                // card element change event
-                console.log('[example-events] card.blur', data);
-            });
         });
 
         Rebilly.on('error', function (err) {
             // Rebilly CDN error
-            console.log('[example-events] Rebilly.error', err);
+            console.log('[example-events-separated] Rebilly.error', err);
         });
 
 
