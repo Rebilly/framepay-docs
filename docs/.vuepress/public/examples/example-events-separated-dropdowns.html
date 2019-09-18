@@ -163,20 +163,26 @@
         <form>
             <fieldset>
                 <div class="field">
-                    <input name="firstName" placeholder="First Name" type="text">
+                    <input data-rebilly="firstName" name="field1" placeholder="First Name" type="text">
                 </div>
                 <div class="field">
-                    <input name="lastName" placeholder="Last Name" type="text">
+                    <input data-rebilly="lastName" name="field1" placeholder="Last Name" type="text">
                 </div>
                 <div class="field">
-                    <input name="emails" placeholder="Email" type="text">
+                    <input data-rebilly="emails" name="field2" placeholder="Email" type="text">
                 </div>
                 <div class="field">
-                    <input name="phoneNumbers" placeholder="Phone" type="text">
+                    <input data-rebilly="phoneNumbers" name="field3" placeholder="Phone" type="text">
                 </div>
                 <div class="field">
-                    <div id="mounting-point">
-                    </div>
+                    <span id="mounting-loading"></span>
+                    <div id="mounting-point"></div>
+                </div>
+                <div class="field">
+                    <span id="exp"></span>
+                </div>
+                <div class="field">
+                    <div id="cvv"></div>
                 </div>
             </fieldset>
             <button>Make Payment</button>
@@ -196,6 +202,11 @@
                     },
                 },
             },
+            card: {
+                expiry: {
+                    type: 'dropdown',
+                },
+            },
         };
 
         var form = document.querySelector('form');
@@ -203,38 +214,57 @@
         Rebilly.initialize(config);
 
         Rebilly.on('ready', function () {
+            console.log('[example-events-separated] Rebilly.ready');
+
             // mount framepay
-            var card = Rebilly.card.mount('#mounting-point');
+            var card = Rebilly.card.mount('#mounting-point', 'cardNumber');
+            var exp = Rebilly.card.mount('#exp', 'cardExpiry');
+            var cvv = Rebilly.card.mount('#cvv', 'cardCvv');
+
+            var fields = [[card, 'card'], [exp, 'exp'], [cvv, 'cvv']];
+
+            fields.forEach(function (params) {
+                var field = params[0];
+                var name = params[1];
+
+                field.on('ready', function () {
+                    // the card element ready to user input
+                    console.log('[example-events-separated] card.ready ' + name);
+                });
+
+                field.on('error', function (error) {
+                    // card mount CDN error
+                    console.log('[example-events-separated] card.error ' + name, error);
+                });
+
+                field.on('change', function (data) {
+                    // card element change event
+                    console.log('[example-events-separated] card.change ' + name, data);
+                });
+
+                field.on('focus', function (data) {
+                    // card element change event
+                    console.log('[example-events-separated] card.focus ' + name, data);
+                });
+
+                field.on('blur', function (data) {
+                    // card element change event
+                    console.log('[example-events-separated] card.blur ' + name, data);
+                });
+            });
+
         });
 
         Rebilly.on('error', function (err) {
-            // rebiily cdn error
-            console.log(JSON.stringify(err));
+            // Rebilly CDN error
+            console.log('[example-events-separated] Rebilly.error', err);
         });
 
 
         form.onsubmit = function (e) {
             e.preventDefault();
             e.stopPropagation();
-
-            var billingAddress = {
-                firstName: document.querySelector('input[name="firstName"]').value,
-                lastName: document.querySelector('input[name="lastName"]').value,
-                emails: [
-                    {
-                        label: 'Email Label Name',
-                        value: document.querySelector('input[name="emails"]').value,
-                    },
-                ],
-                phoneNumbers: [
-                    {
-                        label: 'Phone Label Name',
-                        value: document.querySelector('input[name="phoneNumbers"]').value,
-                    },
-                ],
-            };
-
-            Rebilly.createToken(form, {billingAddress})
+            Rebilly.createToken(form)
                 .then(function (resp) {
                     alert(JSON.stringify(resp, null, 2));
                 })
