@@ -62,6 +62,9 @@ This object will let you control the color or the visibility of the icon in the 
     <tr><td>Type</td><td>Object</td></tr>
 </table>
 
+::: warn Always hidden on the mobile devices
+The card icon will be always hidden in the combined card on mobile devices 
+
 ```javascript
 Rebilly.initialize({
     icon: {
@@ -455,7 +458,7 @@ The card expiry field supports 2 render types.
 - `dropdown` (styled dropdowns and native select on mobile)
 
 <table>
-    <tr><td>Updatable</td><td>True</td></tr>
+    <tr><td>Updatable</td><td><Badge text="False" type="warn"/></td></tr>
     <tr><td>Required</td><td>False</td></tr>
     <tr><td>Type</td><td>String</td></tr>
     <tr><td>Default value</td><td><code>'text'</code></td></tr>
