@@ -13,6 +13,6 @@
     });
 
     document.getElementById('btn-update-1').addEventListener('click', (e) => {
-        Rebilly.update({card: {expiry: {type: 'text'}}});
+        Rebilly.update({card: {cvv: {type: 'text'}}});
     });
 })();

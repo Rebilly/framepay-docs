@@ -12,6 +12,7 @@
           ]
         },
         "useBuiltIns": "usage",
+        "debug": false,
         "modules": false
       }
     ]

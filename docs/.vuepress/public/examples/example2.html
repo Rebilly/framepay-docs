@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Example 1</title>
     <link href="https://cdn.rebilly.com/framepay/v1/rebilly.css" rel="stylesheet">
     <link href="common.css" rel="stylesheet">
@@ -212,6 +213,7 @@
         });
 
         form.onsubmit = function (e) {
+            console.log('form.onsubmit');
             e.preventDefault();
             e.stopPropagation();
             Rebilly.createToken(form)

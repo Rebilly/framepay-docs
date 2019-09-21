@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "base-docs-build": "vuepress build docs",
-    "base-docs-babel": "babel docs/.vuepress/dist/examples --out-dir docs/.vuepress/dist/examples --source-maps",
+    "base-docs-babel-examples": "babel docs/.vuepress/dist/examples --out-dir docs/.vuepress/dist/examples --source-maps",
+    "base-docs-babel": "run-p base-docs-babel-examples",
     "docs:dev": "vuepress dev docs",
     "docs:build": "run-s base-docs-build base-docs-babel",
     "docs:serve": "browser-sync start --config ./bs-config.js"
