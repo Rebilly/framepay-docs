@@ -13,7 +13,7 @@
   document.getElementById('btn-update-1').addEventListener('click', function (e) {
     Rebilly.update({
       card: {
-        expiry: {
+        cvv: {
           type: 'text'
         }
       }

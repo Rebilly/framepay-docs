@@ -12,15 +12,8 @@
         number = _ref[0],
         expiry = _ref[1],
         cvv = _ref[2];
-  });
-  document.getElementById('btn-update-1').addEventListener('click', function (e) {
-    Rebilly.update({
-      card: {
-        expiry: {
-          type: 'text'
-        }
-      }
-    });
-  });
+  }); // document.getElementById('btn-update-1').addEventListener('click', (e) => {
+  //     Rebilly.update({card: {expiry: {type: 'text'}}});
+  // });
 })();
 //# sourceMappingURL=index.js.map
