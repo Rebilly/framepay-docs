@@ -62,8 +62,10 @@ This object will let you control the color or the visibility of the icon in the 
     <tr><td>Type</td><td>Object</td></tr>
 </table>
 
-::: warn Always hidden on the mobile devices
-The card icon will be always hidden in the combined card on mobile devices 
+::: warning Always hidden on the mobile devices
+The card icon will be always hidden in the combined card on mobile devices
+:::
+ 
 
 ```javascript
 Rebilly.initialize({
@@ -428,7 +430,7 @@ This array allows you to customize the available card types in the card field
 - Discover (declined) `6011111111111117`
 
 <iframe 
-    style="margin-bottom: 8px;" border="0" 
+    style="margin-bottom: 8px;height:250px;" border="0" 
     frameborder="0"
     scrolling="no" 
     class="configuration-example-frame configuration-example-frame--middle"
