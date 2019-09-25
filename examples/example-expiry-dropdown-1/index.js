@@ -9,8 +9,10 @@
   });
   Rebilly.on('ready', function () {
     var card = Rebilly.card.mount('#mount-point');
-  }); // document.getElementById('btn-update-1').addEventListener('click', (e) => {
-  //     Rebilly.update({card: {expiry: {type: 'text'}}});
-  // });
+  }); // the expiry type is non-updatable property
+  // document.getElementById('btn-update-1')
+  //     .addEventListener('click', (e) => {
+  //         Rebilly.update({card: {expiry: {type: 'text'}}});
+  //     });
 })();
 //# sourceMappingURL=index.js.map
