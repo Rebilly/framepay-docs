@@ -158,7 +158,10 @@ Take a look at [example implementations](/examples/) of FramePay for payment car
 
 ## Use with React
 Supported versions: 14,15,16+  
-We have simple wrapper for ReactJS please take a look at [framepay-react](https://github.com/Rebilly/framepay-react) 
+We have simple wrapper for ReactJS please take a look at [framepay-react](https://github.com/Rebilly/framepay-react)
+
+### Using without framepay-react
+If you want to use the framepay without the `framepay-react` package, you could take a look at the example [framepay-preact-direct-integration](https://codesandbox.io/s/framepay-preact-direct-integration-irbi4) 
 
 ## Use with Vue
 We have simple wrapper for ReactJS please take a look at [framepay-vue](https://github.com/Rebilly/framepay-vue) 
