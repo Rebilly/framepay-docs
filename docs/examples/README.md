@@ -9,3 +9,5 @@ FramePay can be customized to match the look and feel of your existing forms. Fo
 - [Errors](./errors.md)
 - [Events](./events.md)
 - [Extra Data](./extra-data.md)
+- [Using with ReactJS](./react.md)
+- [Using with VueJS](./vue.md)

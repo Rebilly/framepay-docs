@@ -66,6 +66,8 @@ module.exports = {
                     ['errors', 'Errors'],
                     ['events', 'Events'],
                     ['extra-data', 'Extra Data'],
+                    ['react', 'Using with ReactJS'],
+                    ['vue', 'Using with VueJS'],
                 ],
                 {sidebarDepth: 2},
             ),
