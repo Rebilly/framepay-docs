@@ -4,4 +4,4 @@ We offer an easy-to-use wrapper component for ReactJS, called [framepay-react](h
 
 ---
 
-If you want to use the framepay without the `framepay-react` package, you could take a look at the example [framepay-preact-direct-integration](https://codesandbox.io/s/framepay-preact-direct-integration-irbi4) 
+`framepay-react` is the easiest way to integrate framepay into your React project. However, if you prefer to use framepay directly, you can look at the example [framepay-preact-direct-integration](https://codesandbox.io/s/framepay-preact-direct-integration-irbi4) 
