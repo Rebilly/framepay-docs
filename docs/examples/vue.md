@@ -1,2 +1,2 @@
 ### Using with VueJS 
-We have simple wrapper for VueJS. Please take a look at [framepay-vue](https://github.com/Rebilly/framepay-vue).
+We offer an easy-to-use wrapper component for VueJS, called [framepay-vue](https://github.com/Rebilly/framepay-vue).
