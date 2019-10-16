@@ -1,6 +1,6 @@
 ### Using with ReactJS 
 Supported versions: 14,15,16+  
-We have simple wrapper for ReactJS please take a look at [framepay-react](https://github.com/Rebilly/framepay-react)
+We offer an easy-to-use wrapper component for ReactJS, called [framepay-react](https://github.com/Rebilly/framepay-react).
 
 ---
 
