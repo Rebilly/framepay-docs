@@ -156,12 +156,14 @@ For customization and configuration options available with FramePay visit the [d
 
 Take a look at [example implementations](/examples/) of FramePay for payment cards, bank accounts and other payment methods supported by Rebilly.
 
-## Use with React
+## Using with ReactJS 
 Supported versions: 14,15,16+  
-We have simple wrapper for ReactJS please take a look at [framepay-react](https://github.com/Rebilly/framepay-react)
+We offer an easy-to-use wrapper component for ReactJS, called [framepay-react](https://github.com/Rebilly/framepay-react).
 
-### Using without framepay-react
-If you want to use framepay without the `framepay-react` package, you could take a look at the example [framepay-preact-direct-integration](https://codesandbox.io/s/framepay-preact-direct-integration-irbi4) 
+---
 
-## Use with Vue
-We have simple wrapper for ReactJS please take a look at [framepay-vue](https://github.com/Rebilly/framepay-vue) 
+`framepay-react` is the easiest way to integrate framepay into your React project. However, if you prefer to use framepay directly, you can look at the example [framepay-preact-direct-integration](https://codesandbox.io/s/framepay-preact-direct-integration-irbi4) 
+
+
+## Using with VueJS 
+We offer an easy-to-use wrapper component for VueJS, called [framepay-vue](https://github.com/Rebilly/framepay-vue).
