@@ -28,7 +28,16 @@ All supported locales are available in the `Rebilly.locales.*` namespace.
 </table>
 
 :::: tabs
-::: tab result
+::: tab javascript
+<<< @/docs/.vuepress/public/examples/example-locale-1/index.js
+:::
+::: tab html
+<<< @/docs/.vuepress/public/examples/example-locale-1/index.html
+:::
+::: tab css
+<<< @/docs/.vuepress/public/examples/example-locale-1/index.css
+:::
+::: tab result lazy
 <iframe 
     style="margin-bottom: 8px;" border="0" 
     frameborder="0"
@@ -41,15 +50,6 @@ All supported locales are available in the `Rebilly.locales.*` namespace.
     href="https://github.com/Rebilly/framepay-docs/blob/master/docs/.vuepress/public/examples/example-locale-1/index.html">
         View source on GitHub
     </a>
-:::
-::: tab html
-<<< @/docs/.vuepress/public/examples/example-locale-1/index.html
-:::
-::: tab javascript
-<<< @/docs/.vuepress/public/examples/example-locale-1/index.js
-:::
-::: tab css
-<<< @/docs/.vuepress/public/examples/example-locale-1/index.css
 :::
 ::::
 
@@ -87,7 +87,16 @@ This property will let you control the visibility of the icon in the card and ib
 </table> 
 
 :::: tabs
-::: tab result
+::: tab javascript
+<<< @/docs/.vuepress/public/examples/example-icon-1/index.js
+:::
+::: tab html
+<<< @/docs/.vuepress/public/examples/example-icon-1/index.html
+:::
+::: tab css
+<<< @/docs/.vuepress/public/examples/example-icon-1/index.css
+:::
+::: tab result lazy
 <iframe 
     style="margin-bottom: 8px;" border="0" 
     frameborder="0"
@@ -100,15 +109,6 @@ This property will let you control the visibility of the icon in the card and ib
     href="https://github.com/Rebilly/framepay-docs/blob/master/docs/.vuepress/public/examples/example-icon-1/index.html">
         View source on GitHub
     </a>
-:::
-::: tab html
-<<< @/docs/.vuepress/public/examples/example-icon-1/index.html
-:::
-::: tab javascript
-<<< @/docs/.vuepress/public/examples/example-icon-1/index.js
-:::
-::: tab css
-<<< @/docs/.vuepress/public/examples/example-icon-1/index.css
 :::
 ::::
 
@@ -132,7 +132,16 @@ This property will let you control the color of the icon in the card and iban fi
 
 #### Card element
 :::: tabs
-::: tab result
+::: tab javascript
+<<< @/docs/.vuepress/public/examples/example-icon-2/index.js
+:::
+::: tab html
+<<< @/docs/.vuepress/public/examples/example-icon-2/index.html
+:::
+::: tab css
+<<< @/docs/.vuepress/public/examples/example-icon-2/index.css
+:::
+::: tab result lazy
 <iframe 
     style="margin-bottom: 8px;" border="0" 
     frameborder="0"
@@ -146,20 +155,20 @@ This property will let you control the color of the icon in the card and iban fi
         View source on GitHub
     </a>
 :::
-::: tab html
-<<< @/docs/.vuepress/public/examples/example-icon-2/index.html
-:::
-::: tab javascript
-<<< @/docs/.vuepress/public/examples/example-icon-2/index.js
-:::
-::: tab css
-<<< @/docs/.vuepress/public/examples/example-icon-2/index.css
-:::
 ::::
 
 #### IBAN element
 :::: tabs
-::: tab result
+::: tab javascript
+<<< @/docs/.vuepress/public/examples/example-icon-3/index.js
+:::
+::: tab html
+<<< @/docs/.vuepress/public/examples/example-icon-3/index.html
+:::
+::: tab css
+<<< @/docs/.vuepress/public/examples/example-icon-3/index.css
+:::
+::: tab result lazy
 <iframe 
     style="margin-bottom: 8px;" border="0" 
     frameborder="0"
@@ -172,15 +181,6 @@ This property will let you control the color of the icon in the card and iban fi
     href="https://github.com/Rebilly/framepay-docs/blob/master/docs/.vuepress/public/examples/example-icon-3/index.html">
         View source on GitHub
     </a>
-:::
-::: tab html
-<<< @/docs/.vuepress/public/examples/example-icon-3/index.html
-:::
-::: tab javascript
-<<< @/docs/.vuepress/public/examples/example-icon-3/index.js
-:::
-::: tab css
-<<< @/docs/.vuepress/public/examples/example-icon-3/index.css
 :::
 ::::
 
@@ -205,21 +205,17 @@ The [card](../reference/rebilly.md#rebilly-card-mount) element placeholders.
     <tr><td>Type</td><td>Object</td></tr>
 </table>
 
-```javascript
-Rebilly.initialize({
-    publishableKey: 'pk_sandbox_1234567890',
-    placeholders: {
-        card: {
-            number: 'Number',
-            expiry: 'Exp',
-            cvv: '***',
-        },
-    },
-}); 
-```
-
 :::: tabs
-::: tab result
+::: tab javascript
+<<< @/docs/.vuepress/public/examples/example-placeholders-1/index.js
+:::
+::: tab html
+<<< @/docs/.vuepress/public/examples/example-placeholders-1/index.html
+:::
+::: tab css
+<<< @/docs/.vuepress/public/examples/example-placeholders-1/index.css
+:::
+::: tab result lazy
 <iframe 
     style="margin-bottom: 8px;" border="0" 
     frameborder="0"
@@ -232,15 +228,6 @@ Rebilly.initialize({
     href="https://github.com/Rebilly/framepay-docs/blob/master/docs/.vuepress/public/examples/example-placeholders-1/index.html">
         View source on GitHub
     </a>
-:::
-::: tab html
-<<< @/docs/.vuepress/public/examples/example-placeholders-1/index.html
-:::
-::: tab javascript
-<<< @/docs/.vuepress/public/examples/example-placeholders-1/index.js
-:::
-::: tab css
-<<< @/docs/.vuepress/public/examples/example-placeholders-1/index.css
 :::
 ::::
 
@@ -262,7 +249,16 @@ Rebilly.initialize({
 :::
 
 :::: tabs
-::: tab result
+::: tab javascript
+<<< @/docs/.vuepress/public/examples/example-placeholders-1-2/index.js
+:::
+::: tab html
+<<< @/docs/.vuepress/public/examples/example-placeholders-1-2/index.html
+:::
+::: tab css
+<<< @/docs/.vuepress/public/examples/example-placeholders-1-2/index.css
+:::
+::: tab result lazy
 <iframe 
     style="margin-bottom: 8px;" border="0" 
     frameborder="0"
@@ -275,15 +271,6 @@ Rebilly.initialize({
         View source on GitHub
     </a>
 :::
-::: tab html
-<<< @/docs/.vuepress/public/examples/example-placeholders-1-2/index.html
-:::
-::: tab javascript
-<<< @/docs/.vuepress/public/examples/example-placeholders-1-2/index.js
-:::
-::: tab css
-<<< @/docs/.vuepress/public/examples/example-placeholders-1-2/index.css
-:::
 ::::
 
 
@@ -291,7 +278,16 @@ Rebilly.initialize({
 The [bankAccount](../reference/rebilly.md#rebilly-bankaccount-mount) element placeholder
 
 :::: tabs
-::: tab result
+::: tab javascript
+<<< @/docs/.vuepress/public/examples/example-placeholders-2/index.js
+:::
+::: tab html
+<<< @/docs/.vuepress/public/examples/example-placeholders-2/index.html
+:::
+::: tab css
+<<< @/docs/.vuepress/public/examples/example-placeholders-2/index.css
+:::
+::: tab result lazy
 <iframe 
     style="margin-bottom: 8px;" border="0" 
     frameborder="0"
@@ -305,21 +301,21 @@ The [bankAccount](../reference/rebilly.md#rebilly-bankaccount-mount) element pla
         View source on GitHub
     </a>
 :::
-::: tab html
-<<< @/docs/.vuepress/public/examples/example-placeholders-2/index.html
-:::
-::: tab javascript
-<<< @/docs/.vuepress/public/examples/example-placeholders-2/index.js
-:::
-::: tab css
-<<< @/docs/.vuepress/public/examples/example-placeholders-2/index.css
-:::
 ::::
 
 ### iban
 The [iban](../reference/rebilly.md#rebilly-iban-mount) element placeholder
 :::: tabs
-::: tab result
+::: tab javascript
+<<< @/docs/.vuepress/public/examples/example-placeholders-3/index.js
+:::
+::: tab html
+<<< @/docs/.vuepress/public/examples/example-placeholders-3/index.html
+:::
+::: tab css
+<<< @/docs/.vuepress/public/examples/example-placeholders-3/index.css
+:::
+::: tab result lazy
 <iframe 
     style="margin-bottom: 8px;" border="0" 
     frameborder="0"
@@ -332,15 +328,6 @@ The [iban](../reference/rebilly.md#rebilly-iban-mount) element placeholder
     href="https://github.com/Rebilly/framepay-docs/blob/master/docs/.vuepress/public/examples/example-placeholders-3/index.html">
         View source on GitHub
     </a>
-:::
-::: tab html
-<<< @/docs/.vuepress/public/examples/example-placeholders-3/index.html
-:::
-::: tab javascript
-<<< @/docs/.vuepress/public/examples/example-placeholders-3/index.js
-:::
-::: tab css
-<<< @/docs/.vuepress/public/examples/example-placeholders-3/index.css
 :::
 ::::
 
@@ -423,7 +410,16 @@ This array allows you to customize the available card types in the card field
 </table>
 
 :::: tabs
-::: tab result
+::: tab javascript
+<<< @/docs/.vuepress/public/examples/example-allowed-card-brands-1/index.js
+:::
+::: tab html
+<<< @/docs/.vuepress/public/examples/example-allowed-card-brands-1/index.html
+:::
+::: tab css
+<<< @/docs/.vuepress/public/examples/example-allowed-card-brands-1/index.css
+:::
+::: tab result lazy
 - Visa (allowed) `4111111111111111`
 - MasterCard (declined) `5555555555554444`
 - AMEX (allowed) `378282246310005`
@@ -440,15 +436,6 @@ This array allows you to customize the available card types in the card field
     href="https://github.com/Rebilly/framepay-docs/blob/master/docs/.vuepress/public/examples/example-allowed-card-brands-1/index.html">
         View source on GitHub
     </a>
-:::
-::: tab html
-<<< @/docs/.vuepress/public/examples/example-allowed-card-brands-1/index.html
-:::
-::: tab javascript
-<<< @/docs/.vuepress/public/examples/example-allowed-card-brands-1/index.js
-:::
-::: tab css
-<<< @/docs/.vuepress/public/examples/example-allowed-card-brands-1/index.css
 :::
 ::::
 
@@ -468,7 +455,16 @@ The card expiry field supports 2 render types.
 </table>
 
 :::: tabs
-::: tab result
+::: tab javascript
+<<< @/docs/.vuepress/public/examples/example-expiry-dropdown-1/index.js
+:::
+::: tab html
+<<< @/docs/.vuepress/public/examples/example-expiry-dropdown-1/index.html
+:::
+::: tab css
+<<< @/docs/.vuepress/public/examples/example-expiry-dropdown-1/index.css
+:::
+::: tab result lazy
 <iframe 
     style="margin-bottom: 8px;" border="0" 
     frameborder="0"
@@ -481,20 +477,20 @@ The card expiry field supports 2 render types.
         View source on GitHub
     </a>
 :::
-::: tab html
-<<< @/docs/.vuepress/public/examples/example-expiry-dropdown-1/index.html
-:::
-::: tab javascript
-<<< @/docs/.vuepress/public/examples/example-expiry-dropdown-1/index.js
-:::
-::: tab css
-<<< @/docs/.vuepress/public/examples/example-expiry-dropdown-1/index.css
-:::
 ::::
 
 #### Expiry dropdown card separated style
 :::: tabs
-::: tab result
+::: tab javascript
+<<< @/docs/.vuepress/public/examples/example-expiry-dropdown-2/index.js
+:::
+::: tab html
+<<< @/docs/.vuepress/public/examples/example-expiry-dropdown-2/index.html
+:::
+::: tab css
+<<< @/docs/.vuepress/public/examples/example-expiry-dropdown-2/index.css
+:::
+::: tab result lazy
 <iframe 
     style="margin-bottom: 8px;" border="0" 
     frameborder="0"
@@ -506,15 +502,6 @@ The card expiry field supports 2 render types.
     href="https://github.com/Rebilly/framepay-docs/blob/master/docs/.vuepress/public/examples/example-expiry-dropdown-2/index.html">
         View source on GitHub
     </a>
-:::
-::: tab html
-<<< @/docs/.vuepress/public/examples/example-expiry-dropdown-2/index.html
-:::
-::: tab javascript
-<<< @/docs/.vuepress/public/examples/example-expiry-dropdown-2/index.js
-:::
-::: tab css
-<<< @/docs/.vuepress/public/examples/example-expiry-dropdown-2/index.css
 :::
 ::::
 
@@ -534,7 +521,16 @@ The card cvv field supports 2 render types.
 </table>
 
 :::: tabs
-::: tab result
+::: tab javascript
+<<< @/docs/.vuepress/public/examples/example-cvv-1/index.js
+:::
+::: tab html
+<<< @/docs/.vuepress/public/examples/example-cvv-1/index.html
+:::
+::: tab css
+<<< @/docs/.vuepress/public/examples/example-cvv-1/index.css
+:::
+::: tab result lazy
 <iframe 
     style="margin-bottom: 8px;" border="0" 
     frameborder="0"
@@ -546,15 +542,6 @@ The card cvv field supports 2 render types.
     href="https://github.com/Rebilly/framepay-docs/blob/master/docs/.vuepress/public/examples/example-cvv-1/index.html">
         View source on GitHub
     </a>
-:::
-::: tab html
-<<< @/docs/.vuepress/public/examples/example-cvv-1/index.html
-:::
-::: tab javascript
-<<< @/docs/.vuepress/public/examples/example-cvv-1/index.js
-:::
-::: tab css
-<<< @/docs/.vuepress/public/examples/example-cvv-1/index.css
 :::
 ::::
 
@@ -573,7 +560,13 @@ This object can customize the look of elements using these keys:
 - `invalid`, validation state applied when the data within is incorrect or incomplete, and after user interaction
 
 :::: tabs
-::: tab result
+::: tab javascript
+<<< @/docs/.vuepress/public/examples/example-style-1/index.js
+:::
+::: tab html
+<<< @/docs/.vuepress/public/examples/example-style-1/index.html
+:::
+::: tab result lazy
 <iframe 
     style="margin-bottom: 8px;" border="0" 
     frameborder="0"
@@ -585,12 +578,6 @@ This object can customize the look of elements using these keys:
     href="https://github.com/Rebilly/framepay-docs/blob/master/docs/.vuepress/public/examples/example-style-1/index.html">
         View source on GitHub
     </a>
-:::
-::: tab html
-<<< @/docs/.vuepress/public/examples/example-style-1/index.html
-:::
-::: tab javascript
-<<< @/docs/.vuepress/public/examples/example-style-1/index.js
 :::
 ::::
 
@@ -623,7 +610,13 @@ The <code>base</code>, <code>focus</code> and <code>active</code> button states 
 </ul>
 
 :::: tabs
-::: tab result
+::: tab javascript
+<<< @/docs/.vuepress/public/examples/example-buttons-1/index.js
+:::
+::: tab html
+<<< @/docs/.vuepress/public/examples/example-buttons-1/index.html
+:::
+::: tab result lazy
 <iframe 
     style="margin-bottom: 8px;" border="0" 
     frameborder="0"
@@ -636,12 +629,6 @@ The <code>base</code>, <code>focus</code> and <code>active</code> button states 
     href="https://github.com/Rebilly/framepay-docs/blob/master/docs/.vuepress/public/examples/example-buttons-1/index.html">
         View source on GitHub
     </a>
-:::
-::: tab html
-<<< @/docs/.vuepress/public/examples/example-buttons-1/index.html
-:::
-::: tab javascript
-<<< @/docs/.vuepress/public/examples/example-buttons-1/index.js
 :::
 ::::
 
@@ -740,7 +727,16 @@ An object defining custom class names for the fields that were injected into you
 
 
 :::: tabs
-::: tab result
+::: tab javascript
+<<< @/docs/.vuepress/public/examples/example-classes-1/index.js
+:::
+::: tab html
+<<< @/docs/.vuepress/public/examples/example-classes-1/index.html
+:::
+::: tab css
+<<< @/docs/.vuepress/public/examples/example-classes-1/index.css
+:::
+::: tab result lazy
 <iframe 
     style="margin-bottom: 8px;" border="0" 
     frameborder="0"
@@ -752,14 +748,5 @@ An object defining custom class names for the fields that were injected into you
     href="https://github.com/Rebilly/framepay-docs/blob/master/docs/.vuepress/public/examples/example-classes-1/index.html">
         View source on GitHub
     </a>
-:::
-::: tab html
-<<< @/docs/.vuepress/public/examples/example-classes-1/index.html
-:::
-::: tab javascript
-<<< @/docs/.vuepress/public/examples/example-classes-1/index.js
-:::
-::: tab css
-<<< @/docs/.vuepress/public/examples/example-classes-1/index.css
 :::
 ::::
