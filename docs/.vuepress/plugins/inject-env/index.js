@@ -7,8 +7,8 @@ const replaceInFiles = require('replace-in-files');
 
 const REPLACES = {
     // replace hardcoded urls
-    'https://cdn.rebilly.com/framepay/v1/rebilly.css': process.env.FRAMEPAY_DOCS_FRAMEPAY_CSS_REMOTE_URL,
-    'https://cdn.rebilly.com/framepay/v1/rebilly.js': process.env.FRAMEPAY_DOCS_FRAMEPAY_JS_REMOTE_URL,
+    'https://framepay.rebilly.com/rebilly.css': process.env.FRAMEPAY_DOCS_FRAMEPAY_CSS_REMOTE_URL,
+    'https://framepay.rebilly.com/rebilly.js': process.env.FRAMEPAY_DOCS_FRAMEPAY_JS_REMOTE_URL,
 
 };
 if (process.env.FRAMEPAY_DOCS_BASE_PATH !== '/framepay-docs/') {
