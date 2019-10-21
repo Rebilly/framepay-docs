@@ -3,7 +3,7 @@
 FramePay is part of Rebilly.js. Simply include the line below into your checkout page to enable it.
 
 ```html
-<script src="https://cdn.rebilly.com/framepay/v1/rebilly.js"></script>
+<script src="https://framepay.rebilly.com/rebilly.js"></script>
 ```
 
 The library is then exposed in the global scope as `Rebilly`.
@@ -17,7 +17,7 @@ Backward-compatible updates will be made available automatically without the nee
 By default FramePay does not inject CSS styles for the elements that are being generated into your form. However we provide a CSS file you can use to give elements a default look.
 
 ```html
-<link href="https://cdn.rebilly.com/framepay/v1/rebilly.css" rel="stylesheet">
+<link href="https://framepay.rebilly.com/rebilly.css" rel="stylesheet">
 ```
 
 Here is an example of a payment card element being styled by `rebilly.css`.
