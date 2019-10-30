@@ -11,5 +11,7 @@
 - [Expiry DropDown](./payment-card/expiry-dropdown.md) <small>Card with expiry year and month dropdown fields</small>
 - [Styled Example](./payment-card/styled.md) <small>Styled card element</small>
 - [Separated fields](./payment-card/separated-card-fields.md) <small>Card with separated field cardNumber, cardExpiry and cardCvv</small>
+- [Card + Disabled Submit](./payment-card/disabled-submit.md) <small>Card example with disabled submit button while the fields are not valid</small>
+- [Separated Card + Disabled Submit](./payment-card/disabled-submit-separated.md) <small>Separated Card example with disabled submit button</small>
 - [Separated fields and expiry DropDown](./payment-card/separated-fields-expiry-dropdown.md) <small>Separated card with expiry dropdown</small>
 :::
