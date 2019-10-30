@@ -274,7 +274,7 @@
                 cvv: false,
             };
 
-            const updateButton = function () {
+            function updateButton() {
                 if (valid.card && valid.exp && valid.cvv) {
                     button.removeAttribute('disabled');
                 } else {
