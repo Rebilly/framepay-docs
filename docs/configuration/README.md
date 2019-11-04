@@ -30,6 +30,22 @@ You could use that structure in the [initialize](../reference/rebilly.md#rebilly
         },
         iban: {accountNumber: null},
     },
+    i18n: {
+        en: {
+            validations: {
+                ... // see i18n configuration details
+                [Rebilly.errorCodes[codeName]]: `String value`
+                ...
+            }
+        },
+        es: {
+            validations: {
+                ... // see i18n configuration details
+                [Rebilly.errorCodes[codeName]]: `String value`
+                ...
+            }
+        }
+    },
     card: {
         expiry: {
             type: 'text',

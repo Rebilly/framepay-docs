@@ -2,6 +2,32 @@
 
 Under the `Rebilly` namespace you will find methods for initializing FramePay and creating payment tokens from a form.
 
+## Rebilly.version 
+Actual FramePay release version <span style="vertical-align:middle;" id="framepay-version"><Badge text="..." type="success"/></span>
+<script type="text/javascript">
+setTimeout(function(){
+    document.getElementById('framepay-version').querySelector('span').innerHTML = parseInt(Rebilly.version, 10);
+}, 1000);
+</script>
+
+## Rebilly.locales
+The allowed locales namespace see [configuration locale](../configuration/properties.md#locale).
+```js
+Rebilly.initialize({
+    publishableKey: '',
+    locale: Rebilly.locales.auto
+});
+```
+
+```js
+Rebilly.update({
+    locale: Rebilly.locales.en
+});
+```
+
+## Rebilly.errorCodes
+The errorCodes namespace, uses for overriding default error messages see [configuration i18n](../configuration/properties.md#i18n)
+
 ## Rebilly.on()
 The `Rebilly` namespace supports 2 events
 - `ready`
