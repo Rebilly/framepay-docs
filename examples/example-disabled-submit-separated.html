@@ -268,14 +268,14 @@
             var exp = Rebilly.card.mount('#exp', 'cardExpiry');
             var cvv = Rebilly.card.mount('#cvv', 'cardCvv');
 
-            var valid = {
+            var completed = {
                 card: false,
                 exp: false,
                 cvv: false,
             };
 
             function updateButton() {
-                if (valid.card && valid.exp && valid.cvv) {
+                if (completed.card && completed.exp && completed.cvv) {
                     button.removeAttribute('disabled');
                 } else {
                     button.setAttribute('disabled', 'disabled');
@@ -283,15 +283,15 @@
             };
 
             card.on('change', function (data) {
-                valid.card = !!data.valid;
+                completed.card = !!data.completed;
                 updateButton();
             });
             exp.on('change', function (data) {
-                valid.exp = !!data.valid;
+                completed.exp = !!data.completed;
                 updateButton();
             });
             cvv.on('change', function (data) {
-                valid.cvv = !!data.valid;
+                completed.cvv = !!data.completed;
                 updateButton();
             });
         });

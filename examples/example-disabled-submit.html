@@ -256,7 +256,7 @@
             var card = Rebilly.card.mount('#mounting-point');
 
             card.on('change', function (data) {
-                if (data.valid) {
+                if (data.completed) {
                     button.removeAttribute('disabled');
                 } else {
                     button.setAttribute('disabled', 'disabled');
