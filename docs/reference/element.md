@@ -56,7 +56,13 @@ element.on('error', function() {
                     <tbody>
                         <tr>
                             <td><code>valid</code></td>
-                            <td>A boolean that is present if the element contains valid data.</td>
+                            <td>
+                                A boolean that is present if the element contains valid data (or potentially valid data while the field is focused).
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><code>completed</code></td>
+                            <td>A boolean that is present if the element has valid and completed data See <a href="/framepay-docs/examples/payment-card/disabled-submit.html">disabled submit button example</a>.</td>
                         </tr>
                         <tr>
                             <td><code>source</code></td>
@@ -90,14 +96,13 @@ In this example we enable the submit button only when the combined card field is
 var submitButton = document.querySelector('#submit-button');
 var card = Rebilly.card.mount('#card');
 
-card.on('ready', function() {
-    // re-enable the submit button
-    submitButton.removeAttribute('disabled');
-});
-
 card.on('change', function(data) {
     if (data.error) {
         document.querySelector('#errors').innerText = error.message;
+    }
+    if(data.completed){
+        // ready to submit
+        submitButton.removeAttribute('disabled');
     }
 });
 ```

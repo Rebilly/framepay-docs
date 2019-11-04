@@ -370,6 +370,85 @@ The placeholders configuration will override the active locale settings.
 ::::
 
 
+## i18n
+This object allows you to customize the error messages.
+<table>
+    <tr><td>Updatable</td><td>False <small><b>(Soon True)</b></small></td></tr>
+    <tr><td>Required</td><td>False</td></tr>
+    <tr><td>Type</td><td>Object</td></tr>
+</table>
+
+```js
+Rebilly.initialize({
+    i18n: {
+        en: {
+            validations: {
+                [Rebilly.errorCodes.incompleteCardNumber]: `Your Card Number is incomplete`
+            }
+        },
+    }
+}); 
+```
+### Validations override
+
+#### Combined card
+See change event details in browser console 
+
+:::: tabs
+::: tab javascript
+<<< @/docs/.vuepress/public/examples/example-errorcodes-1/index.js
+:::
+::: tab html
+<<< @/docs/.vuepress/public/examples/example-errorcodes-1/index.html
+:::
+::: tab css
+<<< @/docs/.vuepress/public/examples/example-errorcodes-1/index.css
+:::
+::: tab result lazy
+<iframe 
+    style="margin-bottom: 8px;" border="0" 
+    frameborder="0"
+    scrolling="no" 
+    class="configuration-example-frame configuration-example-frame--middle"
+    src="/framepay-docs/examples/example-errorcodes-1/index.html"></iframe>
+<a 
+    class="view-source"
+    target="_blank"
+    href="https://github.com/Rebilly/framepay-docs/blob/master/docs/.vuepress/public/examples/example-errorcodes-1/index.html">
+        View source on GitHub
+    </a>
+:::
+::::
+
+#### Separated card
+See change event details in prowser console 
+
+:::: tabs
+::: tab javascript
+<<< @/docs/.vuepress/public/examples/example-errorcodes-2/index.js
+:::
+::: tab html
+<<< @/docs/.vuepress/public/examples/example-errorcodes-2/index.html
+:::
+::: tab css
+<<< @/docs/.vuepress/public/examples/example-errorcodes-2/index.css
+:::
+::: tab result lazy
+<iframe 
+    style="margin-bottom: 8px;" border="0" 
+    frameborder="0"
+    scrolling="no" 
+    class="configuration-example-frame configuration-example-frame--middle"
+    src="/framepay-docs/examples/example-errorcodes-2/index.html"></iframe>
+<a 
+    class="view-source"
+    target="_blank"
+    href="https://github.com/Rebilly/framepay-docs/blob/master/docs/.vuepress/public/examples/example-errorcodes-2/index.html">
+        View source on GitHub
+    </a>
+:::
+::::
+
 ## card
 This object allows you to customize the payment card element properties.
 <table>
