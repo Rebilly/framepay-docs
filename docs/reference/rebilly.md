@@ -476,14 +476,14 @@ When a `<label>` is present in your form and you wish to automatically focus on 
 
 # IBAN Namespace
 
-The IBAN namespace allows you to mount iban account specific fields. This will generate a FramePay element at the location you desire within your form.
+The IBAN (International Bank Account Number) namespace allows you to mount a field for accepting IBANs. This will generate a FramePay element at the location you desire within your form.
 
 
 ## Rebilly.iban.mount()
 
-After Rebilly is initialized you can mount bank account elements into your form. This method requires two arguments, the first being a `selector` and the second being an `element type`.
+After Rebilly is initialized you can mount IBAN elements into your form. This method requires just one argument: the `selector` for mounting the element.
 
-The first argument must be either a valid string DOM selector or an instance of a `jQuery` or `Zepto` object that wraps an element within the page. FramePay will attempt to resolve the element and generate a bank field within.
+The `selector` argument must be either a valid string DOM selector or an instance of a `jQuery` or `Zepto` object that wraps an element within the page. FramePay will attempt to resolve the element and generate an IBAN field within.
 
 ```js
 // mount an account type element and return the instance
@@ -500,7 +500,7 @@ The mounting points within your form should be empty, their content will be repl
 <form method="post" action="/process">
     <div class="field">
         <label>IBAN number</label>
-        <div id="account-type">
+        <div id="iban">
             <!-- FramePay will inject the iban field here -->
         </div>
     </div>
