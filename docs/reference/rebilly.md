@@ -500,7 +500,7 @@ The mounting points within your form should be empty, their content will be repl
 <form method="post" action="/process">
     <div class="field">
         <label>IBAN number</label>
-        <div id="account-type">
+        <div id="iban">
             <!-- FramePay will inject the iban field here -->
         </div>
     </div>
