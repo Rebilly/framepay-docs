@@ -235,11 +235,19 @@
                 </div>
                 <div class="field">
                     <label>Account Type</label>
-                    <div id="bank-account-type"></div>
+                    <div id="bban-account-type"></div>
                 </div>
                 <div class="field">
-                    <label for="bank-account-number">Account Number</label>
-                    <div id="bank-account-number"></div>
+                    <label for="bban-bic">SWIFT/BIC Code</label>
+                    <div id="bban-bic"></div>
+                </div>
+                <div class="field">
+                    <label for="bban-bank-name">Bank Name</label>
+                    <div id="bban-bank-name"></div>
+                </div>
+                <div class="field">
+                    <label for="bban-account-number">Account Number</label>
+                    <div id="bban-account-number"></div>
                 </div>
                 <div class="field">
                     <label for="bank-routing-number">Routing Number</label>
@@ -288,9 +296,11 @@
         Rebilly.initialize(config);
 
         Rebilly.on('ready', function () {
-            var type = Rebilly.card.mount('#bank-account-type', 'bankAccountType');
-            var number = Rebilly.card.mount('#bank-account-number', 'bankAccountNumber');
-            var routing = Rebilly.card.mount('#bank-routing-number', 'bankRoutingNumber');
+            var bic = Rebilly.bban.mount('#bban-bic', 'bic');
+            var bankName = Rebilly.bban.mount('#bban-bank-name', 'bankName');
+            var type = Rebilly.bban.mount('#bban-account-type', 'accountType');
+            var number = Rebilly.bban.mount('#bban-account-number', 'accountNumber');
+            var routing = Rebilly.bban.mount('#bank-routing-number', 'routingNumber');
         });
 
         var form = document.querySelector('form');

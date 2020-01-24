@@ -22,7 +22,7 @@
         var [
             accountType,
         ] = [
-            Rebilly.bankAccount.mount('#mount-point-1', 'bankAccountType'),
+            Rebilly.bban.mount('#mount-point-1', 'accountType'),
         ];
     });
 })();
