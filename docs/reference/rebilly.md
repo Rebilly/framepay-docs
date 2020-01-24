@@ -4,10 +4,23 @@ Under the `Rebilly` namespace you will find methods for initializing FramePay an
 
 ## Rebilly.version 
 Actual FramePay release version <span style="vertical-align:middle;" id="framepay-version"><Badge text="..." type="success"/></span>
+
 <script type="text/javascript">
-setTimeout(function(){
-    document.getElementById('framepay-version').querySelector('span').innerHTML = parseInt(Rebilly.version, 10);
-}, 1000);
+var versionTimer = null;
+
+function getVersion(){
+    if(versionTimer){
+        clearTimeout(versionTimer);
+    }
+    setTimeout(function(){
+        try {
+            document.getElementById('framepay-version').querySelector('span').innerHTML = parseInt(Rebilly.version, 10);
+        } catch(e) {
+            getVersion();
+        }
+    }, 500);
+};
+getVersion();
 </script>
 
 ## Rebilly.locales
@@ -73,7 +86,10 @@ It accepts a single [`configuration`](../configuration) object.
 Rebilly.initialize(configuration);
 
 // the basic configuration must contain your publishable API key
-Rebilly.initialize({publishableKey: 'pk_sandbox_1234567890'});
+Rebilly.initialize({
+    publishableKey: 'pk_sandbox_1234567890',
+    organizationId: 'your-organization-id', // no required property
+});
 ```
 
 ::: warning Use your own publishable key
@@ -150,7 +166,9 @@ The actual Rebilly configuration will be:
 
 ## Rebilly.createToken()
 
-Use this method to create a token from the contents of a form. FramePay will automatically look for all elements that were mounted and any `input` fields with a `data-rebilly` attribute will be parsed automatically and sent alongside the elements' data.
+Use this method to create a token from the contents of a form.  
+FramePay will automatically look for all elements that were mounted and any `input` fields with a `data-rebilly` attribute will be parsed automatically and sent alongside the elements' data.  
+See about `data-rebilly` on [data-rebilly-form-fields](./data-rebilly-fields.md) page. 
 
 Alternatively you can provide an `extraData` object containing properties supported by the Rebilly API instead of including additional field in your form.
 ```js
@@ -268,6 +286,26 @@ These options can be defined within:
 };</code></pre>
             </td>
         </tr>
+        <tr>
+            <td style="vertical-align:top">
+                <strong>bic</strong><br>
+                <code>string</code>
+            </td>
+            <td>
+                <p>the SWIFT/BIC Code</p>
+                <p>Only for the BBAN and IBAN methods, <br/>allowed in the <code>data-rebilly</code> fields</p>
+            </td>
+        </tr>
+        <tr>
+            <td style="vertical-align:top">
+                <strong>bankName</strong><br>
+                <code>string</code>
+            </td>
+            <td>
+                <p>Bank Name</p>
+                <p>Only for the BBAN and IBAN methods, <br/>allowed in the <code>data-rebilly</code> fields</p>
+            </td>
+        </tr>
     </tbody>
 </table>
 
@@ -294,48 +332,6 @@ Rebilly.createToken(form, extraData)
             // see error.code and error.message
         });
 });
-```
-
-### `data-rebilly` Fields
-
-Most billing address fields can be automatically gathered by FramePay if they are present within the form with a `data-rebilly` attribute:
-
-- `fullName` <small>The form should contain 2 fields `firstName` + `lastName` or one `fullName`</small>
-- `firstName`
-- `lastName`
-- `organization`
-- `address`
-- `address2`
-- `city`
-- `region`
-- `country`
-- `postalCode` <small>(no-required label in the `data-rebilly-label` node attribute)</small>
-- `phoneNumbers` <small>(no-required label in the `data-rebilly-label` node attribute)</small>
-- `emails`
-
-For example, to collect the `firstName` and `lastName` when the token is created you can setup your form as follows:
-```html
-<form>
-    <fieldset>
-        <div class="field">
-            <input data-rebilly="firstName" placeholder="First Name">
-        </div>
-        <div class="field">
-            <input data-rebilly="lastName" placeholder="Last Name">
-        </div>
-        <div class="field">
-            <input data-rebilly="emails" placeholder="Email">
-        </div>
-        <div class="field">
-            <input data-rebilly="phoneNumbers" placeholder="Phone 1">
-        </div>
-        <div class="field">
-            <input data-rebilly="phoneNumbers" data-rebilly-label="Phone with custom label" placeholder="Phone 2">
-        </div>
-        <input type="hidden" data-rebilly="token" name="rebilly-token">
-    </fieldset>
-    <button>Pay using PayPal</button>
-</form>
 ```
 
 # Card Namespace
@@ -411,20 +407,20 @@ When a `<label>` is present in your form and you wish to automatically focus on 
 </label>
 ```
 
-# Bank Account Namespace
+# BBAN Namespace
 
-The bank account namespace allows you to mount bank account specific fields. This will generate a FramePay element at the location you desire within your form.
+The bban namespace allows you to mount bank account (BBAN) specific fields. This will generate a FramePay element at the location you desire within your form.
 
 
-## Rebilly.bankAccount.mount()
+## Rebilly.bban.mount()
 
-After Rebilly is initialized you can mount bank account elements into your form. This method requires two arguments, the first being a `selector` and the second being an `element type`.
+After Rebilly is initialized you can mount bban elements into your form. This method requires two arguments, the first being a `selector` and the second being an `element type`.
 
 The first argument must be either a valid string DOM selector or an instance of a `jQuery` or `Zepto` object that wraps an element within the page. FramePay will attempt to resolve the element and generate a bank field within.
 
 ```js
 // mount an account type element and return the instance
-var accountType = Rebilly.bankAccount.mount('#account-type', 'bankAccountType');
+var accountType = Rebilly.bban.mount('#account-type', 'accountType');
 ```
 
 :::tip Field Events
@@ -433,11 +429,13 @@ The bank element instances can be used to [subscribe to events](/reference/eleme
 
 The supported element types for the second argument are:
 
-- `bankAccountType`: a set of inline buttons allowing the selection of the account type
-- `bankAccountNumber`: a simple element to enter the account number
-- `bankRoutingNumber`: a simple element to enter the routing number
+- `accountType`: a set of inline buttons allowing the selection of the account type
+- `accountNumber`: a simple element to enter the account number
+- `routingNumber`: a simple element to enter the routing number
+- `bic`: a simple element to enter the SWIFT/BIC Code
+- `bankName`: a simple element to enter the Bank Name
 
-You must include mount one of each type into your form in order to create a token for a bank account.
+You must include mount one of `accountNumber`, `routingNumber` into your form in order to create a token for a bank account.
 
 
 #### Mounting Points
@@ -481,18 +479,30 @@ The IBAN (International Bank Account Number) namespace allows you to mount a fie
 
 ## Rebilly.iban.mount()
 
-After Rebilly is initialized you can mount IBAN elements into your form. This method requires just one argument: the `selector` for mounting the element.
-
+After Rebilly is initialized you can mount IBAN elements into your form. This method requires one or two arguments, the first being a `selector` and the second being an `element type`.  
+    
+If the second argument didn't passed then will be mounted the default element for iban account number.  
+    
 The `selector` argument must be either a valid string DOM selector or an instance of a `jQuery` or `Zepto` object that wraps an element within the page. FramePay will attempt to resolve the element and generate an IBAN field within.
 
 ```js
 // mount an account type element and return the instance
-var iban = Rebilly.iban.mount('#iban');
+var iban = Rebilly.iban.mount('#iban'); // mount iban field
+
+var bic = Rebilly.iban.mount('#iban-bic', 'bic'); // mount iban bic field
+
+var bankName = Rebilly.iban.mount('#iban-bank-name', 'bankName'); // mount iban Bank Name field
 ```
 
 :::tip Field Events
 The iban element instances can be used to [subscribe to events](/reference/element.html#element-on) and complete additional actions afterwards.
 :::
+
+The supported element types for the second argument are:
+
+- empty - mount main iban field element `Rebilly.iban.mount('#iban');`
+- `bic`: a simple element to enter the SWIFT/BIC Code
+- `bankName`: a simple element to enter the Bank Name
 
 #### Mounting Points
 The mounting points within your form should be empty, their content will be replaced with the FramePay element.

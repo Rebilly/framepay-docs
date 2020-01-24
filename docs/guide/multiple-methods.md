@@ -15,9 +15,9 @@ Currently FramePay will generate fields for payment cards and bank accounts. The
 Rebilly.card.mount('#payment-card', 'card');
 
 // mounting the three separate bank account fields
-Rebilly.bankAccount.mount('#bank-account-type', 'bankAccountType');
-Rebilly.bankAccount.mount('#bank-account-number', 'bankAccountNumber');
-Rebilly.bankAccount.mount('#bank-routing-number', 'bankRoutingNumber');
+Rebilly.bban.mount('#bank-account-type', 'accountType');
+Rebilly.bban.mount('#bank-account-number', 'accountNumber');
+Rebilly.bban.mount('#bank-routing-number', 'routingNumber');
 ``` 
 
 #### Other methods
@@ -81,9 +81,9 @@ In this example the payment card field is mounted first and will be the default 
 ```js
 // mount all fields
 Rebilly.card.mount('#payment-card', 'card');
-Rebilly.bankAccount.mount('#bank-account-type', 'bankAccountType');
-Rebilly.bankAccount.mount('#bank-account-number', 'bankAccountNumber');
-Rebilly.bankAccount.mount('#bank-routing-number', 'bankRoutingNumber');
+Rebilly.bban.mount('#bank-account-type', 'accountType');
+Rebilly.bban.mount('#bank-account-number', 'accountNumber');
+Rebilly.bban.mount('#bank-routing-number', 'routingNumber');
 
 
 var form = document.querySelector('form');
