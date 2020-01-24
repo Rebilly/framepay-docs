@@ -1,10 +1,11 @@
 # Structure
 The basic structure of the configuration object.  
-You could use that structure in the [initialize](../reference/rebilly.md#rebilly-initialize) and [update](../reference/rebilly.md#rebilly-update) methods
+You could use this structure in the [initialize](../reference/rebilly.md#rebilly-initialize) and [update](../reference/rebilly.md#rebilly-update) methods
 
 ```javascript
 {
-    publishableKey:'',
+    publishableKey: 'String, required',
+    organizationId: 'String, no-required',
     locale: 'auto',
     icon: {
         display: true,
@@ -19,7 +20,11 @@ You could use that structure in the [initialize](../reference/rebilly.md#rebilly
             expiryMoth: null,
             expiryYear: null,
         },
-        bankAccount: {
+        bban: {
+            bicTitle: '',
+            bicPlaceholder: '',
+            bankNameTitle: '',
+            bankNamePlaceholder:'',
             routingNumber: null,
             accountNumber: null,
             type: {
@@ -28,7 +33,13 @@ You could use that structure in the [initialize](../reference/rebilly.md#rebilly
                 other: null,
             },
         },
-        iban: {accountNumber: null},
+        iban: {
+            bicTitle:'',
+            bicPlaceholder: '',
+            bankNameTitle:'',
+            bankNamePlaceholder:'',
+            accountNumber: null
+        },
     },
     i18n: {
         en: {

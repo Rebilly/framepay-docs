@@ -10,6 +10,18 @@ A Rebilly publishable <a href="https://app.rebilly.com/api-keys/add">API key</a>
 
 <<< @/docs/.vuepress/public/examples/example-publishablekey-1/index.js
 
+## organizationId
+Your organization identifier in scope of which need to perform request (if not specified, the default organization will be used).
+
+<table>
+    <tr><td>Required</td><td><Badge text="False" type="error"/></td></tr>
+    <tr><td>Updatable</td><td>False</td></tr>
+    <tr><td>Type</td><td>String</td></tr>
+</table>
+
+<<< @/docs/.vuepress/public/examples/organization-id-1/index.js
+
+
 
 ## locale
 A string to force defining FramePay locale for the fields that were injected into your checkout form.
@@ -274,8 +286,8 @@ Rebilly.initialize({
 ::::
 
 
-### bankAccount
-The [bankAccount](../reference/rebilly.md#rebilly-bankaccount-mount) element placeholder
+### bban
+The [bban](../reference/rebilly.md#rebilly-bban-mount) element placeholder
 
 :::: tabs
 ::: tab javascript
