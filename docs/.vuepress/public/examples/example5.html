@@ -255,8 +255,8 @@
         Rebilly.on('ready', function () {
 
             // mount framepay
-            var bic = Rebilly.bban.mount('#bank-account-type', 'bic');
-            var bankName = Rebilly.bban.mount('#bank-account-type', 'bankName');
+            var bic = Rebilly.bban.mount('#bban-bic', 'bic');
+            var bankName = Rebilly.bban.mount('#bban-bank-name', 'bankName');
             var type = Rebilly.bban.mount('#bank-account-type', 'accountType');
             var number = Rebilly.bban.mount('#bank-account-number', 'accountNumber');
             var routing = Rebilly.bban.mount('#bank-routing-number', 'routingNumber');
