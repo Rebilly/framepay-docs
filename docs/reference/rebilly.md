@@ -28,13 +28,13 @@ The allowed locales namespace see [configuration locale](../configuration/proper
 ```js
 Rebilly.initialize({
     publishableKey: '',
-    locale: Rebilly.locales.auto
+    locale: 'auto'
 });
 ```
 
 ```js
 Rebilly.update({
-    locale: Rebilly.locales.en
+    locale: 'en-US'
 });
 ```
 
@@ -82,9 +82,6 @@ Use this method to initialize FramePay with your publishable API key and customi
 
 It accepts a single [`configuration`](../configuration) object.
 ```js
-// expects a configuration object
-Rebilly.initialize(configuration);
-
 // the basic configuration must contain your publishable API key
 Rebilly.initialize({
     publishableKey: 'pk_sandbox_1234567890',
