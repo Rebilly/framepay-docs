@@ -6,7 +6,7 @@
                 expiry: 'EXPIRY',
             },
         },
-        locale: Rebilly.locales.es,
+        locale: 'es-ES',
     });
 
     Rebilly.on('ready', () => {
@@ -15,11 +15,11 @@
 
     document.getElementById('btn-update-1')
         .addEventListener('click', (e) => {
-            Rebilly.update({locale: Rebilly.locales.en});
+            Rebilly.update({locale: 'en-US'});
         });
 
     document.getElementById('btn-restore-1')
         .addEventListener('click', (e) => {
-            Rebilly.update({locale: Rebilly.locales.es});
+            Rebilly.update({locale: 'es-ES'});
         });
 })();
