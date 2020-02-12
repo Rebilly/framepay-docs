@@ -2,7 +2,9 @@
     Rebilly.initialize({
         publishableKey: 'pk_sandbox_1234567890',
         placeholders: {
-            bankAccount: {
+            bban: {
+                bicPlaceholder:'BIC ****',
+                bankNamePlaceholder:'BIC ****',
                 accountNumber: 'Account Number ****',
                 routingNumber: 'Routing Number ****',
                 type: {
@@ -15,13 +17,17 @@
     });
     Rebilly.on('ready', () => {
         var [
+            bic,
+            bankName,
             accountType,
             accountNumber,
             routingNumber,
         ] = [
-            Rebilly.bankAccount.mount('#mount-point-0', 'bankAccountType'),
-            Rebilly.bankAccount.mount('#mount-point-1', 'bankAccountNumber'),
-            Rebilly.bankAccount.mount('#mount-point-2', 'bankRoutingNumber'),
+            Rebilly.bban.mount('#mount-point-bic', 'bic'),
+            Rebilly.bban.mount('#mount-point-bank-name', 'bankName'),
+            Rebilly.bban.mount('#mount-point-0', 'accountType'),
+            Rebilly.bban.mount('#mount-point-1', 'accountNumber'),
+            Rebilly.bban.mount('#mount-point-2', 'routingNumber'),
         ];
     });
 })();

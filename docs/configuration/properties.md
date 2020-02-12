@@ -10,21 +10,35 @@ A Rebilly publishable <a href="https://app.rebilly.com/api-keys/add">API key</a>
 
 <<< @/docs/.vuepress/public/examples/example-publishablekey-1/index.js
 
+## organizationId
+Your organization identifier in scope of which need to perform request (if not specified, the default organization will be used).
+
+<table>
+    <tr><td>Required</td><td><Badge text="False" type="error"/></td></tr>
+    <tr><td>Updatable</td><td>False</td></tr>
+    <tr><td>Type</td><td>String</td></tr>
+</table>
+
+<<< @/docs/.vuepress/public/examples/organization-id-1/index.js
+
+
 
 ## locale
 A string to force defining FramePay locale for the fields that were injected into your checkout form.
 
 By default the FramePay trying to detect and use the client's locale.  
-The `en` locale used as a fallback.
-
-All supported locales are available in the `Rebilly.locales.*` namespace.
+The `en-US` locale used as a fallback.
 
 <table>
     <tr><td>Required</td><td>False</td></tr>
     <tr><td>Updatable</td><td>True</td></tr>
     <tr><td>Type</td><td>ENUM</td></tr>
-    <tr><td>Default value </td><td><code>auto</code> (<code>en</code> as fallback)</td></tr>
-    <tr><td>Supported values</td><td>See <code>Rebilly.locales</code><br/><br/><code>auto</code>, <code>en</code>, <code>es</code></td></tr>
+    <tr><td>Default value </td><td><code>auto</code> (<code>en-US</code> as fallback)</td></tr>
+    <tr><td>Supported values</td><td>
+    <code>auto</code>,
+    <code>en-US</code>,
+    <code>es-ES</code>
+    </td></tr>
 </table>
 
 :::: tabs
@@ -274,8 +288,8 @@ Rebilly.initialize({
 ::::
 
 
-### bankAccount
-The [bankAccount](../reference/rebilly.md#rebilly-bankaccount-mount) element placeholder
+### bban
+The [bban](../reference/rebilly.md#rebilly-bban-mount) element placeholder
 
 :::: tabs
 ::: tab javascript
@@ -292,7 +306,7 @@ The [bankAccount](../reference/rebilly.md#rebilly-bankaccount-mount) element pla
     style="margin-bottom: 8px;" border="0" 
     frameborder="0"
     scrolling="no" 
-    class="configuration-example-frame configuration-example-frame--middle"
+    class="configuration-example-frame configuration-example-frame--big"
     src="/framepay-docs/examples/example-placeholders-2/index.html"></iframe>
 <a 
     class="view-source"

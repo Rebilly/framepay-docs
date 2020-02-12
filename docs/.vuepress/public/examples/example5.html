@@ -206,6 +206,14 @@
                     <div id="bank-account-type"></div>
                 </div>
                 <div class="field">
+                    <label for="bban-bic">SWIFT/BIC Code</label>
+                    <div id="bban-bic"></div>
+                </div>
+                <div class="field">
+                    <label for="bban-bank-name">Bank Name</label>
+                    <div id="bban-bank-name"></div>
+                </div>
+                <div class="field">
                     <label>Account Number</label>
                     <div id="bank-account-number"></div>
                 </div>
@@ -247,9 +255,11 @@
         Rebilly.on('ready', function () {
 
             // mount framepay
-            var type = Rebilly.bankAccount.mount('#bank-account-type', 'bankAccountType');
-            var number = Rebilly.bankAccount.mount('#bank-account-number', 'bankAccountNumber');
-            var routing = Rebilly.bankAccount.mount('#bank-routing-number', 'bankRoutingNumber');
+            var bic = Rebilly.bban.mount('#bban-bic', 'bic');
+            var bankName = Rebilly.bban.mount('#bban-bank-name', 'bankName');
+            var type = Rebilly.bban.mount('#bank-account-type', 'accountType');
+            var number = Rebilly.bban.mount('#bank-account-number', 'accountNumber');
+            var routing = Rebilly.bban.mount('#bank-routing-number', 'routingNumber');
         });
 
         form.onsubmit = function (e) {

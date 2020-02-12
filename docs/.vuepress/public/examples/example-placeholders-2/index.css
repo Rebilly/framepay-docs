@@ -2,6 +2,14 @@
     display: flex;
 }
 
+#mount-point-bic {
+    margin-bottom: 1rem;
+}
+
+#mount-point-bank-name {
+    margin-bottom: 1rem;
+}
+
 .field > #mount-point-1 {
     flex: .4;
 }

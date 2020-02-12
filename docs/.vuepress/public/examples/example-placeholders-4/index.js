@@ -6,7 +6,7 @@
                 expiry: 'EXPIRY',
             },
         },
-        locale: Rebilly.locales.es,
+        locale: 'es-ES',
     });
     Rebilly.on('ready', () => {
         var card = Rebilly.card.mount('#mount-point');

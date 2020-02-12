@@ -33,6 +33,7 @@ module.exports = {
             {text: 'Configuration', link: '/configuration/'},
             {text: 'Reference', link: '/reference/'},
             {text: 'Examples', link: '/examples/'},
+            {text: 'Changelog', link: '/changelog/'},
             {text: 'React', link: 'https://github.com/Rebilly/framepay-react'},
             {text: 'Vue', link: 'https://github.com/Rebilly/framepay-vue'},
             {text: 'GitHub', link: 'https://github.com/Rebilly/framepay-docs'},
@@ -47,6 +48,7 @@ module.exports = {
             '/reference/': genSidebarConfig(
                 'Reference', [
                     ['rebilly', 'Rebilly Namespace'],
+                    ['data-rebilly-fields', 'Data-rebilly form fields'],
                     ['element', 'Element Instance'],
                     ['supported-browsers', 'Supported Browsers'],
                 ],
@@ -59,7 +61,7 @@ module.exports = {
             '/examples/': genSidebarConfig(
                 'Examples', [
                     ['payment-cards', 'Payment Cards'],
-                    ['bank-accounts', 'Bank Accounts'],
+                    ['bban', 'BBAN'],
                     ['iban', 'IBAN'],
                     ['other', 'Other Payment Methods'],
                     ['multiple', 'Multiple Payment Methods'],
