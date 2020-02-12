@@ -12,7 +12,7 @@ sidebar: auto
 ### Added
 - `organizationId` configuration property (String, no-required) see [configuration.organizationId](./configuration/properties.md#organizationid)
 
-Your organization identifier in scope of which need to perform request (if not specified, the default organization will be used).
+Your organization identifier, in the scope of which the request is performed. (If not specified, the default organization will be used).
 
 ```js
 Rebilly.initialize({
