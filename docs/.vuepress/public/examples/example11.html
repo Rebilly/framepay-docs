@@ -288,9 +288,9 @@
         Rebilly.initialize(config);
 
         Rebilly.on('ready', function () {
-            var type = Rebilly.card.mount('#bank-account-type', 'bankAccountType');
-            var number = Rebilly.card.mount('#bank-account-number', 'bankAccountNumber');
-            var routing = Rebilly.card.mount('#bank-routing-number', 'bankRoutingNumber');
+            var type = Rebilly.bankAccount.mount('#bank-account-type', 'bankAccountType');
+            var number = Rebilly.bankAccount.mount('#bank-account-number', 'bankAccountNumber');
+            var routing = Rebilly.bankAccount.mount('#bank-routing-number', 'bankRoutingNumber');
         });
 
         var form = document.querySelector('form');
@@ -303,6 +303,7 @@
 
             Rebilly.createToken(form)
                 .then(function (resp) {
+                    errorMessages.classList.remove('is-active');
                     alert(JSON.stringify(resp, null, 2));
                 })
                 .catch(function (error) {
